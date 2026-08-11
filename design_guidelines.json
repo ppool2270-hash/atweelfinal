@@ -1,0 +1,40 @@
+{
+  "brand": "itsTea Global Manufacturing & Export Corp.",
+  "theme": "Corporate Executive Navy & Gold",
+  "app_type": "corporate_b2b_export_website",
+  "typography": {
+    "heading_font": "Playfair Display, serif",
+    "body_font": "Plus Jakarta Sans, sans-serif",
+    "mono_font": "JetBrains Mono, monospace"
+  },
+  "colors": {
+    "primary": "#0B192C",
+    "primary_dark": "#050B14",
+    "accent_gold": "#D4AF37",
+    "accent_gold_light": "#F3E5AB",
+    "surface_dark": "#1E293B",
+    "surface_light": "#F8FAFC",
+    "text_dark": "#0F172A",
+    "text_light": "#F1F5F9",
+    "border_subtle": "rgba(212, 175, 55, 0.2)"
+  },
+  "image_urls": {
+    "estate_harvest": "https://images.unsplash.com/photo-1639573535302-3cbc366dd393?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjB0ZWElMjBlc3RhdGUlMjBwbGFudGF0aW9uJTIwaGFydmVzdHxlbnwwfHx8fDE3ODYwNjkyOTZ8MA&ixlib=rb-4.1.0&q=85",
+    "gourmet_brew": "https://images.unsplash.com/photo-1531969179221-3946e6b5a5e7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHwxfHxnb3VybWV0JTIwYXJ0aXNhbiUyMHRlYSUyMGxlYXZlcyUyMGNlcmVtb255fGVufDB8fHx8MTc4NjA2OTI5Nnww&ixlib=rb-4.1.0&q=85",
+    "cargo_shipping": "https://images.unsplash.com/photo-1606185540834-d6e7483ee1a4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBjYXJnbyUyMHNoaXBwaW5nJTIwcG9ydCUyMGxvZ2lzdGljcyUyMG9jZWFufGVufDB8fHx8MTc4NjA2OTI5Nnww&ixlib=rb-4.1.0&q=85",
+    "quality_lab": "https://images.unsplash.com/photo-1639772823849-6efbd173043c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjB0ZWElMjB0ZXN0aW5nJTIwbGFib3JhdG9yeSUyMHF1YWxpdHklMjBsYWJ8ZW58MHx8fHwxNzg2MDY5Mjk2fDA&ixlib=rb-4.1.0&q=85"
+  },
+  "key_functionalities": [
+    "Tea Product Catalog with grades/certifications",
+    "Bulk Export Inquiry & Custom Blending RFQ form",
+    "Global Shipping & Logistics Tracker",
+    "Factory Certifications & Quality Lab showcase",
+    "Interactive Wholesale Price & MOQ Calculator",
+    "Client Testimonials & Global Export Destinations map/list"
+  ],
+  "accessibility_requirements": {
+    "contrast_ratio": "Minimum 4.5:1 for normal text, 3:1 for large text",
+    "interactive_elements": "Explicit hover and focus states with gold border or glow",
+    "testing_attributes": "All interactive elements must include data-testid attributes"
+  }
+}

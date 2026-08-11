@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: "cv11", "ss01", "cv01";
+    font-weight: 400;
+    letter-spacing: -0.011em;
+    line-height: 1.65;
+    background-color: var(--ivory);
+    color: var(--charcoal-grey);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ============================================
+   BRAND PALETTE UTILITIES
+   ============================================ */
+.bg-charcoal { background-color: var(--charcoal-grey); }
+.bg-ivory { background-color: var(--ivory); }
+.text-ivory { color: var(--ivory); }
+.text-charcoal { color: var(--charcoal-grey); }
+.text-champagne { color: var(--champagne-gold); }
+.border-champagne { border-color: var(--champagne-gold); }
+.border-lightgrey { border-color: var(--light-grey); }
+
+/* Elegant serif typography — refined Playfair Display & Cormorant Garamond pairing */
+.font-serif {
+    font-family: 'Playfair Display', 'Cormorant Garamond', ui-serif, Georgia, Cambria, serif;
+    font-feature-settings: "kern", "liga", "dlig", "onum";
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+}
+
+/* Luxury Editorial Display Header */
+.font-display {
+    font-family: 'Playfair Display', 'Cormorant Garamond', ui-serif, Georgia, serif;
+    font-feature-settings: "kern", "liga", "dlig";
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    font-weight: 600;
+}
+
+/* Refined heading weights & optical tracking */
+h1.font-serif { font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+h2.font-serif { font-weight: 600; letter-spacing: -0.015em; line-height: 1.18; }
+h3.font-serif { font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+h4.font-serif { font-weight: 600; letter-spacing: -0.005em; line-height: 1.3; }
+
+/* Airy paragraphs — corporate editorial rhythm */
+p {
+    line-height: 1.72;
+}
+
+/* Uppercase eyebrows — luxury small caps feel */
+.uppercase {
+    font-feature-settings: "cpsp" 1;
+    letter-spacing: 0.12em;
+}
+
+/* Refined mono for cert IDs and spec codes */
+code, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    font-feature-settings: "zero", "ss01";
+    letter-spacing: -0.01em;
+}
+
+/* Subtle underline for links */
+a { text-decoration: none; }
+
+/* Selection with brand gold */
+::selection {
+    background: var(--champagne-gold);
+    color: #fff;
+}
+
+/* Elegant scroll behaviour */
+html { scroll-behavior: smooth; }
+
+/* ============================================
+   CUSTOM LUXURY CURSOR
+   Subtle gold-navy dot cursor on interactive elements
+   ============================================ */
+:root {
+    /* Small gold dot with forest stroke — default cursor for links/buttons */
+    --cursor-luxury: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'><circle cx='11' cy='11' r='4' fill='%23D4AF37' stroke='%230F2B1D' stroke-width='1.2'/><circle cx='11' cy='11' r='8' fill='none' stroke='%23D4AF37' stroke-width='0.8' stroke-opacity='0.45'/></svg>") 11 11, pointer;
+    /* Slightly larger active/press cursor */
+    --cursor-luxury-active: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'><circle cx='11' cy='11' r='5' fill='%23D4AF37' stroke='%230F2B1D' stroke-width='1.4'/></svg>") 11 11, pointer;
+}
+
+/* Apply luxury pointer to every interactive element */
+button:not(:disabled),
+a[href],
+[role="button"],
+label[for],
+select,
+summary,
+.cursor-pointer,
+[data-testid*="btn"],
+[data-testid*="nav"],
+[data-testid*="chip"] {
+    cursor: pointer;
+}
+
+button:not(:disabled):active,
+a[href]:active,
+[role="button"]:active {
+    cursor: pointer;
+}
+
+/* Text-input focused cursor stays native (I-beam) — better UX */
+input[type="text"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="password"], textarea {
+    cursor: text;
+}
+
+/* Disabled elements: not-allowed */
+button:disabled,
+[aria-disabled="true"] {
+    cursor: not-allowed;
+}
+
+/* ============================================
+   PRINT STYLESHEET
+   Polished output for catalog cards, spec sheets, COAs
+   ============================================ */
+@media print {
+    /* Preserve brand colours in print output */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    /* Page setup — A4 with luxury margins */
+    @page {
+        size: A4;
+        margin: 18mm 15mm 18mm 15mm;
+    }
+
+    /* Print-only page header (letterhead) */
+    @page :first {
+        margin-top: 12mm;
+    }
+
+    html, body {
+        background: var(--white) !important;
+        color: var(--charcoal-grey) !important;
+        font-size: 11pt;
+        line-height: 1.55;
+    }
+
+    body::before {
+        content: "ATWEEL TEA  ·  ATWEEL FOOD & BEVERAGES PVT LTD  ·  NEMPHAI 1, KHARSANG, ARUNACHAL PRADESH 792056  ·  atweeltea@gmail.com";
+        display: block;
+        font-family: 'Jost', sans-serif;
+        font-size: 8pt;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--champagne-gold);
+        border-bottom: 2px solid var(--champagne-gold);
+        padding-bottom: 6mm;
+        margin-bottom: 10mm;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    body::after {
+        content: "www.atweeltea.com  ·  Confidential B2B Document  ·  ISO 22000 · HACCP · India Organic (NPOP) · USDA Organic · FSSAI";
+        display: block;
+        font-family: 'Jost', sans-serif;
+        font-size: 7pt;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--champagne-gold);
+        border-top: 1px solid var(--champagne-gold);
+        padding-top: 5mm;
+        margin-top: 10mm;
+        text-align: center;
+    }
+
+    /* HIDE non-essential UI in print */
+    header, footer, video, [data-testid="trust-ribbon"], [data-testid="mobile-menu-toggle"],
+    [data-testid="verify-modal-backdrop"], [role="dialog"],
+    button:not(.print-visible), .no-print,
+    [data-testid="estate-reel"], [data-testid="factory-gallery"],
+    [data-testid="sop-banner"], nav {
+        display: none !important;
+    }
+
+    /* Show all sections regardless of active tab */
+    main > div { display: block !important; }
+
+    /* Cards & sections optimised for print */
+    section, .rounded-3xl, .rounded-2xl, .rounded-xl {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+        border-width: 1px !important;
+    }
+
+    /* Ensure text on dark backgrounds inverts to readable */
+    [class*="bg-charcoal"], [class*="bg-[var(--charcoal-grey)]"] {
+        background: var(--ivory) !important;
+        color: var(--charcoal-grey) !important;
+    }
+    [class*="bg-charcoal"] *, [class*="bg-[var(--charcoal-grey)]"] * {
+        color: var(--charcoal-grey) !important;
+    }
+    [class*="bg-charcoal"] .text-white,
+    [class*="bg-charcoal"] [class*="text-white"] {
+        color: var(--charcoal-grey) !important;
+    }
+
+    /* Bigger, cleaner headings on print */
+    h1.font-serif {
+        font-size: 22pt !important;
+        color: var(--charcoal-grey) !important;
+        margin-bottom: 3mm;
+    }
+    h2.font-serif { font-size: 16pt !important; color: var(--charcoal-grey) !important; }
+    h3.font-serif { font-size: 13pt !important; color: var(--champagne-gold) !important; }
+
+    /* Show URL next to external links */
+    a[href^="http"]::after, a[href^="mailto"]::after {
+        content: " ‹" attr(href) "›";
+        font-size: 8pt;
+        color: var(--champagne-gold);
+        font-weight: 400;
+    }
+
+    /* Certification badges compressed */
+    .rounded-full { border-radius: 3px !important; }
+
+    /* Grid layouts flatten to 2 columns max in print */
+    .grid-cols-3, .grid-cols-4, .lg\\:grid-cols-3, .lg\\:grid-cols-4, .md\\:grid-cols-3, .md\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Prevent page breaks in critical spec elements */
+    .print-keep-together { page-break-inside: avoid; }
+
+    /* Images preserve at high quality */
+    img { max-width: 100% !important; height: auto !important; page-break-inside: avoid; }
+
+    /* Hide our custom cursor rules in print (irrelevant) */
+    * { cursor: auto !important; }
+}
+
+@layer base {
+:root {
+    --champagne-gold: #D8C3A5; /* A soft, elegant champagne gold */
+    --champagne-gold-dark: #B89C72; /* A slightly darker shade for borders/hovers */
+    --white: #FFFFFF;
+    --ivory: #F9F8F6;
+    --light-grey: #757575;
+    --charcoal-grey: #242526; /* Deep, rich charcoal for high contrast */
+
+    --background: var(--ivory);
+    --foreground: var(--charcoal-grey);
+    --card: var(--white);
+    --card-foreground: var(--charcoal-grey);
+    --popover: var(--white);
+    --popover-foreground: var(--charcoal-grey);
+    --primary: var(--champagne-gold);
+    --primary-foreground: var(--charcoal-grey);
+    --secondary: var(--light-grey);
+    --secondary-foreground: var(--charcoal-grey);
+    --muted: var(--light-grey);
+    --muted-foreground: var(--charcoal-grey);
+    --accent: var(--champagne-gold);
+    --accent-foreground: var(--charcoal-grey);
+    --border: var(--light-grey);
+    --input: var(--light-grey);
+    --ring: var(--champagne-gold);
+}
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}

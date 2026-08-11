@@ -1,0 +1,8 @@
+{
+  "name": "Atweel Tea B2B",
+  "description": "100% Organic single-estate tea from Kharsang, Arunachal Pradesh",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "atweel-tea-b2b",
+  "version": "1.0.0",
+  "description": "Atweel Tea - 100% Organic Tea from Kharsang, Arunachal Pradesh",
+  "private": true,
+  "main": "server.js",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "start": "node server.js",
+    "dev": "npm run build && node server.js",
+    "lint": "cd frontend && npm run build"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "nodemailer": "^9.0.5",
+    "resend": "^6.18.1"
+  }
+}
