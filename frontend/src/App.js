@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef, Suspense, lazy } from "react";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
+
+import { initFirebase, getFirebaseDB, getFirebaseAuth } from './firebase';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc, setDoc, collection, query, where, getDocs } from 'firebase/firestore';
+
+import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer } from 'recharts';
+
 import confetti from "canvas-confetti";
 const MetadataConfig = lazy(() => import("./components/MetadataConfig"));
 const CertificationCarousel = lazy(() => import("./components/CertificationCarousel"));
@@ -18,7 +25,8 @@ import {
   ChevronRight, ArrowRight, Package, Search, Star, CheckCircle2, 
   MapPin, Phone, Mail, Building, Download, ExternalLink, Menu, X,
   Clock, Thermometer, ShieldAlert, Sparkles, TrendingUp, ChevronDown, ChevronUp, HelpCircle, Boxes, FileCheck, Home, Leaf, Factory,
-  Plus, Trash2, Edit3, RotateCcw, Save, Lock, Settings, RefreshCw, Bell, Upload, History, Copy, Check, Bot, Coffee, Droplets, ShoppingBag, Users
+  Plus, Trash2, Edit3, RotateCcw, Save, Lock, Settings, RefreshCw, Bell, Upload, History, Copy, Check, Bot, Coffee, Droplets, ShoppingBag, Users, Briefcase, FileSpreadsheet, CreditCard
+, AlertTriangle
 } from "lucide-react";
 
 
@@ -581,6 +589,14 @@ const TeaGradeInfographic = ({ onRequestSample }) => {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
+
+  const [currentUser, setCurrentUser] = useState(null);
+  const [customerProfile, setCustomerProfile] = useState(null);
+  const [authForm, setAuthForm] = useState({ email: "", password: "", company: "", name: "", taxId: "", country: "", annualVolume: "", website: "" });
+  const [isLoginMode, setIsLoginMode] = useState(true);
+  const [customerOrders, setCustomerOrders] = useState([]);
+  const [customerInvoices, setCustomerInvoices] = useState([]);
+
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -686,6 +702,103 @@ export default function App() {
   // DYNAMIC SITE DATA CMS STATE
   const [siteProducts, setSiteProducts] = useState(TEA_CATALOG);
   const [siteShipments, setSiteShipments] = useState([]);
+  
+  const [siteErp, setSiteErp] = useState(null);
+
+  // Initialize Firebase and Auth Listener
+  useEffect(() => {
+    initFirebase().then(({ auth, db }) => {
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          setCurrentUser(user);
+          try {
+            const profileRef = doc(db, 'customers', user.uid);
+            const docSnap = await getDoc(profileRef);
+            if (docSnap.exists()) {
+              setCustomerProfile(docSnap.data());
+            }
+          } catch (e) {
+            console.error("Error fetching user profile", e);
+          }
+        } else {
+          setCurrentUser(null);
+          setCustomerProfile(null);
+        }
+      });
+    }).catch(console.error);
+  }, []);
+
+  const handleAuthSubmit = async (e) => {
+    e.preventDefault();
+    const { auth, db } = await initFirebase();
+    if (isLoginMode) {
+      try {
+        await signInWithEmailAndPassword(auth, authForm.email, authForm.password);
+        toast.success("Successfully logged in");
+      } catch (err) {
+        toast.error("Login failed: " + err.message);
+      }
+    } else {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, authForm.email, authForm.password);
+        const user = userCredential.user;
+        const newProfile = { 
+          name: authForm.name, 
+          company: authForm.company, 
+          email: authForm.email, 
+          taxId: authForm.taxId,
+          country: authForm.country,
+          annualVolume: authForm.annualVolume,
+          website: authForm.website,
+          status: "Pending Verification",
+          tier: "Standard",
+          createdAt: new Date().toISOString() 
+        };
+        await setDoc(doc(db, 'customers', user.uid), newProfile);
+        setCustomerProfile(newProfile);
+        toast.success("Account created successfully");
+      } catch (err) {
+        toast.error("Signup failed: " + err.message);
+      }
+    }
+  };
+
+  const handleCustomerLogout = async () => {
+    const { auth } = await initFirebase();
+    await signOut(auth);
+    toast.success("Logged out successfully");
+  };
+
+  // Sync customer orders and invoices when siteErp changes
+  useEffect(() => {
+    if (currentUser && customerProfile && siteErp) {
+      const orders = siteErp.orders.filter(o => o.buyer === customerProfile.company);
+      const invoices = siteErp.invoices.filter(i => orders.some(o => o.id === i.orderId));
+      setCustomerOrders(orders);
+      setCustomerInvoices(invoices);
+    }
+  }, [currentUser, customerProfile, siteErp]);
+
+  const [isRunningAi, setIsRunningAi] = useState(false);
+  const [aiForecast, setAiForecast] = useState(null);
+  
+  const EXPORT_PROJECTIONS = [
+    { quarter: "Q1", CTC: 45000, Orthodox: 12000, SilverNeedle: 3500 },
+    { quarter: "Q2", CTC: 52000, Orthodox: 15000, SilverNeedle: 4200 },
+    { quarter: "Q3", CTC: 61000, Orthodox: 18000, SilverNeedle: 5100 },
+    { quarter: "Q4", CTC: 48000, Orthodox: 14000, SilverNeedle: 4000 }
+  ];
+  const REVENUE_DATA = [
+    { month: "Jan", revenue: 210000 },
+    { month: "Feb", revenue: 280000 },
+    { month: "Mar", revenue: 320000 },
+    { month: "Apr", revenue: 410000 },
+    { month: "May", revenue: 390000 },
+    { month: "Jun", revenue: 520000 },
+    { month: "Jul", revenue: 610000 },
+    { month: "Aug", revenue: 710000 }
+  ];
+
   const [siteEstateMetrics, setSiteEstateMetrics] = useState({
     bighaArea: "1,200 Bigha",
     factorySqFt: "72,000 Sq Ft",
@@ -813,6 +926,10 @@ export default function App() {
         }
         if (res.data.certificates) {
           setSiteCertificates(res.data.certificates);
+        }
+        
+        if (res.data.erp) {
+          setSiteErp(res.data.erp);
         }
         if (res.data.enquiries) {
           setEnquiries(res.data.enquiries);
@@ -978,6 +1095,55 @@ export default function App() {
     } finally {
       setAdminLoading(false);
     }
+  };
+
+  
+  const saveErpData = async (newErp) => {
+    try {
+      const res = await axios.post(`${API}/admin/erp`, { token: adminToken, erpData: newErp });
+      if (res.data.success) {
+        setSiteErp(res.data.erp);
+        toast.success("ERP data synchronized");
+      }
+    } catch (err) {
+      toast.error("Failed to update ERP data");
+    }
+  };
+
+  const handleMarkInvoicePaid = (invId) => {
+    if (!siteErp) return;
+    const newErp = { ...siteErp };
+    const inv = newErp.invoices.find(i => i.id === invId);
+    if (inv) {
+      inv.status = 'Paid';
+      newErp.financials.pendingReceivables -= inv.amount;
+      newErp.financials.ytdRevenue += inv.amount;
+      saveErpData(newErp);
+    }
+  };
+
+  const handleShipOrder = (orderId) => {
+    if (!siteErp) return;
+    const newErp = { ...siteErp };
+    const order = newErp.orders.find(o => o.id === orderId);
+    if (order && order.status === 'Processing') {
+      order.status = 'Shipped';
+      saveErpData(newErp);
+    }
+  };
+
+  const runAiForecast = () => {
+    setIsRunningAi(true);
+    setAiForecast(null);
+    setTimeout(() => {
+      setIsRunningAi(false);
+      setAiForecast({
+        critical: ["CTC Premium"],
+        message: "Current CTC PO pipeline (12,000kg) exceeds active warehouse reserves (+4,500kg safety stock threshold). Expect depletion in 8 days.",
+        recommendation: "Increase plucking rotation in Sector 4 to match upcoming European export demands."
+      });
+      toast.success("AI Forecast Generated");
+    }, 2500);
   };
 
   const handleAdminLogin = async (e) => {
@@ -1356,6 +1522,9 @@ export default function App() {
         if (res.data.announcement) setSiteAnnouncement(res.data.announcement);
         if (res.data.certificates) setSiteCertificates(res.data.certificates);
         if (res.data.enquiries) setEnquiries(res.data.enquiries);
+
+        if (res.data.erp) setSiteErp(res.data.erp);
+
       }
     } catch (err) {
       toast.error("Invalid JSON format or import failed: " + (err.message || err));
@@ -1623,6 +1792,19 @@ export default function App() {
             </div>
 
             <button
+              onClick={() => setActiveTab("account")}
+              data-testid="header-account-button"
+              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-none text-[11px] uppercase tracking-[0.15em] font-bold border transition-all ${
+                activeTab === "account"
+                  ? "bg-black text-gray-300 border-black"
+                  : "bg-gray-50 text-black border-gray-200 hover:bg-gray-200"
+              }`}
+              title="Customer Account Portal"
+            >
+              <Users className="w-3.5 h-3.5 text-black" />
+              <span>My Account</span>
+            </button>
+            <button
               onClick={() => setActiveTab("admin")}
               data-testid="header-admin-button"
               className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-none text-[11px] uppercase tracking-[0.15em] font-bold border transition-all ${
@@ -1667,6 +1849,7 @@ export default function App() {
               { id: "standards", label: "Factory & Lab Standards" },
               { id: "calculator", label: "Wholesale & MOQ Calculator" },
               { id: "destinations", label: "Global Destinations" },
+              { id: "account", label: "👤 My Account / Customer Portal" },
               { id: "admin", label: "🔐 Admin CMS & Content Manager" }
             ].map((tab) => (
               <button
@@ -3172,6 +3355,206 @@ export default function App() {
           </div>
         )}
 
+        
+        {/* VIEW: CUSTOMER ACCOUNT PORTAL */}
+        {activeTab === "account" && (
+          <div className="py-12 px-6 max-w-5xl mx-auto" data-testid="view-account">
+            {!currentUser ? (
+              <div className={`mx-auto bg-white border border-gray-200 rounded-none p-10 mt-12 ${isLoginMode ? 'max-w-md' : 'max-w-3xl'}`}>
+                <div className="w-14 h-14 rounded-none bg-gray-200 border border-gray-200 flex items-center justify-center text-black mb-6 mx-auto">
+                  <Users className="w-7 h-7" />
+                </div>
+                <h2 className="font-sans font-light tracking-tight text-2xl font-bold text-black text-center">{isLoginMode ? "Customer Sign-In" : "B2B Wholesale Application"}</h2>
+                <p className="text-gray-500 text-xs text-center mt-2 mb-8 leading-relaxed max-w-lg mx-auto">
+                  {isLoginMode ? "Sign in to view your orders, invoices, and B2B pricing." : "Apply for a wholesale account to access volume pricing, direct estate purchasing, and live inventory forecasting."}
+                </p>
+                
+                <form onSubmit={handleAuthSubmit} className="space-y-6">
+                  {!isLoginMode ? (
+                    <div className="space-y-8 text-left">
+                      <div>
+                        <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-4 border-b border-gray-100 pb-2">Account Credentials</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <input type="text" placeholder="Full Name" required value={authForm.name} onChange={e => setAuthForm({...authForm, name: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                          <div className="hidden md:block"></div>
+                          <input type="email" placeholder="Work Email Address" required value={authForm.email} onChange={e => setAuthForm({...authForm, email: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                          <input type="password" placeholder="Password" required value={authForm.password} onChange={e => setAuthForm({...authForm, password: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-4 border-b border-gray-100 pb-2">Business Details</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <input type="text" placeholder="Company Legal Name" required value={authForm.company} onChange={e => setAuthForm({...authForm, company: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                          <input type="text" placeholder="Company Website (Optional)" value={authForm.website} onChange={e => setAuthForm({...authForm, website: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                          <input type="text" placeholder="Tax/VAT ID (Optional)" value={authForm.taxId} onChange={e => setAuthForm({...authForm, taxId: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                          <select required value={authForm.country} onChange={e => setAuthForm({...authForm, country: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black">
+                            <option value="">Select Region</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="EU">European Union</option>
+                            <option value="US">North America</option>
+                            <option value="Asia">Asia Pacific</option>
+                            <option value="MENA">Middle East & North Africa</option>
+                          </select>
+                          <select required value={authForm.annualVolume} onChange={e => setAuthForm({...authForm, annualVolume: e.target.value})} className="w-full md:col-span-2 bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black">
+                            <option value="">Estimated Annual Purchasing Volume (kg)</option>
+                            <option value="<5000">Less than 5,000 kg</option>
+                            <option value="5000-20000">5,000 - 20,000 kg</option>
+                            <option value="20000-50000">20,000 - 50,000 kg</option>
+                            <option value=">50000">50,000+ kg</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <input type="email" placeholder="Email Address" required value={authForm.email} onChange={e => setAuthForm({...authForm, email: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                      <input type="password" placeholder="Password" required value={authForm.password} onChange={e => setAuthForm({...authForm, password: e.target.value})} className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black" />
+                    </div>
+                  )}
+                  
+                  <button type="submit" className="w-full bg-black text-white font-bold py-3 rounded-none hover:brightness-110 transition-all shadow-none mt-4">
+                    {isLoginMode ? "Sign In" : "Submit Wholesale Application"}
+                  </button>
+                </form>
+                
+                <div className="mt-8 text-center pt-6 border-t border-gray-100">
+                  <button onClick={() => setIsLoginMode(!isLoginMode)} className="text-xs text-gray-500 font-semibold uppercase tracking-wider hover:text-black transition-colors underline underline-offset-4">
+                    {isLoginMode ? "New Buyer? Apply for an account" : "Already have an account? Sign in"}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-gray-200 pb-6">
+                  <div>
+                    <h1 className="font-sans font-light tracking-tight text-3xl sm:text-4xl font-bold text-black mt-1">My Account</h1>
+                    <p className="text-gray-500 text-sm mt-1 font-bold">Welcome back, {customerProfile?.name || currentUser.email} ({customerProfile?.company || "Independent"})</p>
+                  </div>
+                  <button onClick={handleCustomerLogout} className="text-gray-500 hover:text-black text-xs font-semibold uppercase tracking-widest border border-gray-200 px-4 py-2">
+                    Sign Out
+                  </button>
+                </div>
+
+                
+                {customerProfile?.status === "Pending Verification" && (
+                  <div className="bg-orange-50 border border-orange-200 p-6 mb-8 text-sm text-orange-900 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div className="w-10 h-10 bg-orange-100 shrink-0 flex items-center justify-center">
+                      <AlertTriangle className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <div>
+                      <strong className="block text-orange-950 font-bold mb-1 uppercase tracking-wide text-xs">Account Pending Verification</strong>
+                      Your B2B wholesale application is currently under review by our compliance team. Once verified, your negotiated volume pricing tiers and allocation dashboards will unlock.
+                    </div>
+                  </div>
+                )}
+                {/* Dashboard Stats */}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-gray-50 border border-gray-200 p-6 rounded-none">
+                    <div className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-2">Active Orders</div>
+                    <div className="text-2xl font-bold text-black">{customerOrders.filter(o => o.status !== 'Delivered').length}</div>
+                  </div>
+                  <div className="bg-gray-50 border border-gray-200 p-6 rounded-none">
+                    <div className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-2">Unpaid Invoices</div>
+                    <div className="text-2xl font-bold text-black">{customerInvoices.filter(i => i.status === 'Unpaid').length}</div>
+                  </div>
+                  <div className="bg-gray-50 border border-gray-200 p-6 rounded-none">
+                    <div className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-2">Lifetime Volume</div>
+                    <div className="text-2xl font-bold text-black">
+                      {customerOrders.reduce((acc, o) => {
+                         const match = o.items.match(/([0-9,]+)\s*kg/i);
+                         if (match) return acc + parseInt(match[1].replace(/,/g, ''));
+                         return acc;
+                      }, 0).toLocaleString()} <span className="text-sm font-normal text-gray-500">kg</span>
+                    </div>
+                  </div>
+                  <div className="bg-black border border-black p-6 rounded-none text-white flex flex-col justify-between items-start">
+                    <div>
+                      <div className="text-[10px] uppercase font-bold text-gray-400 tracking-widest mb-2">Partner Tier</div>
+                      <div className="text-xl font-bold flex items-center gap-2"><Award className="w-5 h-5 text-yellow-500" /> Wholesale</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                  {/* Orders */}
+                  <div className="bg-white border border-gray-200 shadow-none">
+                    <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+                      <h3 className="font-sans font-bold text-black text-sm uppercase tracking-wide flex items-center gap-2">
+                        <Package className="w-4 h-4 text-gray-500"/> Order History
+                      </h3>
+                    </div>
+                    {customerOrders.length > 0 ? (
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="bg-white text-[10px] uppercase tracking-wider text-gray-500 border-b border-gray-100">
+                            <th className="text-left px-4 py-3 font-semibold">Order #</th>
+                            <th className="text-left px-4 py-3 font-semibold">Items</th>
+                            <th className="text-left px-4 py-3 font-semibold">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {customerOrders.map(po => (
+                            <tr key={po.id} className="border-b border-gray-50 hover:bg-gray-50">
+                              <td className="px-4 py-3 font-mono font-bold text-black text-xs">{po.id}</td>
+                              <td className="px-4 py-3 text-[11px] text-gray-600">{po.items}</td>
+                              <td className="px-4 py-3">
+                                <span className={`inline-block px-2 py-1 text-[9px] font-bold uppercase tracking-wider border ${po.status === 'Delivered' ? 'bg-gray-100 border-gray-200 text-black' : po.status === 'Shipped' ? 'bg-black text-white' : 'bg-white border-gray-300 text-gray-500'}`}>
+                                  {po.status}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <div className="p-8 text-center text-sm text-gray-500">No orders found matching your company name.</div>
+                    )}
+                  </div>
+
+                  {/* Invoices */}
+                  <div className="bg-white border border-gray-200 shadow-none">
+                    <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+                      <h3 className="font-sans font-bold text-black text-sm uppercase tracking-wide flex items-center gap-2">
+                        <FileSpreadsheet className="w-4 h-4 text-gray-500"/> Invoices
+                      </h3>
+                    </div>
+                    {customerInvoices.length > 0 ? (
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="bg-white text-[10px] uppercase tracking-wider text-gray-500 border-b border-gray-100">
+                            <th className="text-left px-4 py-3 font-semibold">Invoice #</th>
+                            <th className="text-left px-4 py-3 font-semibold">Amount</th>
+                            <th className="text-left px-4 py-3 font-semibold">Due</th>
+                            <th className="text-left px-4 py-3 font-semibold">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {customerInvoices.map(inv => (
+                            <tr key={inv.id} className="border-b border-gray-50 hover:bg-gray-50">
+                              <td className="px-4 py-3 font-mono font-bold text-black text-xs">{inv.id}</td>
+                              <td className="px-4 py-3 text-xs font-bold">${inv.amount.toLocaleString()}</td>
+                              <td className="px-4 py-3 text-[11px] text-gray-600">{inv.dueDate}</td>
+                              <td className="px-4 py-3">
+                                <span className={`inline-block px-2 py-1 text-[9px] font-bold uppercase tracking-wider border ${inv.status === 'Paid' ? 'bg-gray-100 border-gray-200 text-black' : 'bg-red-50 text-red-600 border-red-100'}`}>
+                                  {inv.status}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <div className="p-8 text-center text-sm text-gray-500">No invoices available.</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* VIEW 6: WHOLESALE PRICE & MOQ CALCULATOR */}
         {activeTab === "calculator" && (
           <div className="py-16 px-6 max-w-6xl mx-auto" data-testid="view-calculator">
@@ -3565,6 +3948,19 @@ export default function App() {
                   </button>
 
                   <button
+                    onClick={() => setCmsTab("erp")}
+                    data-testid="cms-tab-erp"
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
+                      cmsTab === "erp"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
+                    }`}
+                  >
+                    <Briefcase className="w-4 h-4" />
+                    <span>Advanced ERP & B2B Orders</span>
+                  </button>
+
+                  <button
                     onClick={() => setCmsTab("announcement")}
                     data-testid="cms-tab-announcement"
                     className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
@@ -3909,7 +4305,225 @@ export default function App() {
                 )}
 
                 {/* SUB-PANEL 4: LIVE BANNER TICKER ALERT CMS */}
-                {cmsTab === "announcement" && (
+                
+                {cmsTab === "erp" && siteErp && (
+                  <div className="space-y-8" data-testid="cms-erp-panel">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-none border border-gray-200">
+                      <div>
+                        <h2 className="font-sans font-light tracking-tight text-xl font-bold text-black">Advanced ERP & B2B Orders</h2>
+                        <p className="text-gray-500 text-xs mt-1">Manage purchase orders, invoices, inventory, and run AI predictive forecasting.</p>
+                      </div>
+                      <div className="flex gap-3">
+                        <button 
+                          onClick={runAiForecast}
+                          disabled={isRunningAi}
+                          className="bg-gray-100 text-black border border-gray-200 font-bold px-4 py-2.5 rounded-none text-xs hover:bg-gray-200 transition-all flex items-center gap-2"
+                        >
+                          {isRunningAi ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Bot className="w-4 h-4" />}
+                          <span>{isRunningAi ? "Analyzing..." : "Run AI Forecast"}</span>
+                        </button>
+                        <button className="bg-black text-white font-bold px-5 py-2.5 rounded-none text-xs hover:bg-gray-800 transition-all flex items-center gap-2">
+                          <Plus className="w-4 h-4" />
+                          <span>New PO</span>
+                        </button>
+                      </div>
+                    </div>
+                    
+                    {/* AI FORECAST BANNER */}
+                    {aiForecast && (
+                      <div className="bg-black text-white p-6 border border-gray-200 rounded-none shadow-none flex flex-col md:flex-row gap-6 items-start animate-in fade-in slide-in-from-top-2">
+                        <div className="w-12 h-12 bg-gray-800 rounded-none flex items-center justify-center shrink-0">
+                          <Sparkles className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-sans font-bold text-sm uppercase tracking-widest text-gray-300 mb-2">AI Supply Chain Forecast</h3>
+                          <p className="text-sm font-mono text-gray-100 mb-3 leading-relaxed">{aiForecast.message}</p>
+                          <div className="flex flex-wrap gap-2 items-center">
+                            <span className="text-[10px] font-bold uppercase tracking-wider bg-white text-black px-2 py-1">ACTION REQUIRED</span>
+                            <span className="text-xs text-gray-400">{aiForecast.recommendation}</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* ERP Dashboard Stats */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="bg-white border border-gray-200 p-6 rounded-none shadow-none flex flex-col justify-between">
+                        <div className="flex items-center gap-3 mb-4 text-gray-500">
+                          <TrendingUp className="w-5 h-5 text-black" />
+                          <span className="text-[11px] font-bold uppercase tracking-wider">YTD Revenue</span>
+                        </div>
+                        <div className="text-3xl font-sans font-bold text-black">${(siteErp.financials.ytdRevenue || 0).toLocaleString()}</div>
+                        <div className="mt-2 text-xs text-gray-500 font-bold">{siteErp.financials.monthlyGrowth} from last month</div>
+                      </div>
+                      
+                      <div className="bg-white border border-gray-200 p-6 rounded-none shadow-none flex flex-col justify-between">
+                        <div className="flex items-center gap-3 mb-4 text-gray-500">
+                          <CreditCard className="w-5 h-5 text-black" />
+                          <span className="text-[11px] font-bold uppercase tracking-wider">Pending Receivables</span>
+                        </div>
+                        <div className="text-3xl font-sans font-bold text-black">${(siteErp.financials.pendingReceivables || 0).toLocaleString()}</div>
+                        <div className="mt-2 text-xs text-gray-500 font-medium">Awaiting payment from invoices</div>
+                      </div>
+
+                      <div className="bg-white border border-gray-200 p-6 rounded-none shadow-none flex flex-col justify-between">
+                        <div className="flex items-center gap-3 mb-4 text-gray-500">
+                          <Boxes className="w-5 h-5 text-black" />
+                          <span className="text-[11px] font-bold uppercase tracking-wider">Total Inventory</span>
+                        </div>
+                        <div className="text-3xl font-sans font-bold text-black">{Object.values(siteErp.inventory).reduce((a, b) => a + b, 0).toLocaleString()} <span className="text-lg text-gray-500">kg</span></div>
+                        <div className="mt-2 text-xs text-gray-500 font-medium">Across 4 export grades</div>
+                      </div>
+                    </div>
+                    
+                    {/* CHARTS */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      <div className="bg-white border border-gray-200 p-6 rounded-none shadow-none">
+                        <h3 className="font-sans font-bold text-black text-sm uppercase tracking-wide mb-6">Revenue Growth (2026)</h3>
+                        <div className="h-64 w-full">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <LineChart data={REVENUE_DATA} margin={{ top: 5, right: 0, left: -20, bottom: 5 }}>
+                              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eee" />
+                              <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#888' }} />
+                              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#888' }} tickFormatter={(val) => `$${val/1000}k`} />
+                              <RechartsTooltip cursor={{stroke: '#ccc', strokeWidth: 1}} contentStyle={{ borderRadius: 0, border: '1px solid #e5e7eb', fontSize: '12px', fontWeight: 'bold' }} />
+                              <Line type="monotone" dataKey="revenue" stroke="#000" strokeWidth={3} dot={{r: 4, fill: '#000', strokeWidth: 0}} activeDot={{r: 6}} />
+                            </LineChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white border border-gray-200 p-6 rounded-none shadow-none">
+                        <h3 className="font-sans font-bold text-black text-sm uppercase tracking-wide mb-6">Current Inventory (kg)</h3>
+                        <div className="h-64 w-full">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={Object.entries(siteErp.inventory).map(([k,v]) => ({name: k, qty: v}))} margin={{ top: 5, right: 0, left: 0, bottom: 5 }}>
+                              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eee" />
+                              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#888' }} />
+                              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#888' }} />
+                              <RechartsTooltip cursor={{fill: '#f3f4f6'}} contentStyle={{ borderRadius: 0, border: '1px solid #e5e7eb', fontSize: '12px', fontWeight: 'bold' }} />
+                              <Bar dataKey="qty" fill="#000" radius={[2, 2, 0, 0]} />
+                            </BarChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* QUARTERLY PROJECTIONS CHART (FULL WIDTH) */}
+                    <div className="bg-white border border-gray-200 p-6 rounded-none shadow-none mt-8">
+                      <h3 className="font-sans font-bold text-black text-sm uppercase tracking-wide mb-6">Quarterly Export Volume Projections (kg)</h3>
+                      <div className="h-80 w-full">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={EXPORT_PROJECTIONS} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eee" />
+                            <XAxis dataKey="quarter" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#888' }} />
+                            <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#888' }} tickFormatter={(val) => `${val/1000}k`} />
+                            <RechartsTooltip cursor={{fill: '#f9fafb'}} contentStyle={{ borderRadius: 0, border: '1px solid #e5e7eb', fontSize: '12px', fontWeight: 'bold' }} />
+                            <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '20px' }} iconType="square" />
+                            <Bar dataKey="CTC" stackId="a" fill="#111111" />
+                            <Bar dataKey="Orthodox" stackId="a" fill="#6b7280" />
+                            <Bar dataKey="SilverNeedle" stackId="a" fill="#d1d5db" />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </div>
+
+                    {/* ERP Orders & Invoices Tables */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      {/* Purchase Orders */}
+                      <div className="bg-white border border-gray-200 p-0 rounded-none shadow-none flex flex-col">
+                        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
+                          <h3 className="font-sans font-bold text-black text-sm uppercase tracking-wide flex items-center gap-2">
+                            <Briefcase className="w-4 h-4 text-gray-500"/> Purchase Orders
+                          </h3>
+                        </div>
+                        <div className="p-0 overflow-x-auto">
+                          <table className="w-full text-sm">
+                            <thead>
+                              <tr className="bg-white text-[10px] uppercase tracking-wider text-gray-500 border-b border-gray-100">
+                                <th className="text-left px-4 py-3 font-semibold">PO #</th>
+                                <th className="text-left px-4 py-3 font-semibold">Buyer & Items</th>
+                                <th className="text-left px-4 py-3 font-semibold">Amount</th>
+                                <th className="text-left px-4 py-3 font-semibold">Status / Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {siteErp.orders.map((po, idx) => (
+                                <tr key={idx} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                                  <td className="px-4 py-3 font-mono font-bold text-black text-xs">{po.id}</td>
+                                  <td className="px-4 py-3 text-xs text-black">
+                                    <div className="font-bold">{po.buyer}</div>
+                                    <div className="text-gray-500 text-[10px]">{po.items}</div>
+                                  </td>
+                                  <td className="px-4 py-3 text-xs font-bold text-black">${po.amount.toLocaleString()}</td>
+                                  <td className="px-4 py-3">
+                                    {po.status === 'Processing' ? (
+                                      <button 
+                                        onClick={() => handleShipOrder(po.id)}
+                                        className="text-[9px] bg-black text-white px-2 py-1 uppercase tracking-wider font-bold hover:bg-gray-800 transition-colors"
+                                      >
+                                        Ship Order
+                                      </button>
+                                    ) : (
+                                      <span className={`inline-block px-2 py-1 text-[9px] font-bold uppercase tracking-wider border ${po.status === 'Delivered' ? 'bg-gray-100 border-gray-200 text-black' : 'bg-gray-800 border-black text-white'}`}>
+                                        {po.status}
+                                      </span>
+                                    )}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      {/* Invoices */}
+                      <div className="bg-white border border-gray-200 p-0 rounded-none shadow-none flex flex-col">
+                        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
+                          <h3 className="font-sans font-bold text-black text-sm uppercase tracking-wide flex items-center gap-2">
+                            <FileSpreadsheet className="w-4 h-4 text-gray-500"/> Invoices & Billing
+                          </h3>
+                        </div>
+                        <div className="p-0 overflow-x-auto">
+                          <table className="w-full text-sm">
+                            <thead>
+                              <tr className="bg-white text-[10px] uppercase tracking-wider text-gray-500 border-b border-gray-100">
+                                <th className="text-left px-4 py-3 font-semibold">Invoice #</th>
+                                <th className="text-left px-4 py-3 font-semibold">Due Date</th>
+                                <th className="text-left px-4 py-3 font-semibold">Amount</th>
+                                <th className="text-left px-4 py-3 font-semibold">Status / Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {siteErp.invoices.map((inv, idx) => (
+                                <tr key={idx} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                                  <td className="px-4 py-3 font-mono font-bold text-black text-xs">{inv.id}</td>
+                                  <td className="px-4 py-3 text-xs text-black">{inv.dueDate}</td>
+                                  <td className="px-4 py-3 text-xs font-bold text-black">${inv.amount.toLocaleString()}</td>
+                                  <td className="px-4 py-3">
+                                    {inv.status === 'Unpaid' ? (
+                                      <button 
+                                        onClick={() => handleMarkInvoicePaid(inv.id)}
+                                        className="text-[9px] bg-black text-white px-2 py-1 uppercase tracking-wider font-bold hover:bg-gray-800 transition-colors"
+                                      >
+                                        Mark Paid
+                                      </button>
+                                    ) : (
+                                      <span className="inline-block px-2 py-1 text-[9px] font-bold uppercase tracking-wider border bg-gray-100 border-gray-200 text-black">
+                                        Paid
+                                      </span>
+                                    )}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+{cmsTab === "announcement" && (
                   <div className="bg-white border border-gray-200 rounded-none p-8  max-w-3xl mx-auto" data-testid="cms-announcement-panel">
                     <div className="mb-6 border-b border-gray-100 pb-4 flex items-center justify-between">
                       <div>
