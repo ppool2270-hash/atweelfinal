@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+const fs = require('fs');
+
+let code = `import React, { useState } from "react";
 import {
   ShieldCheck,
   Award,
@@ -97,7 +99,7 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* HEADER */}
-        <div className="bg-gradient-to-br from-[#174195] via-[#1468b3] to-[#bcb3b3] text-white rounded-3xl p-8 sm:p-14 border border-white/10 shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#174195] via-[#1468b3] to-[#231F20] text-white rounded-3xl p-8 sm:p-14 border border-white/10 shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10 mix-blend-multiply"></div>
           <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-10 pointer-events-none">
             <ShieldCheck className="w-96 h-96" />
@@ -170,7 +172,7 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* MRL PESTICIDE LABORATORY SCREENING BLOCK */}
-          <div className="bg-[#bcb3b3] text-white rounded-3xl p-8 sm:p-12 border border-[#bcb3b3] shadow-xl space-y-8 flex flex-col justify-center relative overflow-hidden">
+          <div className="bg-[#231F20] text-white rounded-3xl p-8 sm:p-12 border border-[#231F20] shadow-xl space-y-8 flex flex-col justify-center relative overflow-hidden">
             <div className="absolute -bottom-20 -right-20 opacity-5 pointer-events-none">
               <FileCheck className="w-80 h-80" />
             </div>
@@ -214,8 +216,8 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-white/50">
               {chatHistory.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm ${msg.role === "user" ? "bg-[#174195] text-white rounded-br-sm" : "bg-white border border-tata-grey-light text-tata-dark rounded-bl-sm"}`}>
+                <div key={i} className={\`flex \${msg.role === "user" ? "justify-end" : "justify-start"}\`}>
+                  <div className={\`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm \${msg.role === "user" ? "bg-[#174195] text-white rounded-br-sm" : "bg-white border border-tata-grey-light text-tata-dark rounded-bl-sm"}\`}>
                     {msg.text}
                   </div>
                 </div>
@@ -258,3 +260,6 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
     </div>
   );
 }
+`
+
+fs.writeFileSync('frontend/src/components/ComplianceDossier.js', code);

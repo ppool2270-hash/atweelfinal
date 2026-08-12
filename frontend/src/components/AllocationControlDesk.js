@@ -134,7 +134,7 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
 
   return (
     <section 
-      className="py-20 sm:py-28 bg-ivory text-charcoal border-b border-white/20"
+      className="py-20 sm:py-28 bg-tata-bg-light text-tata-dark border-b border-white/20"
       id="allocation-desk"
       data-testid="allocation-control-desk"
     >
@@ -143,14 +143,14 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
         {/* SECTION HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/20">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-charcoal text-amber-50 border border-white/20 text-xs font-bold uppercase tracking-[0.25em] mb-3">
-              <Boxes className="w-4 h-4 text-stone-800" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-tata-dark text-tata-blue-light border border-white/20 text-xs font-bold uppercase tracking-[0.25em] mb-3">
+              <Boxes className="w-4 h-4 text-tata-dark" />
               <span>B2B Enterprise Inventory Control</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-charcoal">
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark">
               Private Allocation Control Desk
             </h2>
-            <p className="text-charcoal-600 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
+            <p className="text-tata-dark-600 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
               Real-time harvest allocation matrix for international tea importers, blenders, and wholesale distributors. Lock in seasonal tonnage directly from Kharsang Estate.
             </p>
           </div>
@@ -161,9 +161,9 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
                 type="button"
                 onClick={onOpenLeadForm}
                 data-testid="lock-reserved-tonnage-btn"
-                className="bg-gradient-to-r from-champagne to-champagne hover:from-champagne hover:to-champagne text-charcoal font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 animate-bounce"
+                className="bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark hover:from-tata-blue-dark hover:to-tata-blue-dark text-white font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 animate-bounce"
               >
-                <Send className="w-4 h-4 text-charcoal" />
+                <Send className="w-4 h-4 text-tata-dark" />
                 <span>Submit {reservedGrades.length} Reserved Allocation(s)</span>
               </button>
             )}
@@ -179,8 +179,8 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                 selectedCategory === cat
-                  ? "bg-charcoal text-amber-50 shadow-md border border-stone-800/20"
-                  : "bg-white text-charcoal hover:bg-ivory border border-stone-300"
+                  ? "bg-tata-dark text-tata-blue-light shadow-md border border-tata-dark/20"
+                  : "bg-white text-tata-dark hover:bg-tata-bg-light border border-tata-grey-light"
               }`}
             >
               {cat}
@@ -196,7 +196,7 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
               
               {/* TABLE HEADER */}
               <thead>
-                <tr className="bg-charcoal text-amber-50 text-[11px] font-mono uppercase tracking-widest border-b border-white/20">
+                <tr className="bg-tata-dark text-tata-blue-light text-[11px] font-mono uppercase tracking-widest border-b border-white/20">
                   <th className="py-4 px-6 font-bold">Grade &amp; Category</th>
                   <th className="py-4 px-6 font-bold">Flush Harvest</th>
                   <th className="py-4 px-6 font-bold">Remaining Allocation</th>
@@ -207,13 +207,13 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
               </thead>
 
               {/* TABLE BODY */}
-              <tbody className="divide-y divide-slate-100 text-xs text-charcoal">
+              <tbody className="divide-y divide-slate-100 text-xs text-tata-dark">
                 {filteredGrades.map((grade) => {
                   const isReserved = reservedGrades.some(g => g.id === grade.id);
                   return (
                     <tr 
                       key={grade.id} 
-                      className="hover:bg-ivory/80 transition-colors group"
+                      className="hover:bg-tata-bg-light/80 transition-colors group"
                       data-testid={`allocation-row-${grade.id}`}
                     >
                       
@@ -221,17 +221,17 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
                       <td className="py-5 px-6">
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
-                            <span className="px-2 py-0.5 rounded bg-charcoal text-amber-50 font-mono text-[10px] font-bold">
+                            <span className="px-2 py-0.5 rounded bg-tata-dark text-tata-blue-light font-mono text-[10px] font-bold">
                               {grade.gradeCode}
                             </span>
-                            <span className="text-[10px] text-stone-600 font-medium">
+                            <span className="text-[10px] text-tata-grey font-medium">
                               {grade.category}
                             </span>
                           </div>
-                          <strong className="font-serif text-base font-bold text-charcoal block">
+                          <strong className="font-serif text-base font-bold text-tata-dark block">
                             {grade.name}
                           </strong>
-                          <p className="text-[11px] text-stone-600 max-w-xs leading-relaxed">
+                          <p className="text-[11px] text-tata-grey max-w-xs leading-relaxed">
                             {grade.description}
                           </p>
                         </div>
@@ -239,7 +239,7 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
 
                       {/* Flush */}
                       <td className="py-5 px-6 font-mono text-xs">
-                        <span className="inline-block px-2.5 py-1 rounded-lg bg-stone-100 text-charcoal font-bold border border-stone-300">
+                        <span className="inline-block px-2.5 py-1 rounded-lg bg-tata-bg-light text-tata-dark font-bold border border-tata-grey-light">
                           {grade.flush}
                         </span>
                       </td>
@@ -248,16 +248,16 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
                       <td className="py-5 px-6">
                         <div className="space-y-1.5 w-48">
                           <div className="flex items-center justify-between text-xs font-mono">
-                            <span className="font-bold text-charcoal">{grade.remainingAllocation}</span>
-                            <span className="text-stone-600 text-[10px]">{100 - grade.allocatedPercent}% Avail</span>
+                            <span className="font-bold text-tata-dark">{grade.remainingAllocation}</span>
+                            <span className="text-tata-grey text-[10px]">{100 - grade.allocatedPercent}% Avail</span>
                           </div>
-                          <div className="w-full bg-stone-100 h-2 rounded-full overflow-hidden border border-stone-300">
+                          <div className="w-full bg-tata-bg-light h-2 rounded-full overflow-hidden border border-tata-grey-light">
                             <div 
-                              className="bg-gradient-to-r from-lightgrey to-champagne h-full rounded-full"
+                              className="bg-gradient-to-r from-lightgrey to-tata-blue-dark h-full rounded-full"
                               style={{ width: `${100 - grade.allocatedPercent}%` }}
                             />
                           </div>
-                          <span className="text-[10px] text-stone-600 block font-mono">
+                          <span className="text-[10px] text-tata-grey block font-mono">
                             Total Crop: {grade.totalCapacity}
                           </span>
                         </div>
@@ -266,10 +266,10 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
                       {/* MOQ & Price */}
                       <td className="py-5 px-6">
                         <div className="space-y-0.5 font-mono">
-                          <strong className="text-stone-600 font-bold block text-sm">
+                          <strong className="text-tata-grey font-bold block text-sm">
                             {grade.unitPriceFob}
                           </strong>
-                          <span className="text-stone-600 text-[11px] block">
+                          <span className="text-tata-grey text-[11px] block">
                             MOQ: {grade.moq}
                           </span>
                         </div>
@@ -278,13 +278,13 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
                       {/* Lab Specs */}
                       <td className="py-5 px-6">
                         <div className="space-y-1 text-[11px] font-mono">
-                          <div className="flex items-center gap-1.5 text-charcoal">
-                            <span className="text-stone-600">Polyphenols:</span>
-                            <strong className="text-stone-600">{grade.polyphenols}</strong>
+                          <div className="flex items-center gap-1.5 text-tata-dark">
+                            <span className="text-tata-grey">Polyphenols:</span>
+                            <strong className="text-tata-grey">{grade.polyphenols}</strong>
                           </div>
-                          <div className="flex items-center gap-1.5 text-charcoal">
-                            <span className="text-stone-600">Moisture:</span>
-                            <strong className="text-stone-600">{grade.moisture}</strong>
+                          <div className="flex items-center gap-1.5 text-tata-dark">
+                            <span className="text-tata-grey">Moisture:</span>
+                            <strong className="text-tata-grey">{grade.moisture}</strong>
                           </div>
                         </div>
                       </td>
@@ -297,8 +297,8 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
                           data-testid={`reserve-btn-${grade.id}`}
                           className={`px-4 py-2.5 rounded-xl text-xs font-bold font-mono transition-all uppercase tracking-wider inline-flex items-center gap-1.5 ${
                             isReserved
-                              ? "bg-stone-100 text-charcoal shadow-md border border-stone-300"
-                              : "bg-charcoal text-amber-50 hover:bg-charcoal border border-white/20"
+                              ? "bg-tata-bg-light text-tata-dark shadow-md border border-tata-grey-light"
+                              : "bg-tata-dark text-tata-blue-light hover:bg-tata-dark border border-white/20"
                           }`}
                         >
                           {isReserved ? (
@@ -308,7 +308,7 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
                             </>
                           ) : (
                             <>
-                              <Plus className="w-3.5 h-3.5 text-stone-800" />
+                              <Plus className="w-3.5 h-3.5 text-tata-dark" />
                               <span>Reserve Tonnage</span>
                             </>
                           )}
@@ -324,9 +324,9 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
           </div>
 
           {/* TABLE FOOTER */}
-          <div className="bg-charcoal text-ivory p-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <div className="bg-tata-dark text-tata-bg-light p-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <div className="flex items-center gap-2">
-              <Info className="w-4 h-4 text-stone-800 shrink-0" />
+              <Info className="w-4 h-4 text-tata-dark shrink-0" />
               <span>
                 <strong>B2B Logistics Note:</strong> Container freight bookings (20ft FCL = ~10 Metric Tons, 40ft FCL = ~22 Metric Tons) are sealed in vacuum aluminum foil barrier bags prior to departure from Kolkata Port.
               </span>
@@ -334,7 +334,7 @@ export default function AllocationControlDesk({ onOpenLeadForm }) {
             <button
               type="button"
               onClick={onOpenLeadForm}
-              className="bg-champagne hover:bg-champagne text-charcoal font-bold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all shrink-0"
+              className="bg-tata-blue-dark hover:bg-tata-blue-dark text-white font-bold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all shrink-0"
             >
               Request Custom Bulk Blending Spec
             </button>

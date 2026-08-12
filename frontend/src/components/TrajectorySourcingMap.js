@@ -58,7 +58,7 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
 
   return (
     <section 
-      className="py-20 sm:py-28 bg-charcoal text-ivory border-b border-white/20 relative overflow-hidden"
+      className="py-20 sm:py-28 bg-tata-dark text-tata-bg-light border-b border-white/20 relative overflow-hidden"
       id="sourcing-map"
       data-testid="trajectory-sourcing-map"
     >
@@ -75,14 +75,14 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
 
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-charcoal border border-white/20 text-amber-50 text-xs font-bold uppercase tracking-[0.25em]">
-            <Compass className="w-4 h-4 text-stone-800" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-tata-dark border border-white/20 text-tata-blue-light text-xs font-bold uppercase tracking-[0.25em]">
+            <Compass className="w-4 h-4 text-tata-dark" />
             <span>Integrated Supply Line Network</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-ivory">
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-tata-bg-light">
             Trajectory Sourcing &amp; Supply Chain Mapping
           </h2>
-          <p className="text-stone-800 text-sm sm:text-base leading-relaxed">
+          <p className="text-tata-dark text-sm sm:text-base leading-relaxed">
             Trace the seamless B2B movement from our high-altitude organic gardens in Kharsang, Arunachal Pradesh, through our corporate desk in Thane, Maharashtra, directly to international container shipping ports.
           </p>
         </div>
@@ -91,23 +91,23 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* SVG MAP CANVAS (7 cols) */}
-          <div className="lg:col-span-7 bg-charcoal border-2 border-white/20 rounded-3xl p-6 relative overflow-hidden shadow-2xl">
+          <div className="lg:col-span-7 bg-tata-dark border-2 border-white/20 rounded-3xl p-6 relative overflow-hidden shadow-2xl">
             
-            <div className="flex items-center justify-between mb-4 text-xs font-mono text-stone-800 border-b border-white/20 pb-3">
+            <div className="flex items-center justify-between mb-4 text-xs font-mono text-tata-dark border-b border-white/20 pb-3">
               <span className="flex items-center gap-1.5">
-                <Navigation className="w-4 h-4 text-stone-800" />
+                <Navigation className="w-4 h-4 text-tata-dark" />
                 INLINE VECTOR ROUTE: THANE ↔ KHARSANG ↔ KOLKATA
               </span>
-              <span className="bg-charcoal px-2.5 py-1 rounded border border-white/20 text-stone-600">
+              <span className="bg-tata-dark px-2.5 py-1 rounded border border-white/20 text-tata-grey">
                 LIVE LOGISTICS RADAR
               </span>
             </div>
 
             {/* SVG Map Graphic */}
-            <div className="w-full h-[360px] sm:h-[420px] relative flex items-center justify-center bg-charcoal rounded-2xl border border-white/5 p-4">
+            <div className="w-full h-[360px] sm:h-[420px] relative flex items-center justify-center bg-tata-dark rounded-2xl border border-white/5 p-4">
               <svg 
                 viewBox="0 0 800 500" 
-                className="w-full h-full text-charcoal"
+                className="w-full h-full text-tata-dark"
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -209,17 +209,17 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
             </div>
 
             {/* Map Legend */}
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-stone-600 pt-3 border-t border-white/10">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-tata-grey pt-3 border-t border-white/10">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-stone-100 border border-white" />
+                <span className="w-3 h-3 rounded-full bg-tata-bg-light border border-white" />
                 <span>Harvest &amp; Processing (Kharsang)</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-champagne border border-white" />
+                <span className="w-3 h-3 rounded-full bg-tata-blue-dark border border-white" />
                 <span>Corporate HQ (Thane)</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-stone-100 border border-white" />
+                <span className="w-3 h-3 rounded-full bg-tata-bg-light border border-white" />
                 <span>Maritime Export Port (Kolkata)</span>
               </div>
             </div>
@@ -227,7 +227,7 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
           </div>
 
           {/* NODE DETAILS SIDEBAR PANEL (5 cols) */}
-          <div className="lg:col-span-5 bg-charcoal border-2 border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-5 bg-tata-dark border-2 border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between space-y-6">
             
             <div className="space-y-4">
               
@@ -238,8 +238,8 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
                   onClick={() => setSelectedNode("kharsang")}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                     selectedNode === "kharsang"
-                      ? "bg-champagne text-charcoal"
-                      : "bg-charcoal text-stone-600 hover:text-white"
+                      ? "bg-tata-blue-dark text-white"
+                      : "bg-tata-dark text-tata-grey hover:text-white"
                   }`}
                 >
                   Kharsang Estate
@@ -249,8 +249,8 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
                   onClick={() => setSelectedNode("thane")}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                     selectedNode === "thane"
-                      ? "bg-champagne text-charcoal"
-                      : "bg-charcoal text-stone-600 hover:text-white"
+                      ? "bg-tata-blue-dark text-white"
+                      : "bg-tata-dark text-tata-grey hover:text-white"
                   }`}
                 >
                   Thane HQ
@@ -260,8 +260,8 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
                   onClick={() => setSelectedNode("kolkata")}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                     selectedNode === "kolkata"
-                      ? "bg-champagne text-charcoal"
-                      : "bg-charcoal text-stone-600 hover:text-white"
+                      ? "bg-tata-blue-dark text-white"
+                      : "bg-tata-dark text-tata-grey hover:text-white"
                   }`}
                 >
                   Kolkata Port
@@ -270,18 +270,18 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
 
               {/* Node Title & Specs */}
               <div>
-                <span className="text-[10px] font-mono text-stone-800 uppercase tracking-widest font-bold block">
+                <span className="text-[10px] font-mono text-tata-dark uppercase tracking-widest font-bold block">
                   {NODES[selectedNode].type}
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-ivory mt-1">
+                <h3 className="font-serif text-2xl font-bold text-tata-bg-light mt-1">
                   {NODES[selectedNode].name}
                 </h3>
-                <p className="text-xs text-stone-800 font-mono mt-1 flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-stone-800" />
+                <p className="text-xs text-tata-dark font-mono mt-1 flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-tata-dark" />
                   <span>{NODES[selectedNode].location}</span>
                 </p>
                 {NODES[selectedNode].coords && (
-                  <p className="text-[11px] text-stone-600 font-mono mt-0.5">
+                  <p className="text-[11px] text-tata-grey font-mono mt-0.5">
                     Coordinates: {NODES[selectedNode].coords}
                   </p>
                 )}
@@ -289,12 +289,12 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
 
               {/* Highlights List */}
               <div className="space-y-2.5 pt-2 border-t border-white/10">
-                <span className="text-xs font-bold text-stone-800 uppercase tracking-wider block">
+                <span className="text-xs font-bold text-tata-dark uppercase tracking-wider block">
                   Operational Core Pillars:
                 </span>
                 {NODES[selectedNode].highlights.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-xs text-stone-600">
-                    <CheckCircle2 className="w-4 h-4 text-stone-600 shrink-0 mt-0.5" />
+                  <div key={idx} className="flex items-start gap-2.5 text-xs text-tata-grey">
+                    <CheckCircle2 className="w-4 h-4 text-tata-grey shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -304,18 +304,18 @@ export default function TrajectorySourcingMap({ onNavigateTab }) {
 
             {/* Bottom Actions inside Card */}
             <div className="pt-4 border-t border-white/20 space-y-3">
-              <div className="p-3 bg-charcoal rounded-xl border border-white/20 text-[11px] text-stone-600 font-mono">
-                <span className="text-stone-800 font-bold block mb-0.5">Global Freight Guarantee:</span>
+              <div className="p-3 bg-tata-dark rounded-xl border border-white/20 text-[11px] text-tata-grey font-mono">
+                <span className="text-tata-dark font-bold block mb-0.5">Global Freight Guarantee:</span>
                 All tea dispatches are protected with 3-ply vacuum aluminum foil liners to retain fresh mountain volatile aromatics during sea voyage.
               </div>
 
               <button
                 type="button"
                 onClick={() => onNavigateTab("sourcing")}
-                className="w-full bg-gradient-to-r from-champagne to-champagne hover:from-champagne hover:to-champagne text-charcoal font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark hover:from-tata-blue-dark hover:to-tata-blue-dark text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
               >
                 <span>Read Full Terroir Chronicles</span>
-                <ArrowRight className="w-4 h-4 text-charcoal" />
+                <ArrowRight className="w-4 h-4 text-tata-dark" />
               </button>
             </div>
 

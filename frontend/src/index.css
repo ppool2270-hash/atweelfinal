@@ -9,8 +9,8 @@ body {
     font-weight: 400;
     letter-spacing: -0.011em;
     line-height: 1.65;
-    background-color: var(--ivory);
-    color: var(--charcoal-grey);
+    background-color: var(--tata-bg-light);
+    color: var(--tata-dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -19,13 +19,13 @@ body {
 /* ============================================
    BRAND PALETTE UTILITIES
    ============================================ */
-.bg-charcoal { background-color: var(--charcoal-grey); }
-.bg-ivory { background-color: var(--ivory); }
-.text-ivory { color: var(--ivory); }
-.text-charcoal { color: var(--charcoal-grey); }
-.text-champagne { color: var(--champagne-gold); }
-.border-champagne { border-color: var(--champagne-gold); }
-.border-lightgrey { border-color: var(--light-grey); }
+.bg-tata-dark { background-color: var(--tata-dark); }
+.bg-tata-bg-light { background-color: var(--tata-bg-light); }
+.text-tata-bg-light { color: var(--tata-bg-light); }
+.text-charcoal { color: var(--tata-dark); }
+.text-tata-blue-dark { color: var(--tata-blue-dark); }
+.border-tata-blue-dark { border-color: var(--tata-blue-dark); }
+.border-lightgrey { border-color: var(--tata-grey-light); }
 
 /* Elegant serif typography — refined Playfair Display & Cormorant Garamond pairing */
 .font-serif {
@@ -73,7 +73,7 @@ a { text-decoration: none; }
 
 /* Selection with brand gold */
 ::selection {
-    background: var(--champagne-gold);
+    background: var(--tata-blue-dark);
     color: #fff;
 }
 
@@ -86,9 +86,9 @@ html { scroll-behavior: smooth; }
    ============================================ */
 :root {
     /* Small gold dot with forest stroke — default cursor for links/buttons */
-    --cursor-luxury: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'><circle cx='11' cy='11' r='4' fill='%23D4AF37' stroke='%230F2B1D' stroke-width='1.2'/><circle cx='11' cy='11' r='8' fill='none' stroke='%23D4AF37' stroke-width='0.8' stroke-opacity='0.45'/></svg>") 11 11, pointer;
+    --cursor-luxury: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'><circle cx='11' cy='11' r='4' fill='%23174195' stroke='%231468B3' stroke-width='1.2'/><circle cx='11' cy='11' r='8' fill='none' stroke='%23174195' stroke-width='0.8' stroke-opacity='0.45'/></svg>") 11 11, pointer;
     /* Slightly larger active/press cursor */
-    --cursor-luxury-active: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'><circle cx='11' cy='11' r='5' fill='%23D4AF37' stroke='%230F2B1D' stroke-width='1.4'/></svg>") 11 11, pointer;
+    --cursor-luxury-active: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'><circle cx='11' cy='11' r='5' fill='%23174195' stroke='%231468B3' stroke-width='1.4'/></svg>") 11 11, pointer;
 }
 
 /* Apply luxury pointer to every interactive element */
@@ -147,7 +147,7 @@ button:disabled,
 
     html, body {
         background: var(--white) !important;
-        color: var(--charcoal-grey) !important;
+        color: var(--tata-dark) !important;
         font-size: 11pt;
         line-height: 1.55;
     }
@@ -159,8 +159,8 @@ button:disabled,
         font-size: 8pt;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--champagne-gold);
-        border-bottom: 2px solid var(--champagne-gold);
+        color: var(--tata-blue-dark);
+        border-bottom: 2px solid var(--tata-blue-dark);
         padding-bottom: 6mm;
         margin-bottom: 10mm;
         text-align: center;
@@ -174,8 +174,8 @@ button:disabled,
         font-size: 7pt;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: var(--champagne-gold);
-        border-top: 1px solid var(--champagne-gold);
+        color: var(--tata-blue-dark);
+        border-top: 1px solid var(--tata-blue-dark);
         padding-top: 5mm;
         margin-top: 10mm;
         text-align: center;
@@ -203,32 +203,32 @@ button:disabled,
     }
 
     /* Ensure text on dark backgrounds inverts to readable */
-    [class*="bg-charcoal"], [class*="bg-[var(--charcoal-grey)]"] {
-        background: var(--ivory) !important;
-        color: var(--charcoal-grey) !important;
+    [class*="bg-tata-dark"], [class*="bg-[var(--tata-dark)]"] {
+        background: var(--tata-bg-light) !important;
+        color: var(--tata-dark) !important;
     }
-    [class*="bg-charcoal"] *, [class*="bg-[var(--charcoal-grey)]"] * {
-        color: var(--charcoal-grey) !important;
+    [class*="bg-tata-dark"] *, [class*="bg-[var(--tata-dark)]"] * {
+        color: var(--tata-dark) !important;
     }
-    [class*="bg-charcoal"] .text-white,
-    [class*="bg-charcoal"] [class*="text-white"] {
-        color: var(--charcoal-grey) !important;
+    [class*="bg-tata-dark"] .text-white,
+    [class*="bg-tata-dark"] [class*="text-white"] {
+        color: var(--tata-dark) !important;
     }
 
     /* Bigger, cleaner headings on print */
     h1.font-serif {
         font-size: 22pt !important;
-        color: var(--charcoal-grey) !important;
+        color: var(--tata-dark) !important;
         margin-bottom: 3mm;
     }
-    h2.font-serif { font-size: 16pt !important; color: var(--charcoal-grey) !important; }
-    h3.font-serif { font-size: 13pt !important; color: var(--champagne-gold) !important; }
+    h2.font-serif { font-size: 16pt !important; color: var(--tata-dark) !important; }
+    h3.font-serif { font-size: 13pt !important; color: var(--tata-blue-dark) !important; }
 
     /* Show URL next to external links */
     a[href^="http"]::after, a[href^="mailto"]::after {
         content: " ‹" attr(href) "›";
         font-size: 8pt;
-        color: var(--champagne-gold);
+        color: var(--tata-blue-dark);
         font-weight: 400;
     }
 
@@ -252,30 +252,34 @@ button:disabled,
 
 @layer base {
 :root {
-    --champagne-gold: #D8C3A5; /* A soft, elegant champagne gold */
-    --champagne-gold-dark: #B89C72; /* A slightly darker shade for borders/hovers */
+    --tata-blue-dark: #174195;
+    --tata-blue-light: #1468b3;
+    --tata-green: #92dd43;
     --white: #FFFFFF;
-    --ivory: #F9F8F6;
-    --light-grey: #757575;
-    --charcoal-grey: #242526; /* Deep, rich charcoal for high contrast */
+    --tata-bg-light: #f2f2f2;
+    --tata-bg-lighter: #fafafa;
+    --tata-grey-light: #e1e1e1;
+    --tata-grey: #6e6e6e;
+    --tata-cyan: #007fad;
+    --tata-dark: #bcb3b3;
 
-    --background: var(--ivory);
-    --foreground: var(--charcoal-grey);
+    --background: var(--tata-bg-light);
+    --foreground: var(--tata-dark);
     --card: var(--white);
-    --card-foreground: var(--charcoal-grey);
+    --card-foreground: var(--tata-dark);
     --popover: var(--white);
-    --popover-foreground: var(--charcoal-grey);
-    --primary: var(--champagne-gold);
-    --primary-foreground: var(--charcoal-grey);
-    --secondary: var(--light-grey);
-    --secondary-foreground: var(--charcoal-grey);
-    --muted: var(--light-grey);
-    --muted-foreground: var(--charcoal-grey);
-    --accent: var(--champagne-gold);
-    --accent-foreground: var(--charcoal-grey);
-    --border: var(--light-grey);
-    --input: var(--light-grey);
-    --ring: var(--champagne-gold);
+    --popover-foreground: var(--tata-dark);
+    --primary: var(--tata-blue-dark);
+    --primary-foreground: var(--tata-dark);
+    --secondary: var(--tata-grey-light);
+    --secondary-foreground: var(--tata-dark);
+    --muted: var(--tata-grey-light);
+    --muted-foreground: var(--tata-dark);
+    --accent: var(--tata-blue-dark);
+    --accent-foreground: var(--tata-dark);
+    --border: var(--tata-grey-light);
+    --input: var(--tata-grey-light);
+    --ring: var(--tata-blue-dark);
 }
 }
 

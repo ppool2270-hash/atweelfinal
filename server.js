@@ -6,6 +6,8 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 const { Resend } = require('resend');
 
+const { GoogleGenAI } = require('@google/genai');
+
 const app = express();
 const PORT = 3000;
 
@@ -473,6 +475,49 @@ app.post('/api/track-shipment', (req, res) => {
   return res.status(404).json({
     detail: "Tracking number not found. Try sample: EXP-8842-NL or ATW-9921-US"
   });
+});
+
+app.post('/api/ai-compliance-consultant', async (req, res) => {
+  const { query, certificates, mrlContext } = req.body || {};
+  
+  if (!process.env.GEMINI_API_KEY) {
+    return res.status(500).json({ error: "AI Assistant is currently offline. GEMINI_API_KEY is not configured on the server." });
+  }
+  
+  try {
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    
+    // Constructing a robust prompt providing the context of the certificates and the user's question
+    const prompt = `
+You are the official AI Compliance and Export Trade Consultant for "Atweel Tea" (Atweel Food & Beverages Pvt. Ltd.).
+Your job is to answer questions from B2B buyers regarding our compliance, certifications, factory standards, and MRL (Maximum Residue Limits) lab tests.
+
+Context about Atweel Tea's compliance:
+${certificates ? JSON.stringify(certificates, null, 2) : "Certificates information not provided."}
+
+MRL Lab Testing Protocol:
+${mrlContext || "All our teas undergo 500+ Multi-Residue Pesticide MRL Screening (0.00 ppm) tested by Eurofins / SGS prior to export at Kolkata Port."}
+
+User Question:
+"${query}"
+
+Instructions:
+1. Answer professionally, authoritatively, and concisely. Use business terminology appropriate for international trade and B2B buyers.
+2. If the user asks about something covered in the context, use the context to answer accurately.
+3. If the user asks something unrelated to tea, exports, or compliance, politely steer them back to our export compliance topics.
+4. Keep the response to 1-2 paragraphs max. Use markdown formatting if helpful (e.g. bolding key terms).
+`;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+    });
+    
+    res.json({ text: response.text });
+  } catch (error) {
+    console.error("Error calling Gemini API:", error);
+    res.status(500).json({ error: "Failed to generate AI response. Please try again later." });
+  }
 });
 
 app.post('/api/calculate-quote', (req, res) => {
