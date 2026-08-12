@@ -78,23 +78,23 @@ const CustomPolyphenolTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-tata-dark text-white p-3.5 rounded-xl border border-white/20 shadow-xl text-xs space-y-1.5 font-sans">
-        <p className="font-bold font-serif text-tata-dark text-sm border-b border-white/10 pb-1">
+      <div className="bg-black text-white p-3.5 rounded-none border border-gray-200 shadow-none text-xs space-y-1.5 font-sans">
+        <p className="font-bold font-sans tracking-tight text-black text-sm border-b border-gray-200 pb-1">
           {label} ({data.flush})
         </p>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-tata-grey">Kharsang Organic:</span>
-          <span className="font-bold text-tata-grey font-mono">{data.kharsang}% Dry Wt</span>
+          <span className="text-gray-400">Kharsang Organic:</span>
+          <span className="font-bold text-gray-400 font-mono">{data.kharsang}% Dry Wt</span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-tata-grey">Industry Standard:</span>
-          <span className="font-bold text-tata-grey font-mono">{data.industry}% Dry Wt</span>
+          <span className="text-gray-400">Industry Standard:</span>
+          <span className="font-bold text-gray-400 font-mono">{data.industry}% Dry Wt</span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-tata-grey">Active Catechins:</span>
-          <span className="font-bold text-tata-grey font-mono">{data.catechins}%</span>
+          <span className="text-gray-400">Active Catechins:</span>
+          <span className="font-bold text-gray-400 font-mono">{data.catechins}%</span>
         </div>
-        <div className="text-[10px] text-tata-grey pt-1 border-t border-white/10 font-mono">
+        <div className="text-[10px] text-gray-400 pt-1 border-t border-gray-200 font-mono">
           ▲ +{((data.kharsang - data.industry) / data.industry * 100).toFixed(1)}% Higher Bio-Active Potency
         </div>
       </div>
@@ -109,28 +109,28 @@ const CustomMoistureTooltip = ({ active, payload, label }) => {
     const data = payload[0].payload;
     const dev = Math.abs(data.moisture - data.target).toFixed(2);
     return (
-      <div className="bg-tata-dark text-white p-3.5 rounded-xl border border-tata-grey-light/40 shadow-xl text-xs space-y-1.5 font-sans">
-        <p className="font-bold font-serif text-tata-grey text-sm border-b border-white/10 pb-1">
+      <div className="bg-black text-white p-3.5 rounded-none border border-gray-200/40 shadow-none text-xs space-y-1.5 font-sans">
+        <p className="font-bold font-sans tracking-tight text-gray-400 text-sm border-b border-gray-200 pb-1">
           {label} — Factory Dryer Log
         </p>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-tata-grey">Recorded Moisture:</span>
-          <span className="font-bold text-tata-grey font-mono">{data.moisture}%</span>
+          <span className="text-gray-400">Recorded Moisture:</span>
+          <span className="font-bold text-gray-400 font-mono">{data.moisture}%</span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-tata-grey">Strict Quality Target:</span>
-          <span className="font-bold text-tata-grey font-mono">3.00%</span>
+          <span className="text-gray-400">Strict Quality Target:</span>
+          <span className="font-bold text-gray-400 font-mono">3.00%</span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-tata-grey">Variance Deviation:</span>
-          <span className="font-bold text-tata-grey font-mono">±{dev}%</span>
+          <span className="text-gray-400">Variance Deviation:</span>
+          <span className="font-bold text-gray-400 font-mono">±{dev}%</span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-tata-grey">Dryer Temp:</span>
-          <span className="font-bold text-tata-grey font-mono">{data.temp}°C</span>
+          <span className="text-gray-400">Dryer Temp:</span>
+          <span className="font-bold text-gray-400 font-mono">{data.temp}°C</span>
         </div>
-        <div className="text-[10px] text-tata-grey pt-1 border-t border-white/10 font-mono flex items-center gap-1">
-          <CheckCircle2 className="w-3 h-3 text-tata-grey" />
+        <div className="text-[10px] text-gray-400 pt-1 border-t border-gray-200 font-mono flex items-center gap-1">
+          <CheckCircle2 className="w-3 h-3 text-gray-400" />
           <span>Optimal Sea-Container Shelf-Life Range</span>
         </div>
       </div>
@@ -184,27 +184,27 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
 
   return (
     <section 
-      className="py-16 sm:py-20 bg-tata-bg-light text-tata-dark-800 border-b border-white/20 relative overflow-hidden"
+      className="py-16 sm:py-20 bg-gray-50 text-black-800 border-b border-gray-200 relative overflow-hidden"
       id="quality-metrics"
       data-testid="quality-metrics-section"
     >
       {/* Background Subtle Gradient Blobs */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-tata-dark/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-80 h-80 bg-tata-bg-light rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-black/5 rounded-none blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-80 h-80 bg-gray-50 rounded-none blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* SECTION HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-white/20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-gray-200">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-tata-dark text-tata-blue-light border border-white/20 text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-3">
-              <FlaskConical className="w-4 h-4 text-tata-dark" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-black text-gray-400 border border-gray-200 text-xs font-bold uppercase tracking-[0.2em] shadow-none mb-3">
+              <FlaskConical className="w-4 h-4 text-black" />
               <span>Kharsang Factory Laboratory Analytics</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-tata-dark">
+            <h2 className="font-sans tracking-tight text-3xl sm:text-4xl lg:text-5xl font-bold text-black">
               Quality Metrics &amp; Lab Standards
             </h2>
-            <p className="text-tata-dark-600 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
+            <p className="text-black-600 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
               Empirical laboratory benchmarks from our 72,000 sq ft processing plant in Kharsang, Arunachal Pradesh — highlighting superior natural polyphenols and precise moisture stability for international B2B buyers.
             </p>
           </div>
@@ -214,12 +214,12 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
               type="button"
               onClick={handleDownloadQA}
               data-testid="download-qa-report-btn"
-              className="inline-flex items-center gap-2 bg-tata-dark hover:bg-tata-dark text-tata-blue-light font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer border border-white/20"
+              className="inline-flex items-center gap-2 bg-black hover:bg-black text-gray-400 font-bold px-4 py-2.5 rounded-none text-xs uppercase tracking-wider transition-all shadow-none cursor-pointer border border-gray-200"
             >
               {downloadingReport ? (
-                <Sparkles className="w-4 h-4 animate-spin text-tata-dark" />
+                <Sparkles className="w-4 h-4 animate-spin text-black" />
               ) : (
-                <Download className="w-4 h-4 text-tata-dark" />
+                <Download className="w-4 h-4 text-black" />
               )}
               <span>{downloadingReport ? "Generating Specs..." : "Download Lab Certificate PDF"}</span>
             </button>
@@ -230,73 +230,73 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10" data-testid="quality-kpi-cards">
           
           {/* Card 1: Mean Polyphenols */}
-          <div className="bg-white border-2 border-tata-dark/20 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-tata-bg-light/10 rounded-bl-full pointer-events-none group-hover:bg-tata-bg-light/20 transition-all" />
+          <div className="bg-white border-2 border-black/20 rounded-none p-5 shadow-none hover:shadow-none transition-all relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gray-50/10 rounded-none-bl-full pointer-events-none group-hover:bg-gray-50/20 transition-all" />
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-tata-grey">Bio-Active Yield</span>
-              <div className="p-2 rounded-xl bg-tata-bg-light text-tata-dark">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Bio-Active Yield</span>
+              <div className="p-2 rounded-none bg-gray-50 text-black">
                 <Zap className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-serif text-3xl font-bold text-tata-dark">24.8%</div>
-            <p className="text-xs text-tata-grey font-medium mt-1">
+            <div className="font-sans tracking-tight text-3xl font-bold text-black">24.8%</div>
+            <p className="text-xs text-gray-400 font-medium mt-1">
               Average Polyphenol Dry Wt
             </p>
-            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-tata-bg-light text-tata-dark px-2 py-0.5 rounded border border-tata-grey-light">
+            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-gray-50 text-black px-2 py-0.5 rounded-none border border-gray-200">
               ▲ +65.2% vs Industry Standard (15%)
             </span>
           </div>
 
           {/* Card 2: Moisture Standard */}
-          <div className="bg-white border-2 border-white/20 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-tata-bg-light rounded-bl-full pointer-events-none group-hover:bg-tata-grey-light transition-all" />
+          <div className="bg-white border-2 border-gray-200 rounded-none p-5 shadow-none hover:shadow-none transition-all relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gray-50 rounded-none-bl-full pointer-events-none group-hover:bg-gray-200 transition-all" />
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-tata-grey">Dryer Consistency</span>
-              <div className="p-2 rounded-xl bg-tata-bg-light text-tata-dark">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Dryer Consistency</span>
+              <div className="p-2 rounded-none bg-gray-50 text-black">
                 <Droplets className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-serif text-3xl font-bold text-tata-dark">3.00%</div>
-            <p className="text-xs text-tata-grey font-medium mt-1">
+            <div className="font-sans tracking-tight text-3xl font-bold text-black">3.00%</div>
+            <p className="text-xs text-gray-400 font-medium mt-1">
               Target Factory Moisture Index
             </p>
-            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-tata-bg-light text-tata-dark px-2 py-0.5 rounded border border-tata-grey-light">
+            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-gray-50 text-black px-2 py-0.5 rounded-none border border-gray-200">
               Tight Band: 2.80% – 3.20% (±0.05% Dev)
             </span>
           </div>
 
           {/* Card 3: EGCG Catechins */}
-          <div className="bg-white border-2 border-tata-dark/20 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-tata-bg-light/10 rounded-bl-full pointer-events-none group-hover:bg-tata-bg-light/20 transition-all" />
+          <div className="bg-white border-2 border-black/20 rounded-none p-5 shadow-none hover:shadow-none transition-all relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gray-50/10 rounded-none-bl-full pointer-events-none group-hover:bg-gray-50/20 transition-all" />
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-tata-grey">Antioxidant Index</span>
-              <div className="p-2 rounded-xl bg-tata-bg-light text-tata-dark">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Antioxidant Index</span>
+              <div className="p-2 rounded-none bg-gray-50 text-black">
                 <Activity className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-serif text-3xl font-bold text-tata-dark">17.8%</div>
-            <p className="text-xs text-tata-grey font-medium mt-1">
+            <div className="font-sans tracking-tight text-3xl font-bold text-black">17.8%</div>
+            <p className="text-xs text-gray-400 font-medium mt-1">
               Active EGCG Catechin Ratio
             </p>
-            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-tata-bg-light text-tata-dark px-2 py-0.5 rounded border border-tata-grey-light">
+            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-gray-50 text-black px-2 py-0.5 rounded-none border border-gray-200">
               High Altitude Himalayan Growth Advantage
             </span>
           </div>
 
           {/* Card 4: Pesticide MRL Screening */}
-          <div className="bg-white border-2 border-tata-dark/20 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-tata-bg-light/10 rounded-bl-full pointer-events-none group-hover:bg-tata-bg-light/20 transition-all" />
+          <div className="bg-white border-2 border-black/20 rounded-none p-5 shadow-none hover:shadow-none transition-all relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gray-50/10 rounded-none-bl-full pointer-events-none group-hover:bg-gray-50/20 transition-all" />
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-tata-grey">Pesticide Residue</span>
-              <div className="p-2 rounded-xl bg-tata-bg-light text-tata-dark">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Pesticide Residue</span>
+              <div className="p-2 rounded-none bg-gray-50 text-black">
                 <ShieldCheck className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-serif text-3xl font-bold text-tata-dark">0.00 ppm</div>
-            <p className="text-xs text-tata-grey font-medium mt-1">
+            <div className="font-sans tracking-tight text-3xl font-bold text-black">0.00 ppm</div>
+            <p className="text-xs text-gray-400 font-medium mt-1">
               Eurofins / SGS 500+ Screen
             </p>
-            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-tata-bg-light text-tata-dark px-2 py-0.5 rounded border border-tata-grey-light">
+            <span className="inline-block mt-2 text-[10px] font-mono font-bold bg-gray-50 text-black px-2 py-0.5 rounded-none border border-gray-200">
               100% NPOP &amp; USDA Organic Compliant
             </span>
           </div>
@@ -304,22 +304,22 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
         </div>
 
         {/* METRIC VISUALIZATION TABS */}
-        <div className="bg-white border-2 border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl mb-10">
+        <div className="bg-white border-2 border-gray-200 rounded-none p-6 sm:p-8 shadow-none mb-10">
           
           {/* Tab Selection Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-tata-grey-light">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-gray-200">
             <div className="flex flex-wrap items-center gap-2" data-testid="metric-tabs">
               <button
                 type="button"
                 onClick={() => setActiveMetricTab("polyphenols")}
                 data-testid="tab-polyphenols"
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-4 py-2.5 rounded-none text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
                   activeMetricTab === "polyphenols"
-                    ? "bg-tata-dark text-tata-blue-light shadow-md border border-white/20"
-                    : "bg-tata-bg-light text-tata-dark hover:bg-tata-blue-light"
+                    ? "bg-black text-gray-400 shadow-none border border-gray-200"
+                    : "bg-gray-50 text-black hover:bg-gray-400"
                 }`}
               >
-                <Zap className="w-4 h-4 text-tata-grey" />
+                <Zap className="w-4 h-4 text-gray-400" />
                 <span>Polyphenol Content vs Industry</span>
               </button>
 
@@ -327,13 +327,13 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
                 type="button"
                 onClick={() => setActiveMetricTab("moisture")}
                 data-testid="tab-moisture"
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-4 py-2.5 rounded-none text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
                   activeMetricTab === "moisture"
-                    ? "bg-tata-dark text-tata-blue-light shadow-md border border-white/20"
-                    : "bg-tata-bg-light text-tata-dark hover:bg-tata-blue-light"
+                    ? "bg-black text-gray-400 shadow-none border border-gray-200"
+                    : "bg-gray-50 text-black hover:bg-gray-400"
                 }`}
               >
-                <Droplets className="w-4 h-4 text-tata-grey" />
+                <Droplets className="w-4 h-4 text-gray-400" />
                 <span>Moisture Consistency (3.0% Standard)</span>
               </button>
 
@@ -341,13 +341,13 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
                 type="button"
                 onClick={() => setActiveMetricTab("radar")}
                 data-testid="tab-radar"
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-4 py-2.5 rounded-none text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
                   activeMetricTab === "radar"
-                    ? "bg-tata-dark text-tata-blue-light shadow-md border border-white/20"
-                    : "bg-tata-bg-light text-tata-dark hover:bg-tata-blue-light"
+                    ? "bg-black text-gray-400 shadow-none border border-gray-200"
+                    : "bg-gray-50 text-black hover:bg-gray-400"
                 }`}
               >
-                <BarChart3 className="w-4 h-4 text-tata-grey" />
+                <BarChart3 className="w-4 h-4 text-gray-400" />
                 <span>Overall QA Matrix Radar</span>
               </button>
             </div>
@@ -355,11 +355,11 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
             {/* Sub-Filter for Polyphenols tab */}
             {activeMetricTab === "polyphenols" && (
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-tata-grey uppercase tracking-wider">Flush Harvest:</span>
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Flush Harvest:</span>
                 <select
                   value={selectedFlush}
                   onChange={(e) => setSelectedFlush(e.target.value)}
-                  className="bg-tata-bg-light border border-tata-grey-light rounded-xl text-xs font-bold px-3 py-1.5 text-tata-dark focus:outline-none focus:ring-2 focus:ring-charcoal"
+                  className="bg-gray-50 border border-gray-200 rounded-none text-xs font-bold px-3 py-1.5 text-black focus:outline-none focus:ring-2 focus:ring-charcoal"
                   data-testid="flush-filter-select"
                 >
                   <option value="All">All Season Flushes</option>
@@ -376,25 +376,25 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
             <div data-testid="polyphenols-chart-container">
               <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-tata-dark">
+                  <h3 className="font-sans tracking-tight text-xl font-bold text-black">
                     Polyphenol &amp; Catechin Yield per Organic Grade (% Dry Weight)
                   </h3>
-                  <p className="text-xs text-tata-grey mt-0.5">
+                  <p className="text-xs text-gray-400 mt-0.5">
                     Kharsang's high-altitude microclimate yields 50–70% higher natural antioxidants than standard lowland estates.
                   </p>
                 </div>
                 <div className="flex items-center gap-4 text-xs font-mono">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded bg-tata-dark" />
-                    <span className="text-tata-dark font-bold">Kharsang Organic</span>
+                    <span className="w-3 h-3 rounded-none bg-black" />
+                    <span className="text-black font-bold">Kharsang Organic</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded bg-tata-blue-dark" />
-                    <span className="text-tata-dark font-bold">Industry Average</span>
+                    <span className="w-3 h-3 rounded-none bg-black" />
+                    <span className="text-black font-bold">Industry Average</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-0.5 bg-tata-bg-light" />
-                    <span className="text-tata-dark font-bold">Active Catechins</span>
+                    <span className="w-3 h-0.5 bg-gray-50" />
+                    <span className="text-black font-bold">Active Catechins</span>
                   </div>
                 </div>
               </div>
@@ -453,14 +453,14 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
                 </ResponsiveContainer>
               </div>
 
-              <div className="mt-4 p-4 bg-tata-bg-light border border-white/20 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-tata-dark">
+              <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-black">
                 <div className="flex items-center gap-2">
-                  <Info className="w-4 h-4 text-tata-dark shrink-0" />
+                  <Info className="w-4 h-4 text-black shrink-0" />
                   <span>
                     <strong>Lab Protocol:</strong> Total Polyphenols determined via Folin-Ciocalteu assay (ISO 14502-1). Catechins tested using High-Performance Liquid Chromatography (HPLC).
                   </span>
                 </div>
-                <span className="font-mono text-[10px] bg-tata-dark text-tata-blue-light px-2.5 py-1 rounded-full font-bold shrink-0">
+                <span className="font-mono text-[10px] bg-black text-gray-400 px-2.5 py-1 rounded-none font-bold shrink-0">
                   Batch Certificate: ISO-14502 / NPOP Certified
                 </span>
               </div>
@@ -472,21 +472,21 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
             <div data-testid="moisture-chart-container">
               <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-tata-dark">
+                  <h3 className="font-sans tracking-tight text-xl font-bold text-black">
                     Kharsang Dryer Output Moisture Consistency Log (%)
                   </h3>
-                  <p className="text-xs text-tata-grey mt-0.5">
+                  <p className="text-xs text-gray-400 mt-0.5">
                     Strict adherence to 3.00% moisture prevents mold formation during maritime container ocean freight (60+ days shelf safety).
                   </p>
                 </div>
                 <div className="flex items-center gap-4 text-xs font-mono">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded bg-tata-bg-light" />
-                    <span className="text-tata-dark font-bold">Recorded Moisture (%)</span>
+                    <span className="w-3 h-3 rounded-none bg-gray-50" />
+                    <span className="text-black font-bold">Recorded Moisture (%)</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-0.5 bg-tata-bg-light" />
-                    <span className="text-tata-dark font-bold">Strict Target (3.0%)</span>
+                    <span className="w-3 h-0.5 bg-gray-50" />
+                    <span className="text-black font-bold">Strict Target (3.0%)</span>
                   </div>
                 </div>
               </div>
@@ -554,14 +554,14 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
                 </ResponsiveContainer>
               </div>
 
-              <div className="mt-4 p-4 bg-tata-bg-light/70 border border-tata-grey-light rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-tata-dark">
+              <div className="mt-4 p-4 bg-gray-50/70 border border-gray-200 rounded-none flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-black">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-tata-grey shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-gray-400 shrink-0" />
                   <span>
                     <strong>Quality Assurance Guarantee:</strong> Maximum recorded variance across 12 monthly factory batches was <strong>±0.08%</strong>. Zero batches exceeded the 3.20% ceiling.
                   </span>
                 </div>
-                <span className="font-mono text-[10px] bg-tata-dark text-tata-grey px-2.5 py-1 rounded-full font-bold shrink-0">
+                <span className="font-mono text-[10px] bg-black text-gray-400 px-2.5 py-1 rounded-none font-bold shrink-0">
                   Vacuum Foil Bag Protection Standard
                 </span>
               </div>
@@ -572,10 +572,10 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
           {activeMetricTab === "radar" && (
             <div data-testid="radar-chart-container">
               <div className="mb-4 text-center max-w-xl mx-auto">
-                <h3 className="font-serif text-xl font-bold text-tata-dark">
+                <h3 className="font-sans tracking-tight text-xl font-bold text-black">
                   360° Quality Radar Index Comparison
                 </h3>
-                <p className="text-xs text-tata-grey mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5">
                   Multi-parameter lab audit comparing Kharsang Single Estate tea against global commercial benchmarks (Scaled 0 – 100).
                 </p>
               </div>
@@ -606,18 +606,18 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
                 </ResponsiveContainer>
               </div>
 
-              <div className="mt-4 p-4 bg-tata-bg-light border border-white/20 rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-center">
-                <div className="p-2 bg-white rounded-xl border border-tata-grey-light">
-                  <span className="text-tata-grey block text-[10px] uppercase font-mono">Pesticide Residue</span>
-                  <strong className="text-tata-grey font-bold text-sm">100 / 100 Perfect Clean</strong>
+              <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-none grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-center">
+                <div className="p-2 bg-white rounded-none border border-gray-200">
+                  <span className="text-gray-400 block text-[10px] uppercase font-mono">Pesticide Residue</span>
+                  <strong className="text-gray-400 font-bold text-sm">100 / 100 Perfect Clean</strong>
                 </div>
-                <div className="p-2 bg-white rounded-xl border border-tata-grey-light">
-                  <span className="text-tata-grey block text-[10px] uppercase font-mono">Polyphenol Potency</span>
-                  <strong className="text-tata-dark font-bold text-sm">98 / 100 Grade AAA</strong>
+                <div className="p-2 bg-white rounded-none border border-gray-200">
+                  <span className="text-gray-400 block text-[10px] uppercase font-mono">Polyphenol Potency</span>
+                  <strong className="text-black font-bold text-sm">98 / 100 Grade AAA</strong>
                 </div>
-                <div className="p-2 bg-white rounded-xl border border-tata-grey-light">
-                  <span className="text-tata-grey block text-[10px] uppercase font-mono">Container Shelf Life</span>
-                  <strong className="text-tata-grey font-bold text-sm">96 / 100 Extended Stability</strong>
+                <div className="p-2 bg-white rounded-none border border-gray-200">
+                  <span className="text-gray-400 block text-[10px] uppercase font-mono">Container Shelf Life</span>
+                  <strong className="text-gray-400 font-bold text-sm">96 / 100 Extended Stability</strong>
                 </div>
               </div>
             </div>
@@ -626,27 +626,27 @@ Certified by Independent Eurofins & SGS Testing Protocols.`
         </div>
 
         {/* BOTTOM FACTORY QA AUDIT STANDARDS FOOTER */}
-        <div className="bg-gradient-to-r from-tata-dark to-tata-dark text-white rounded-2xl p-6 sm:p-8 border border-white/20 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="bg-gradient-to-r from-black to-black text-white rounded-none p-6 sm:p-8 border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6 shadow-none">
           <div className="space-y-1">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-tata-blue-light font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400 font-bold">
               Factory Protocol Summary · Kharsang Estate
             </span>
-            <h4 className="font-serif text-xl font-bold text-white">
+            <h4 className="font-sans tracking-tight text-xl font-bold text-white">
               In-House Continuous Quality Monitoring System
             </h4>
-            <p className="text-xs text-tata-grey-light max-w-2xl leading-relaxed">
+            <p className="text-xs text-gray-200 max-w-2xl leading-relaxed">
               Every tea batch passes through dual rare-earth magnetic separation, infrared moisture sensors, and independent Eurofins / SGS pesticide multi-residue screening prior to ocean container sealing.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <div className="px-3 py-2 bg-white/10 rounded-xl border border-white/20 text-center font-mono">
-              <span className="block text-[10px] text-tata-grey-light uppercase">ISO Audit</span>
-              <strong className="text-xs text-tata-blue-light">22000:2018</strong>
+            <div className="px-3 py-2 bg-white/10 rounded-none border border-gray-200 text-center font-mono">
+              <span className="block text-[10px] text-gray-200 uppercase">ISO Audit</span>
+              <strong className="text-xs text-gray-400">22000:2018</strong>
             </div>
-            <div className="px-3 py-2 bg-white/10 rounded-xl border border-white/20 text-center font-mono">
-              <span className="block text-[10px] text-tata-grey-light uppercase">FSSAI Lic</span>
-              <strong className="text-xs text-tata-grey-light">10023083000182</strong>
+            <div className="px-3 py-2 bg-white/10 rounded-none border border-gray-200 text-center font-mono">
+              <span className="block text-[10px] text-gray-200 uppercase">FSSAI Lic</span>
+              <strong className="text-xs text-gray-200">10023083000182</strong>
             </div>
           </div>
         </div>

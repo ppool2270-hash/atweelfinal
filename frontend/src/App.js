@@ -18,7 +18,7 @@ import {
   ChevronRight, ArrowRight, Package, Search, Star, CheckCircle2, 
   MapPin, Phone, Mail, Building, Download, ExternalLink, Menu, X,
   Clock, Thermometer, ShieldAlert, Sparkles, TrendingUp, ChevronDown, ChevronUp, HelpCircle, Boxes, FileCheck, Home, Leaf, Factory,
-  Plus, Trash2, Edit3, RotateCcw, Save, Lock, Settings, RefreshCw, Bell, Upload, History, Copy, Check, Bot
+  Plus, Trash2, Edit3, RotateCcw, Save, Lock, Settings, RefreshCw, Bell, Upload, History, Copy, Check, Bot, Coffee, Droplets, ShoppingBag, Users
 } from "lucide-react";
 
 
@@ -401,6 +401,183 @@ const FLOATING_GRADES = [
   { grade: "FD", top: "50%", left: "75%", delay: "-6.5s", scale: "scale-110" },
   { grade: "PD", top: "30%", left: "78%", delay: "-0.8s", scale: "scale-95" },
 ];
+
+const INFOGRAPHIC_DATA = {
+  wholeLeaf: [
+    { code: "SFTGFOP", name: "Super Fine Tippy Golden Flowery Orange Pekoe", desc: "The finest whole leaf grade with abundant golden tips and a rich, elegant aroma.", liquor: "bg-amber-700", icons: [{icon: Package, label: "Premium Loose Leaf"}, {icon: Sparkles, label: "Gourmet Blends"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop" },
+    { code: "FTGFOP1", name: "Finest Tippy Golden Flowery Orange Pekoe", desc: "Premium whole leaves with golden tips, delivering brisk liquor and bright taste.", liquor: "bg-amber-600", icons: [{icon: Package, label: "Premium Loose Leaf"}, {icon: Star, label: "Specialty Blends"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.4&fp-y=0.4&fp-z=1.1" },
+    { code: "TGFOP1", name: "Tippy Golden Flowery Orange Pekoe", desc: "High quality whole leaves with tippy tips, offering a balance of aroma and strength.", liquor: "bg-amber-700", icons: [{icon: Coffee, label: "Daily Premium Tea"}, {icon: Boxes, label: "Blended Teas"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.6&fp-y=0.6&fp-z=1.2" },
+    { code: "GFOP", name: "Golden Flowery Orange Pekoe", desc: "Well-made whole leaves with golden tips, offering smooth liquor and aroma.", liquor: "bg-amber-800", icons: [{icon: Coffee, label: "Daily Drinking"}, {icon: Boxes, label: "Blended Teas"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.3&fp-y=0.7&fp-z=1.3" },
+  ],
+  brokenLeaf: [
+    { code: "TGFBOP", name: "Tippy Golden Flowery Broken Orange Pekoe", desc: "High quality broken leaves with golden tips, giving strong liquor and rich taste.", liquor: "bg-orange-800", icons: [{icon: Coffee, label: "Tea Pots"}, {icon: Star, label: "Quality Blends"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=1.6" },
+    { code: "GFBOP", name: "Golden Flowery Broken Orange Pekoe", desc: "Broken leaves with golden tips, offering a full-bodied cup and brisk strength.", liquor: "bg-red-900", icons: [{icon: Coffee, label: "Daily Strong Tea"}, {icon: Boxes, label: "Blends"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.2&fp-y=0.8&fp-z=1.8" },
+    { code: "GBOP", name: "Golden Broken Orange Pekoe", desc: "Well-made broken leaves with good color and strength, suitable for regular use.", liquor: "bg-red-950", icons: [{icon: Coffee, label: "Daily Use Tea"}, {icon: Boxes, label: "Blends"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.8&fp-y=0.2&fp-z=1.9" },
+    { code: "FBOP", name: "Flowery Broken Orange Pekoe", desc: "Broken leaves with some tips, delivering bright liquor and refreshing taste.", liquor: "bg-red-800", icons: [{icon: Coffee, label: "Cafés"}, {icon: Boxes, label: "Blended Teas"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.6&fp-y=0.3&fp-z=2" },
+  ],
+  fannings: [
+    { code: "BOPF", name: "Broken Orange Pekoe Fannings", desc: "Small fannings with bright liquor and strong flavor. Ideal for quick infusion.", liquor: "bg-amber-900", icons: [{icon: ShoppingBag, label: "Tea Bags"}, {icon: Droplets, label: "Quick Brew Tea"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.4&fp-y=0.4&fp-z=2.5" },
+    { code: "GOF", name: "Golden Orange Fannings", desc: "Golden fannings with a rich color and smooth, brisk liquor.", liquor: "bg-orange-900", icons: [{icon: ShoppingBag, label: "Tea Bags"}, {icon: Users, label: "Catering Use"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.7&fp-y=0.6&fp-z=2.8" },
+    { code: "FOF", name: "Flowery Orange Fannings", desc: "Fine fannings with some tips, offering good color and strength.", liquor: "bg-amber-950", icons: [{icon: ShoppingBag, label: "Tea Bags"}, {icon: Boxes, label: "Blended Teas"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.3&fp-y=0.7&fp-z=3.1" },
+  ],
+  dust: [
+    { code: "OPD", name: "Orthodox Pekoe Dust", desc: "Premium dust with rich color and strong, brisk liquor.", liquor: "bg-stone-900", icons: [{icon: Boxes, label: "CTC Blends"}, {icon: Coffee, label: "Strong Tea"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&fp-z=3.6" },
+    { code: "OD", name: "Orthodox Dust", desc: "Fine dust grade delivering strong liquor and full bodied taste.", liquor: "bg-stone-800", icons: [{icon: Boxes, label: "CTC Blends"}, {icon: Coffee, label: "Milk Tea"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.6&fp-y=0.4&fp-z=4.2" },
+    { code: "FD", name: "Fine Dust", desc: "Fine quality dust with good color, ideal for regular blending.", liquor: "bg-stone-950", icons: [{icon: Boxes, label: "CTC Blends"}, {icon: Coffee, label: "Milk Tea"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.2&fp-y=0.8&fp-z=5" },
+    { code: "PD", name: "Powder Dust", desc: "Very fine powdery dust for maximum strength and color.", liquor: "bg-black", icons: [{icon: Boxes, label: "CTC Blends"}, {icon: Building, label: "Commercial Use"}], image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c015?q=80&w=800&auto=format&fit=crop&crop=focalpoint&fp-x=0.8&fp-y=0.8&fp-z=6" },
+  ]
+};
+
+const GradeCard = ({ grade, category, onRequestSample }) => (
+  <div className="bg-white border border-gray-200 rounded-none overflow-hidden hover:border-black transition-all flex flex-col justify-between group shadow-none hover:">
+    <div>
+      <div className="h-56 overflow-hidden relative bg-gray-50">
+        <div 
+          className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-90"
+          style={{ backgroundImage: `url('${grade.image}')` }}
+        />
+        
+        {/* Top Badges overlaid on image like catalog items */}
+        <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-none border border-gray-200 text-xs font-semibold text-black  flex items-center gap-2">
+           <div className={`w-2.5 h-2.5 rounded-none ${grade.liquor} shadow-none`} />
+           Liquor Profile
+        </div>
+        <div className="absolute top-4 left-4 bg-black/95 backdrop-blur-md px-3 py-1.5 rounded-none border border-gray-200 text-[10px] font-bold text-white  uppercase tracking-widest">
+           {category}
+        </div>
+      </div>
+
+      <div className="p-6">
+        <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">{grade.name}</div>
+        <h3 className="font-sans text-xl font-medium text-black mt-1">{grade.code}</h3>
+        
+        <p className="text-gray-500 text-sm mt-3 leading-relaxed min-h-[60px]">{grade.desc}</p>
+        
+        <div className="mt-4 p-3 rounded-none bg-gray-50 border border-gray-100 flex flex-wrap gap-4 divide-x divide-gray-200">
+          {grade.icons.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div key={idx} className={`flex flex-col items-start ${idx > 0 ? 'pl-4' : ''}`}>
+                <div className="flex items-center gap-1.5 mb-1">
+                  <Icon className="w-3.5 h-3.5 text-gray-300" />
+                  <span className="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Ideal For</span>
+                </div>
+                <span className="text-xs text-black font-medium">{item.label}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+    <div className="p-6 pt-0 flex items-center justify-between border-t border-gray-100 mt-4">
+      <div>
+        <span className="text-[10px] text-gray-500 uppercase block">Wholesale Rate</span>
+        <span className="font-sans font-light tracking-tight font-bold text-lg text-black">Volume Pricing</span>
+      </div>
+      <button
+        onClick={() => onRequestSample && onRequestSample(grade)}
+        data-testid={`request-sample-grade-${grade.code}`}
+        className="bg-black text-white font-bold px-4 py-2 rounded-none text-xs hover:bg-gray-200/80 transition-all flex items-center gap-1.5  shadow-none"
+      >
+        <span>Request Sample</span>
+        <ArrowRight className="w-3.5 h-3.5" />
+      </button>
+    </div>
+  </div>
+);
+
+const TeaGradeInfographic = ({ onRequestSample }) => {
+  return (
+    <div className="w-full mx-auto mb-20" data-testid="grade-system-infographic">
+      
+      {/* Header Section */}
+      <div className="text-center mb-8 relative z-10 pt-4 sm:pt-0">
+        <h3 className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.3em] text-gray-300 uppercase mb-2">The Complete Orthodox</h3>
+        <h2 className="font-sans font-medium tracking-tight text-3xl sm:text-4xl text-black mb-4 drop-shadow-none">Black Tea Grade System</h2>
+        <div className="flex items-center justify-center gap-2 sm:gap-4 text-gray-500">
+          <div className="h-px w-8 sm:w-12 bg-gray-300" />
+          <span className="text-xs sm:text-sm font-sans font-light tracking-tight italic text-gray-500">Every Leaf. Every Grade. Perfectly Crafted.</span>
+          <div className="h-px w-8 sm:w-12 bg-gray-300" />
+        </div>
+        
+        {/* Features Grid (Matching Floating Banner Size) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 mb-16">
+          {[
+            { icon: Leaf, label: "Sustainable Farming", desc: "100% organic practices" },
+            { icon: Users, label: "Ethical Practices", desc: "Fair trade certified" },
+            { icon: CheckCircle2, label: "Consistent Quality", desc: "Rigorous sorting" },
+            { icon: Globe, label: "Global Standards", desc: "ISO 22000 compliant" }
+          ].map((badge, idx) => (
+            <div key={idx} className="bg-white border border-gray-200 rounded-none p-6 flex flex-col items-center text-center hover:border-black/30 transition-all shadow-none group">
+              <div className="w-14 h-14 rounded-none bg-gray-50 border border-transparent flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-all group-hover:scale-110">
+                <badge.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" />
+              </div>
+              <h4 className="font-bold text-xs uppercase tracking-[0.2em] text-black">{badge.label}</h4>
+              <p className="text-xs text-gray-500 mt-2">{badge.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Main Grid Area - Matching Catalog Grids */}
+      <div className="relative z-10 space-y-16">
+        
+        {/* Whole Leaf Section */}
+        <div>
+          <div className="flex items-center gap-4 mb-6">
+            <h3 className="font-sans text-xl font-medium text-black">Whole Leaf Grades</h3>
+            <div className="h-px bg-gray-200 flex-1" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {INFOGRAPHIC_DATA.wholeLeaf.map((grade) => (
+              <GradeCard key={grade.code} grade={grade} category="Whole Leaf" onRequestSample={onRequestSample} />
+            ))}
+          </div>
+        </div>
+
+        {/* Broken Leaf Section */}
+        <div>
+          <div className="flex items-center gap-4 mb-6">
+            <h3 className="font-sans text-xl font-medium text-black">Broken Leaf Grades</h3>
+            <div className="h-px bg-gray-200 flex-1" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {INFOGRAPHIC_DATA.brokenLeaf.map((grade) => (
+              <GradeCard key={grade.code} grade={grade} category="Broken Leaf" onRequestSample={onRequestSample} />
+            ))}
+          </div>
+        </div>
+
+        {/* Fannings Section */}
+        <div>
+          <div className="flex items-center gap-4 mb-6">
+            <h3 className="font-sans text-xl font-medium text-black">Fanning Grades</h3>
+            <div className="h-px bg-gray-200 flex-1" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {INFOGRAPHIC_DATA.fannings.map((grade) => (
+              <GradeCard key={grade.code} grade={grade} category="Fannings" onRequestSample={onRequestSample} />
+            ))}
+          </div>
+        </div>
+
+        {/* Dust Section */}
+        <div>
+          <div className="flex items-center gap-4 mb-6">
+            <h3 className="font-sans text-xl font-medium text-black">Dust Grades</h3>
+            <div className="h-px bg-gray-200 flex-1" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {INFOGRAPHIC_DATA.dust.map((grade) => (
+              <GradeCard key={grade.code} grade={grade} category="Dust" onRequestSample={onRequestSample} />
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
@@ -1196,20 +1373,20 @@ export default function App() {
   const uniqueGrades = ["All", ...Array.from(new Set(enquiries.map(e => e.teaGrade)))];
 
   return (
-    <div className="min-h-screen bg-tata-bg-light text-tata-dark font-sans selection:bg-tata-blue-dark selection:text-white">
-      <Suspense fallback={<div className="flex h-screen items-center justify-center text-tata-dark font-serif text-lg tracking-widest uppercase">Loading Estate...</div>}>
+    <div className="min-h-screen bg-gray-50 text-black font-sans selection:bg-black selection:text-white">
+      <Suspense fallback={<div className="flex h-screen items-center justify-center text-black font-sans font-light tracking-tight text-lg tracking-widest uppercase">Loading Estate...</div>}>
         <MetadataConfig activeTab={activeTab} />
         <Toaster position="top-right" richColors />
 
       {/* CMS ANNOUNCEMENT TICKER BANNER */}
       {siteAnnouncement && siteAnnouncement.enabled && siteAnnouncement.message && (
-        <div className="bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark text-white py-2.5 px-4 text-xs relative overflow-hidden shadow-md" data-testid="live-announcement-banner">
+        <div className="bg-black text-white py-2.5 px-4 text-xs relative overflow-hidden " data-testid="live-announcement-banner">
           {/* Subtle textured overlay effect */}
           <div className="absolute inset-0 bg-white/5 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '16px 16px' }}></div>
           
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left relative z-10">
             <div className="flex items-center gap-3 overflow-hidden">
-              <span className="bg-white text-tata-blue-dark text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-sm whitespace-nowrap shadow-sm">
+              <span className="bg-white text-black text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-none whitespace-nowrap shadow-none">
                 {siteAnnouncement.badge || "UPDATE"}
               </span>
               <span className="font-medium text-white/95 truncate tracking-wide text-[13px]">{siteAnnouncement.message}</span>
@@ -1218,9 +1395,9 @@ export default function App() {
               <button
                 onClick={() => setActiveTab(siteAnnouncement.linkTab || "rfq")}
                 data-testid="banner-ticker-action"
-                className="text-white hover:text-tata-cyan text-xs font-bold flex items-center gap-1.5 whitespace-nowrap transition-colors group"
+                className="text-white hover:text-black text-xs font-bold flex items-center gap-1.5 whitespace-nowrap transition-colors group"
               >
-                <span className="uppercase tracking-widest border-b border-transparent group-hover:border-tata-cyan pb-0.5">{siteAnnouncement.linkText}</span>
+                <span className="uppercase tracking-widest border-b border-transparent group-hover:border-black pb-0.5">{siteAnnouncement.linkText}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             )}
@@ -1230,32 +1407,32 @@ export default function App() {
 
       {/* HEADER NAVIGATION */}
       {/* TRUST RIBBON — thin compliance strip above header */}
-      <div className="hidden md:block bg-white text-tata-dark border-b border-tata-grey-light text-[11px] font-medium shadow-sm relative z-40" data-testid="trust-ribbon">
+      <div className="hidden md:block bg-white text-black border-b border-gray-100 text-[11px] font-medium shadow-none relative z-40" data-testid="trust-ribbon">
         <div className="max-w-7xl mx-auto px-6 h-11 flex items-center justify-between">
-          <div className="flex items-center gap-3 text-tata-grey whitespace-nowrap overflow-hidden">
-            <button onClick={() => setVerifyCert(CERTIFICATIONS["iso-22000"])} data-testid="ribbon-chip-iso" className="flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-tata-bg-light hover:text-tata-blue-dark transition-colors group">
-              <ShieldCheck className="w-4 h-4 text-tata-blue-dark group-hover:scale-110 transition-transform" /> <span className="text-tata-dark font-bold tracking-wide">ISO 22000</span>
+          <div className="flex items-center gap-3 text-gray-500 whitespace-nowrap overflow-hidden">
+            <button onClick={() => setVerifyCert(CERTIFICATIONS["iso-22000"])} data-testid="ribbon-chip-iso" className="flex items-center gap-1.5 px-2.5 py-1 rounded-none hover:bg-gray-50 hover:text-black transition-colors group">
+              <ShieldCheck className="w-4 h-4 text-black group-hover:scale-110 transition-transform" /> <span className="text-black font-bold tracking-wide">ISO 22000</span>
             </button>
-            <span className="text-tata-grey-light/70 font-light">|</span>
-            <button onClick={() => setVerifyCert(CERTIFICATIONS["haccp"])} data-testid="ribbon-chip-haccp" className="px-2.5 py-1 rounded-md hover:bg-tata-bg-light hover:text-tata-blue-dark transition-colors font-semibold tracking-wide text-tata-dark">HACCP</button>
-            <span className="text-tata-grey-light/70 font-light">|</span>
-            <button onClick={() => setVerifyCert(CERTIFICATIONS["india-organic"])} data-testid="ribbon-chip-npop" className="px-2.5 py-1 rounded-md hover:bg-tata-bg-light hover:text-tata-blue-dark transition-colors font-semibold tracking-wide text-tata-dark">India Organic (NPOP)</button>
-            <span className="text-tata-grey-light/70 font-light hidden lg:inline">|</span>
-            <button onClick={() => setVerifyCert(CERTIFICATIONS["usda-organic"])} data-testid="ribbon-chip-usda" className="hidden lg:inline-block px-2.5 py-1 rounded-md hover:bg-tata-bg-light hover:text-tata-blue-dark transition-colors font-semibold tracking-wide text-tata-dark">USDA Organic</button>
-            <span className="text-tata-grey-light/70 font-light hidden lg:inline">|</span>
-            <button onClick={() => setVerifyCert(CERTIFICATIONS["eu-organic"])} data-testid="ribbon-chip-eu" className="hidden lg:inline-block px-2.5 py-1 rounded-md hover:bg-tata-bg-light hover:text-tata-blue-dark transition-colors font-semibold tracking-wide text-tata-dark">EU Organic</button>
-            <span className="text-tata-grey-light/70 font-light hidden xl:inline">|</span>
-            <button onClick={() => setVerifyCert(CERTIFICATIONS["sgs-eurofins"])} data-testid="ribbon-chip-sgs" className="hidden xl:inline-block px-2.5 py-1 rounded-md hover:bg-tata-bg-light hover:text-tata-blue-dark transition-colors font-semibold tracking-wide text-tata-dark">SGS &amp; Eurofins Verified</button>
+            <span className="text-gray-400/70 font-light">|</span>
+            <button onClick={() => setVerifyCert(CERTIFICATIONS["haccp"])} data-testid="ribbon-chip-haccp" className="px-2.5 py-1 rounded-none hover:bg-gray-50 hover:text-black transition-colors font-semibold tracking-wide text-black">HACCP</button>
+            <span className="text-gray-400/70 font-light">|</span>
+            <button onClick={() => setVerifyCert(CERTIFICATIONS["india-organic"])} data-testid="ribbon-chip-npop" className="px-2.5 py-1 rounded-none hover:bg-gray-50 hover:text-black transition-colors font-semibold tracking-wide text-black">India Organic (NPOP)</button>
+            <span className="text-gray-400/70 font-light hidden lg:inline">|</span>
+            <button onClick={() => setVerifyCert(CERTIFICATIONS["usda-organic"])} data-testid="ribbon-chip-usda" className="hidden lg:inline-block px-2.5 py-1 rounded-none hover:bg-gray-50 hover:text-black transition-colors font-semibold tracking-wide text-black">USDA Organic</button>
+            <span className="text-gray-400/70 font-light hidden lg:inline">|</span>
+            <button onClick={() => setVerifyCert(CERTIFICATIONS["eu-organic"])} data-testid="ribbon-chip-eu" className="hidden lg:inline-block px-2.5 py-1 rounded-none hover:bg-gray-50 hover:text-black transition-colors font-semibold tracking-wide text-black">EU Organic</button>
+            <span className="text-gray-400/70 font-light hidden xl:inline">|</span>
+            <button onClick={() => setVerifyCert(CERTIFICATIONS["sgs-eurofins"])} data-testid="ribbon-chip-sgs" className="hidden xl:inline-block px-2.5 py-1 rounded-none hover:bg-gray-50 hover:text-black transition-colors font-semibold tracking-wide text-black">SGS &amp; Eurofins Verified</button>
           </div>
           <a
             href="/atweel-sop.pdf"
             target="_blank"
             rel="noopener noreferrer"
             data-testid="ribbon-sop-link"
-            className="flex items-center gap-3 text-tata-grey hover:text-tata-blue-dark transition-colors group"
+            className="flex items-center gap-3 text-gray-500 hover:text-black transition-colors group"
           >
             <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] font-bold">Global Compliance Manual</span>
-            <span className="inline-flex items-center gap-1.5 bg-tata-bg-light text-tata-blue-dark border border-tata-grey-light px-3 py-1.5 rounded font-mono text-[10px] font-bold group-hover:bg-tata-blue-dark group-hover:text-white transition-all shadow-sm">
+            <span className="inline-flex items-center gap-1.5 bg-gray-50 text-black border border-gray-100 px-3 py-1.5 rounded-none font-mono text-[10px] font-bold group-hover:bg-black group-hover:text-white transition-all shadow-none">
               <FileText className="w-3.5 h-3.5" />
               SOP V3 - 2026
             </span>
@@ -1264,7 +1441,7 @@ export default function App() {
       </div>
 
 
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/95 border-b border-white/20 shadow-sm shadow-tata-blue-light/5">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/95 border-b border-gray-200 shadow-none shadow-none">
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between gap-6">
           
           {/* LOGO */}
@@ -1293,16 +1470,12 @@ export default function App() {
               onClick={() => { setActiveTab("home"); setOpenMenu(null); }}
               onMouseEnter={() => setOpenMenu(null)}
               data-testid="nav-home"
-              className={`h-full px-4 flex items-center gap-1.5 uppercase tracking-[0.18em] text-[11px] font-semibold border-b-2 transition-all ${
-                activeTab === "home"
-                  ? "text-tata-dark border-tata-blue-light/20"
-                  : "text-tata-dark border-transparent hover:text-tata-dark hover:border-white/20"
+              className={`h-full px-4 flex items-center gap-1.5 uppercase tracking-[0.18em] text-[11px] font-semibold border-b-2 transition-all ${activeTab === "home" ? "text-black border-black" : "text-black border-transparent hover:text-black hover:border-gray-200"}
               }`}
             >
               <span>Home</span>
             </button>
-
-            <div className="w-px h-6 bg-tata-blue-dark/25" />
+            <div className="w-px h-6 bg-black/25" />
 
             {/* PRODUCTS */}
             {[
@@ -1332,10 +1505,7 @@ export default function App() {
                     <button
                       data-testid={`nav-menu-${menu.key}`}
                       onClick={() => setOpenMenu(isOpen ? null : menu.key)}
-                      className={`h-full px-4 flex items-center gap-1.5 uppercase tracking-[0.18em] text-[11px] font-semibold border-b-2 transition-all ${
-                        isActive
-                          ? "text-tata-dark border-tata-blue-light/20"
-                          : "text-tata-dark border-transparent hover:text-tata-dark hover:border-white/20"
+                      className={`h-full px-4 flex items-center gap-1.5 uppercase tracking-[0.18em] text-[11px] font-semibold border-b-2 transition-all ${isActive ? "text-black border-black" : "text-black border-transparent hover:text-black hover:border-gray-200"}
                       }`}
                     >
                       <span>{menu.label}</span>
@@ -1350,36 +1520,36 @@ export default function App() {
                         onMouseLeave={scheduleClose}
                         data-testid={`dropdown-${menu.key}`}
                       >
-                        <div className="w-[320px] bg-white border border-white/20 rounded-2xl shadow-2xl shadow-tata-dark/10 overflow-hidden animate-in fade-in slide-in-from-top-1 duration-200">
-                          <div className="bg-gradient-to-r from-tata-bg-light to-tata-bg-light px-5 py-3 border-b border-white/20">
+                        <div className="w-[320px] bg-white border border-gray-200 rounded-none  shadow-none overflow-hidden animate-in fade-in slide-in-from-top-1 duration-200">
+                          <div className="bg-gradient-to-r from-gray-50 to-gray-50 px-5 py-3 border-b border-gray-200">
                             <div className="flex items-center gap-2">
-                              <menu.icon className="w-3.5 h-3.5 text-tata-dark" />
-                              <span className="font-serif text-xs uppercase tracking-[0.22em] text-tata-dark font-bold">{menu.label}</span>
+                              <menu.icon className="w-3.5 h-3.5 text-black" />
+                              <span className="font-sans text-xs uppercase tracking-widest text-black font-bold">{menu.label}</span>
                             </div>
                           </div>
                           <div className="p-2">
                             {menu.items.map((item) => {
                               const ItemIcon = item.icon;
                               const isItemActive = activeTab === item.id;
-                              const commonClass = `flex items-start gap-3 px-3 py-3 rounded-xl transition-colors group text-left w-full ${
+                              const commonClass = `flex items-start gap-3 px-3 py-3 rounded-none transition-colors group text-left w-full ${
                                 isItemActive
-                                  ? "bg-tata-blue-light"
-                                  : "hover:bg-tata-bg-light"
+                                  ? "bg-gray-200"
+                                  : "hover:bg-gray-50"
                               }`;
                               const content = (
                                 <>
-                                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                                    isItemActive ? "bg-tata-blue-dark text-white" : "bg-tata-bg-light text-tata-dark group-hover:bg-tata-blue-light"
+                                  <div className={`w-9 h-9 rounded-none flex items-center justify-center shrink-0 transition-colors ${
+                                    isItemActive ? "bg-black text-white" : "bg-gray-50 text-black group-hover:bg-gray-200"
                                   }`}>
                                     <ItemIcon className="w-4 h-4" />
                                   </div>
                                   <div className="flex-1 min-w-0">
-                                    <div className={`font-serif font-bold text-sm leading-tight ${isItemActive ? "text-tata-dark" : "text-tata-dark"}`}>
+                                    <div className={`font-sans font-light tracking-tight font-bold text-sm leading-tight ${isItemActive ? "text-black" : "text-black"}`}>
                                       {item.label}
                                     </div>
-                                    <div className="text-[11px] text-tata-grey mt-0.5 leading-snug">{item.desc}</div>
+                                    <div className="text-[11px] text-gray-500 mt-0.5 leading-snug">{item.desc}</div>
                                   </div>
-                                  <ArrowRight className="w-3.5 h-3.5 text-tata-dark/0 group-hover:text-tata-dark transition-all group-hover:translate-x-0.5 mt-2" />
+                                  <ArrowRight className="w-3.5 h-3.5 text-black/0 group-hover:text-black transition-all group-hover:translate-x-0.5 mt-2" />
                                 </>
                               );
                               return item.href ? (
@@ -1406,7 +1576,7 @@ export default function App() {
                       </div>
                     )}
                   </div>
-                  <div className="w-px h-6 bg-tata-blue-dark/25" />
+                  
                 </React.Fragment>
               );
             })}
@@ -1423,7 +1593,7 @@ export default function App() {
               }}
               onMouseEnter={() => setOpenMenu(null)}
               data-testid="nav-about"
-              className="h-full px-4 flex items-center gap-1.5 uppercase tracking-[0.18em] text-[11px] font-semibold border-b-2 border-transparent text-tata-dark hover:text-tata-dark hover:border-white/20 transition-all"
+              className="px-4 py-1.5 mx-1 flex items-center gap-1.5 uppercase tracking-[0.18em] text-[11px] uppercase tracking-[0.15em] font-semibold text-gray-600 hover:text-black hover:border-gray-200 transition-all"
             >
               <span>About Us</span>
             </button>
@@ -1431,45 +1601,45 @@ export default function App() {
 
           {/* RIGHT SIDE — CONTACT + CTA + ADMIN CMS */}
           <div className="hidden lg:flex items-center gap-3">
-            <div className="hidden xl:flex items-center gap-1.5 border-r border-white/20 pr-3">
+            <div className="hidden xl:flex items-center gap-1.5 border-r border-gray-200 pr-3">
               <a
                 href="mailto:atweeltea@gmail.com"
                 data-testid="header-email"
-                className="flex items-center gap-1.5 text-tata-dark hover:text-tata-dark text-[11px] uppercase tracking-[0.15em] font-semibold transition-colors"
+                className="flex items-center gap-1.5 text-black hover:text-black text-[11px] uppercase tracking-[0.15em] font-semibold transition-colors"
                 title="Send email to atweeltea@gmail.com"
               >
-                <Mail className="w-3.5 h-3.5 text-tata-dark" />
+                <Mail className="w-3.5 h-3.5 text-black" />
                 <span>Export Desk</span>
               </a>
               <button
                 type="button"
                 onClick={(e) => handleCopyEmail(e, "atweeltea@gmail.com")}
                 data-testid="header-copy-email-btn"
-                className="p-1 rounded hover:bg-tata-blue-light text-tata-dark hover:text-tata-dark transition-colors flex items-center gap-1 cursor-pointer"
+                className="p-1 rounded-none hover:bg-gray-200 text-black hover:text-black transition-colors flex items-center gap-1 cursor-pointer"
                 title="Copy atweeltea@gmail.com to clipboard"
               >
-                {copiedEmail ? <Check className="w-3.5 h-3.5 text-tata-grey" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedEmail ? <Check className="w-3.5 h-3.5 text-gray-500" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
             </div>
 
             <button
               onClick={() => setActiveTab("admin")}
               data-testid="header-admin-button"
-              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-md text-[11px] uppercase tracking-[0.15em] font-bold border transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-none text-[11px] uppercase tracking-[0.15em] font-bold border transition-all ${
                 activeTab === "admin"
-                  ? "bg-tata-dark text-tata-blue-light border-tata-dark"
-                  : "bg-tata-bg-light text-tata-dark border-white/20 hover:bg-tata-blue-light"
+                  ? "bg-black text-gray-300 border-black"
+                  : "bg-gray-50 text-black border-gray-200 hover:bg-gray-200"
               }`}
               title="Access Dynamic Content Management System & Admin Portal"
             >
-              <Lock className="w-3.5 h-3.5 text-tata-dark" />
+              <Lock className="w-3.5 h-3.5 text-black" />
               <span>Admin CMS</span>
             </button>
 
             <button
               onClick={() => setActiveTab("rfq")}
               data-testid="header-rfq-button"
-              className="bg-tata-blue-dark hover:bg-tata-blue-dark text-white font-bold px-5 py-2.5 rounded-md text-[11px] uppercase tracking-[0.15em] shadow-md shadow-tata-blue-light/20 transition-all flex items-center gap-2"
+              className="bg-black hover:bg-black text-white font-bold px-5 py-2.5 rounded-none text-[11px] uppercase tracking-[0.15em]  shadow-none transition-all flex items-center gap-2"
             >
               <span>Request Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -1479,7 +1649,7 @@ export default function App() {
           {/* MOBILE MENU TOGGLE */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-tata-dark p-2"
+            className="md:hidden text-black p-2"
             data-testid="mobile-menu-toggle"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -1488,7 +1658,7 @@ export default function App() {
 
         {/* MOBILE MENU DROPDOWN */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-white/20 px-6 py-6 flex flex-col gap-4">
+          <div className="md:hidden bg-white border-b border-gray-200 px-6 py-6 flex flex-col gap-4">
             {[
               { id: "home", label: "Home" },
               { id: "catalog", label: "Product Catalog" },
@@ -1506,7 +1676,7 @@ export default function App() {
                   setMobileMenuOpen(false);
                 }}
                 className={`text-left py-2 font-medium ${
-                  activeTab === tab.id ? "text-tata-dark" : "text-tata-dark"
+                  activeTab === tab.id ? "text-black" : "text-black"
                 }`}
               >
                 {tab.label}
@@ -1517,7 +1687,7 @@ export default function App() {
                 setActiveTab("rfq");
                 setMobileMenuOpen(false);
               }}
-              className="mt-2 bg-tata-blue-dark text-white font-bold py-3 rounded-full text-center"
+              className="mt-2 bg-black text-white font-bold py-3 rounded-none text-center"
             >
               Request Bulk Quote
             </button>
@@ -1531,62 +1701,59 @@ export default function App() {
         {activeTab === "home" && (
           <div data-testid="view-home">
             <section 
-              className="relative pt-32 pb-48 overflow-hidden flex items-center justify-center min-h-[80vh] bg-tata-dark bg-cover bg-center"
-              style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1577978250009-41fdb4d59a80?auto=format&fit=crop&w=2000&q=80")' }}
+              className="relative w-full overflow-hidden flex items-center justify-center bg-black h-screen pt-28 pb-32 sm:py-20"
             >
-              {/* Gradient Overlays for Readability */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#174195]/85 via-[#bcb3b3]/70 to-[#174195]/95 z-0 mix-blend-multiply"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#bcb3b3] via-transparent to-transparent z-0 opacity-80" style={{ backgroundColor: '#bcb3b3' }}></div>
+              {/* Clean Banner Background Layer */}
+              <div className="absolute inset-0 z-0 flex items-center justify-center">
+                <img 
+                  src="/estate/hero-factory.jpg.png" 
+                  alt="Tea Factory Overlooking Garden" 
+                  className="w-full h-full object-cover object-center opacity-70 sm:opacity-80 transition-transform duration-700 hover:scale-105" 
+                />
+                {/* Elegant dark vignette to protect text legibility and blend the contained image edges */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/50 sm:via-[#0a0a0a]/40 to-[#0a0a0a]/90 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]/80 pointer-events-none opacity-80"></div>
+                {/* Extra text protection gradient for mobile */}
+                <div className="absolute inset-0 bg-black/40 sm:hidden pointer-events-none"></div>
+              </div>
               
               <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
                 {/* Floating Tea Grades */}
-                {FLOATING_GRADES.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className={`absolute hidden sm:flex px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg text-[9px] font-bold tracking-[0.2em] text-tata-grey-light uppercase animate-float ${item.scale}`}
-                    style={{
-                      top: item.top,
-                      left: item.left,
-                      animationDelay: item.delay,
-                    }}
-                  >
-                    {item.grade}
-                  </div>
-                ))}
+                
               </div>
 
-              <div className="relative z-10 max-w-5xl mx-auto px-6 w-full flex flex-col items-center text-center gap-10">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/30 shadow-sm transition-all hover:bg-black/60">
-                  <Leaf className="w-4 h-4 text-tata-blue-dark" />
-                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-white font-bold">100% Organic · India Organic · USDA · ISO 22000</span>
+              <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 w-full flex flex-col items-center text-center gap-6 sm:gap-8">
+                <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-none bg-black/50 backdrop-blur-md border border-gray-200 shadow-none transition-all hover:bg-black/70 hover:border-white/40">
+                  <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-300" />
+                  <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white font-bold">100% Organic · USDA · ISO 22000</span>
                 </div>
                 
-                <h1 className="font-serif text-[48px] sm:text-[64px] lg:text-[76px] font-medium tracking-tight text-white leading-[1.05] max-w-4xl mx-auto drop-shadow-2xl">
-                  Single-Estate <span className="italic text-tata-blue-dark">Organic Tea</span> from the Foothills of Arunachal
+                <h1 className="font-sans font-medium tracking-tight text-4xl sm:text-5xl md:text-6xl text-white leading-tight max-w-4xl mx-auto">
+                  Single-Estate <span className="italic text-gray-300">Organic Tea</span> from the Foothills of Arunachal
                 </h1>
                 
-                <div className="w-20 h-1 bg-tata-blue-dark rounded-full shadow-[0_0_10px_rgba(212,175,55,0.5)]" />
+                <div className="w-16 sm:w-24 h-1 sm:h-1.5 bg-transparent rounded-none  opacity-80" />
                 
-                <p className="text-lg sm:text-xl text-tata-grey-light font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-md">
-                  Cultivated, plucked, and processed on our own <strong className="font-medium text-white">1,200-bigha</strong> organic garden and <strong className="font-medium text-white">72,000 sq ft</strong> factory in Kharsang. Shipped directly to tea houses and blenders worldwide.
+                <p className="text-sm sm:text-base md:text-lg text-gray-400 font-normal leading-relaxed max-w-2xl mx-auto  px-2 sm:px-0">
+                  Cultivated, plucked, and processed on our own <strong className="font-medium text-white">1,200-bigha</strong> organic garden and <strong className="font-medium text-white">72,000 sq ft</strong> factory in Kharsang. Shipped directly to tea houses worldwide.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 w-full sm:w-auto mt-2">
                   <button
                     onClick={() => setActiveTab("catalog")}
                     data-testid="hero-explore-catalog"
-                    className="bg-tata-blue-dark hover:bg-tata-blue-light text-white font-bold px-10 py-5 rounded-full text-xs uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] transition-all duration-300 flex items-center gap-3 transform hover:-translate-y-0.5"
+                    className="w-full sm:w-auto bg-black hover:bg-gray-900 text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-none text-[11px] sm:text-[12px] uppercase tracking-[0.2em]  hover: transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1"
                   >
                     <span>Explore Our Tea</span>
-                    <ArrowRight className="w-4 h-4 text-tata-dark" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setActiveTab("standards")}
                     data-testid="hero-custom-rfq"
-                    className="border border-white/40 bg-black/30 hover:bg-white/10 text-white font-bold px-10 py-5 rounded-full text-xs uppercase tracking-[0.2em] shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-3 backdrop-blur-md transform hover:-translate-y-0.5"
+                    className="w-full sm:w-auto bg-white hover:bg-gray-100 text-black font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-none text-[11px] sm:text-[12px] uppercase tracking-[0.2em]  hover: transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md transform hover:-translate-y-1"
                   >
                     <span>Our Operations</span>
-                    <ArrowRight className="w-4 h-4 text-white" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -1594,49 +1761,49 @@ export default function App() {
 
             {/* FLOATING 4-FEATURE BANNER */}
             <div className="max-w-7xl mx-auto px-6 relative z-20 -mt-20 mb-24" data-testid="hero-floating-banner">
-              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-tata-dark/10 border border-tata-grey-light/60 p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-tata-grey-light/60" style={{ paddingTop: '40px', marginTop: '39px' }}>
+              <div className="bg-white/95 backdrop-blur-xl rounded-none  shadow-none border border-transparent p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-200" style={{ paddingTop: '40px', marginTop: '39px' }}>
                 
                 {/* ITEM 1 */}
                 <div className="group flex flex-col items-center text-center gap-4 sm:pr-4 pt-4 sm:pt-0">
-                  <div className="w-14 h-14 rounded-full bg-tata-bg-lighter border border-tata-grey-light/80 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-tata-blue-light group-hover:border-tata-blue-light/20 group-hover:scale-110 transition-all duration-300">
-                    <Leaf className="w-6 h-6 text-tata-grey group-hover:text-tata-blue-light transition-colors" />
+                  <div className="w-14 h-14 rounded-none bg-gray-50er border border-gray-100/80 shadow-none flex items-center justify-center shrink-0 group-hover:bg-gray-200 group-hover:border-black group-hover:scale-110 transition-all duration-300">
+                    <Leaf className="w-6 h-6 text-gray-500 group-hover:text-gray-300 transition-colors" />
                   </div>
                   <div>
-                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-tata-dark">Single-Estate</div>
-                    <div className="text-xs text-tata-grey mt-1.5 leading-relaxed">Full Control from Garden to Cup</div>
+                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-black">Single-Estate</div>
+                    <div className="text-xs text-gray-500 mt-1.5 leading-relaxed">Full Control from Garden to Cup</div>
                   </div>
                 </div>
 
                 {/* ITEM 2 */}
                 <div className="group flex flex-col items-center text-center gap-4 sm:px-4 pt-6 sm:pt-0">
-                  <div className="w-14 h-14 rounded-full bg-tata-bg-lighter border border-tata-grey-light/80 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-tata-blue-light group-hover:border-tata-blue-light/20 group-hover:scale-110 transition-all duration-300">
-                    <Building className="w-6 h-6 text-tata-grey group-hover:text-tata-blue-light transition-colors" />
+                  <div className="w-14 h-14 rounded-none bg-gray-50er border border-gray-100/80 shadow-none flex items-center justify-center shrink-0 group-hover:bg-gray-200 group-hover:border-black group-hover:scale-110 transition-all duration-300">
+                    <Building className="w-6 h-6 text-gray-500 group-hover:text-gray-300 transition-colors" />
                   </div>
                   <div>
-                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-tata-dark">72,000 Sq Ft Factory</div>
-                    <div className="text-xs text-tata-grey mt-1.5 leading-relaxed">State-of-the-art Processing</div>
+                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-black">72,000 Sq Ft Factory</div>
+                    <div className="text-xs text-gray-500 mt-1.5 leading-relaxed">State-of-the-art Processing</div>
                   </div>
                 </div>
 
                 {/* ITEM 3 */}
                 <div className="group flex flex-col items-center text-center gap-4 sm:px-4 pt-6 sm:pt-0">
-                  <div className="w-14 h-14 rounded-full bg-tata-bg-lighter border border-tata-grey-light/80 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-tata-blue-light group-hover:border-tata-blue-light/20 group-hover:scale-110 transition-all duration-300">
-                    <Globe className="w-6 h-6 text-tata-grey group-hover:text-tata-blue-light transition-colors" />
+                  <div className="w-14 h-14 rounded-none bg-gray-50er border border-gray-100/80 shadow-none flex items-center justify-center shrink-0 group-hover:bg-gray-200 group-hover:border-black group-hover:scale-110 transition-all duration-300">
+                    <Globe className="w-6 h-6 text-gray-500 group-hover:text-gray-300 transition-colors" />
                   </div>
                   <div>
-                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-tata-dark">Global Exports</div>
-                    <div className="text-xs text-tata-grey mt-1.5 leading-relaxed">Trusted by Partners Worldwide</div>
+                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-black">Global Exports</div>
+                    <div className="text-xs text-gray-500 mt-1.5 leading-relaxed">Trusted by Partners Worldwide</div>
                   </div>
                 </div>
 
                 {/* ITEM 4 */}
                 <div className="group flex flex-col items-center text-center gap-4 sm:pl-4 pt-6 sm:pt-0">
-                  <div className="w-14 h-14 rounded-full bg-tata-bg-lighter border border-tata-grey-light/80 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-tata-blue-light group-hover:border-tata-blue-light/20 group-hover:scale-110 transition-all duration-300">
-                    <ShieldCheck className="w-6 h-6 text-tata-grey group-hover:text-tata-blue-light transition-colors" />
+                  <div className="w-14 h-14 rounded-none bg-gray-50er border border-gray-100/80 shadow-none flex items-center justify-center shrink-0 group-hover:bg-gray-200 group-hover:border-black group-hover:scale-110 transition-all duration-300">
+                    <ShieldCheck className="w-6 h-6 text-gray-500 group-hover:text-gray-300 transition-colors" />
                   </div>
                   <div>
-                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-tata-dark">Certified Organic</div>
-                    <div className="text-xs text-tata-grey mt-1.5 leading-relaxed">Quality & Compliance Assured</div>
+                    <div className="font-bold text-xs uppercase tracking-[0.2em] text-black">Certified Organic</div>
+                    <div className="text-xs text-gray-500 mt-1.5 leading-relaxed">Quality & Compliance Assured</div>
                   </div>
                 </div>
 
@@ -1647,47 +1814,47 @@ export default function App() {
             <section className="py-24 px-6 max-w-7xl mx-auto" data-testid="about-section" style={{ paddingTop: '9px' }}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 <div className="lg:col-span-6 order-2 lg:order-1">
-                  <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-xl shadow-tata-dark/10 aspect-video">
-                    <div className="absolute inset-0 bg-gradient-to-t from-tata-dark/85 via-tata-dark/20 to-transparent" />
+                  <div className="relative rounded-none overflow-hidden border border-gray-200  shadow-none aspect-video">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <div className="text-tata-dark text-[10px] uppercase tracking-[0.25em] font-semibold mb-1">Our Estate & Factory</div>
-                      <div className="text-white font-serif text-xl font-medium">Nemphai 1, Kharsang · Arunachal Pradesh</div>
-                      <div className="text-tata-grey text-[11px] mt-1 uppercase tracking-wider">Actual photograph · No stock imagery</div>
+                      <div className="text-black text-[10px] uppercase tracking-[0.25em] font-semibold mb-1">Our Estate & Factory</div>
+                      <div className="text-white font-sans font-light tracking-tight">Nemphai 1, Kharsang · Arunachal Pradesh</div>
+                      <div className="text-gray-500 text-[11px] mt-1 uppercase tracking-wider">Actual photograph · No stock imagery</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-                  <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">About the Company</span>
-                  <h2 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark leading-tight">
-                    Rooted in Arunachal, <br/><span className="text-tata-dark">Trusted by the World.</span>
+                  <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">About the Company</span>
+                  <h2 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black leading-tight">
+                    Rooted in Arunachal, <br/><span className="text-black">Trusted by the World.</span>
                   </h2>
-                  <p className="text-tata-grey text-base leading-relaxed">
-                    <span className="font-semibold text-tata-dark">Atweel Tea</span> is the flagship brand of <span className="font-semibold text-tata-dark">Atweel Food & Beverages Private Limited</span> — a fully-integrated organic tea grower, manufacturer and exporter headquartered at the foothills of the Patkai range in Kharsang, Arunachal Pradesh.
+                  <p className="text-gray-500 text-base leading-relaxed">
+                    <span className="font-semibold text-black">Atweel Tea</span> is the flagship brand of <span className="font-semibold text-black">Atweel Food & Beverages Private Limited</span> — a fully-integrated organic tea grower, manufacturer and exporter headquartered at the foothills of the Patkai range in Kharsang, Arunachal Pradesh.
                   </p>
-                  <p className="text-tata-grey text-base leading-relaxed">
-                    Every leaf we ship is grown on our own <span className="font-semibold text-tata-dark">1,200-bigha certified organic estate</span> and processed under one roof at our <span className="font-semibold text-tata-dark">72,000 sq ft state-of-the-art factory</span>. This complete plot-to-package control lets us guarantee traceability, freshness and consistency to global buyers — from private-label blenders to specialty tea houses and hospitality chains.
+                  <p className="text-gray-500 text-base leading-relaxed">
+                    Every leaf we ship is grown on our own <span className="font-semibold text-black">1,200-bigha certified organic estate</span> and processed under one roof at our <span className="font-semibold text-black">72,000 sq ft state-of-the-art factory</span>. This complete plot-to-package control lets us guarantee traceability, freshness and consistency to global buyers — from private-label blenders to specialty tea houses and hospitality chains.
                   </p>
-                  <p className="text-tata-grey text-base leading-relaxed">
-                    With a philosophy built on <span className="font-semibold text-tata-dark">soil health, ethical labour and uncompromising quality control</span>, Atweel Tea combines centuries-old orthodox craftsmanship with modern food-safety systems certified under ISO 22000, HACCP, FSSAI, India Organic (NPOP), USDA-NOP and EU Organic protocols.
+                  <p className="text-gray-500 text-base leading-relaxed">
+                    With a philosophy built on <span className="font-semibold text-black">soil health, ethical labour and uncompromising quality control</span>, Atweel Tea combines centuries-old orthodox craftsmanship with modern food-safety systems certified under ISO 22000, HACCP, FSSAI, India Organic (NPOP), USDA-NOP and EU Organic protocols.
                   </p>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-                    <div className="p-4 rounded-2xl bg-white border border-white/20 text-center">
-                      <div className="font-serif text-2xl font-bold text-tata-dark">1,200</div>
-                      <div className="text-[10px] uppercase tracking-wider text-tata-grey mt-1">Bigha Estate</div>
+                    <div className="p-4 rounded-none bg-white border border-gray-200 text-center">
+                      <div className="font-sans font-light tracking-tight text-2xl font-bold text-black">1,200</div>
+                      <div className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">Bigha Estate</div>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white border border-white/20 text-center">
-                      <div className="font-serif text-2xl font-bold text-tata-dark">72K</div>
-                      <div className="text-[10px] uppercase tracking-wider text-tata-grey mt-1">Sq Ft Factory</div>
+                    <div className="p-4 rounded-none bg-white border border-gray-200 text-center">
+                      <div className="font-sans font-light tracking-tight text-2xl font-bold text-black">72K</div>
+                      <div className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">Sq Ft Factory</div>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white border border-white/20 text-center">
-                      <div className="font-serif text-2xl font-bold text-tata-dark">100%</div>
-                      <div className="text-[10px] uppercase tracking-wider text-tata-grey mt-1">Organic</div>
+                    <div className="p-4 rounded-none bg-white border border-gray-200 text-center">
+                      <div className="font-sans font-light tracking-tight text-2xl font-bold text-black">100%</div>
+                      <div className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">Organic</div>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white border border-white/20 text-center">
-                      <div className="font-serif text-2xl font-bold text-tata-dark">6+</div>
-                      <div className="text-[10px] uppercase tracking-wider text-tata-grey mt-1">Certifications</div>
+                    <div className="p-4 rounded-none bg-white border border-gray-200 text-center">
+                      <div className="font-sans font-light tracking-tight text-2xl font-bold text-black">6+</div>
+                      <div className="text-[10px] uppercase tracking-wider text-gray-500 mt-1">Certifications</div>
                     </div>
                   </div>
 
@@ -1696,7 +1863,7 @@ export default function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="about-sop-link"
-                    className="inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-full bg-tata-dark hover:bg-tata-dark text-tata-blue-light font-semibold text-sm transition-all group"
+                    className="inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-none bg-black hover:bg-black text-gray-300 font-semibold text-sm transition-all group"
                   >
                     <FileText className="w-4 h-4" />
                     <span>Download our Global Compliance SOP (PDF)</span>
@@ -1720,14 +1887,14 @@ export default function App() {
             <section className="py-20 px-6 max-w-7xl mx-auto">
               {/* SECTION HEADER */}
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <span className="text-xs uppercase tracking-[0.25em] text-tata-dark font-bold flex items-center justify-center gap-2">
-                  <Sparkles className="w-4 h-4 text-tata-dark" />
+                <span className="text-xs uppercase tracking-[0.25em] text-black font-bold flex items-center justify-center gap-2">
+                  <Sparkles className="w-4 h-4 text-black" />
                   Global B2B Procurement & Estate Operations
                 </span>
-                <h2 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark mt-3">
+                <h2 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black mt-3">
                   Everything You Need to Source Atweel Tea
                 </h2>
-                <p className="text-tata-grey mt-4 text-base leading-relaxed">
+                <p className="text-gray-500 mt-4 text-base leading-relaxed">
                   From single-estate specification sheets to real-time container telemetry — a modern B2B procurement platform for international buyers, blenders, and wholesale distributors.
                 </p>
               </div>
@@ -1738,22 +1905,22 @@ export default function App() {
                 {/* CARD 1: CATALOG */}
                 <div 
                   onClick={() => setActiveTab("catalog")}
-                  className="bg-white border-2 border-white/20 hover:border-tata-blue-light/20 p-8 rounded-2xl transition-all cursor-pointer group flex flex-col justify-between shadow-md hover:shadow-2xl relative overflow-hidden"
+                  className="bg-white border-2 border-gray-200 hover:border-black p-8 rounded-none transition-all cursor-pointer group flex flex-col justify-between  hover: relative overflow-hidden"
                   data-testid="bento-card-catalog"
                 >
-                  <div className="absolute top-0 right-0 bg-tata-bg-light text-tata-dark text-[10px] uppercase font-bold px-3 py-1 rounded-bl-xl border-l border-b border-white/20">
+                  <div className="absolute top-0 right-0 bg-gray-50 text-black text-[10px] uppercase font-bold px-3 py-1 rounded-none-bl-xl border-l border-b border-gray-200">
                     Live Specs
                   </div>
                   <div>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-tata-dark to-tata-dark border border-white/20 flex items-center justify-center text-tata-dark mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    <div className="w-14 h-14 rounded-none bg-gradient-to-br from-black to-black bg-black border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-transform ">
                       <Package className="w-7 h-7" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-tata-dark group-hover:text-tata-dark transition-colors">Tea Product Catalog</h3>
-                    <p className="text-tata-grey text-sm mt-3 leading-relaxed">
+                    <h3 className="font-sans text-xl font-medium text-black group-hover:text-black transition-colors">Tea Product Catalog</h3>
+                    <p className="text-gray-500 text-sm mt-3 leading-relaxed">
                       Browse FTGFOP1, BOP, Orthodox, and Green tea grades with complete organoleptic analysis & lab test certificates.
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-tata-grey-light flex items-center justify-between text-tata-dark font-semibold text-sm">
+                  <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-black font-semibold text-sm">
                     <span>View Grades & Specs</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>
@@ -1762,22 +1929,22 @@ export default function App() {
                 {/* CARD 2: TRACKER */}
                 <div 
                   onClick={() => setActiveTab("tracker")}
-                  className="bg-white border-2 border-white/20 hover:border-tata-blue-light/20 p-8 rounded-2xl transition-all cursor-pointer group flex flex-col justify-between shadow-md hover:shadow-2xl relative overflow-hidden"
+                  className="bg-white border-2 border-gray-200 hover:border-black p-8 rounded-none transition-all cursor-pointer group flex flex-col justify-between  hover: relative overflow-hidden"
                   data-testid="bento-card-tracker"
                 >
-                  <div className="absolute top-0 right-0 bg-tata-bg-light text-tata-dark text-[10px] uppercase font-bold px-3 py-1 rounded-bl-xl border-l border-b border-white/20">
+                  <div className="absolute top-0 right-0 bg-gray-50 text-black text-[10px] uppercase font-bold px-3 py-1 rounded-none-bl-xl border-l border-b border-gray-200">
                     GPS Telemetry
                   </div>
                   <div>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-tata-dark to-tata-dark border border-white/20 flex items-center justify-center text-tata-dark mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    <div className="w-14 h-14 rounded-none bg-gradient-to-br from-black to-black bg-black border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-transform ">
                       <Truck className="w-7 h-7" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-tata-dark group-hover:text-tata-dark transition-colors">Global Cargo Tracker</h3>
-                    <p className="text-tata-grey text-sm mt-3 leading-relaxed">
+                    <h3 className="font-sans text-xl font-medium text-black group-hover:text-black transition-colors">Global Cargo Tracker</h3>
+                    <p className="text-gray-500 text-sm mt-3 leading-relaxed">
                       Monitor live vessel position, temperature-controlled container logs, and customs clearances at sea.
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-tata-grey-light flex items-center justify-between text-tata-dark font-semibold text-sm">
+                  <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-black font-semibold text-sm">
                     <span>Track Cargo Container</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>
@@ -1786,22 +1953,22 @@ export default function App() {
                 {/* CARD 3: CALCULATOR */}
                 <div 
                   onClick={() => setActiveTab("calculator")}
-                  className="bg-white border-2 border-white/20 hover:border-tata-blue-light/20 p-8 rounded-2xl transition-all cursor-pointer group flex flex-col justify-between shadow-md hover:shadow-2xl relative overflow-hidden"
+                  className="bg-white border-2 border-gray-200 hover:border-black p-8 rounded-none transition-all cursor-pointer group flex flex-col justify-between  hover: relative overflow-hidden"
                   data-testid="bento-card-calculator"
                 >
-                  <div className="absolute top-0 right-0 bg-tata-bg-light text-tata-dark text-[10px] uppercase font-bold px-3 py-1 rounded-bl-xl border-l border-b border-white/20">
+                  <div className="absolute top-0 right-0 bg-gray-50 text-black text-[10px] uppercase font-bold px-3 py-1 rounded-none-bl-xl border-l border-b border-gray-200">
                     Instant Quote
                   </div>
                   <div>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-tata-dark to-tata-dark border border-white/20 flex items-center justify-center text-tata-dark mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    <div className="w-14 h-14 rounded-none bg-gradient-to-br from-black to-black bg-black border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-transform ">
                       <Calculator className="w-7 h-7" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-tata-dark group-hover:text-tata-dark transition-colors">Wholesale & Freight Engine</h3>
-                    <p className="text-tata-grey text-sm mt-3 leading-relaxed">
+                    <h3 className="font-sans text-xl font-medium text-black group-hover:text-black transition-colors">Wholesale & Freight Engine</h3>
+                    <p className="text-gray-500 text-sm mt-3 leading-relaxed">
                       Calculate tiered volume discounts, container loading capacity, and estimated FOB/CIF sea freight costs.
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-tata-grey-light flex items-center justify-between text-tata-dark font-semibold text-sm">
+                  <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-black font-semibold text-sm">
                     <span>Calculate Wholesale Quote</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>
@@ -1810,22 +1977,22 @@ export default function App() {
                 {/* CARD 4: DIRECT SAMPLES */}
                 <div 
                   onClick={() => setActiveTab("rfq")}
-                  className="bg-white border-2 border-white/20 hover:border-tata-blue-light/20 p-8 rounded-2xl transition-all cursor-pointer group flex flex-col justify-between shadow-md hover:shadow-2xl relative overflow-hidden"
+                  className="bg-white border-2 border-gray-200 hover:border-black p-8 rounded-none transition-all cursor-pointer group flex flex-col justify-between  hover: relative overflow-hidden"
                   data-testid="bento-card-samples"
                 >
-                  <div className="absolute top-0 right-0 bg-tata-bg-light text-tata-dark text-[10px] uppercase font-bold px-3 py-1 rounded-bl-xl border-l border-b border-white/20">
+                  <div className="absolute top-0 right-0 bg-gray-50 text-black text-[10px] uppercase font-bold px-3 py-1 rounded-none-bl-xl border-l border-b border-gray-200">
                     DHL Express
                   </div>
                   <div>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-tata-dark to-tata-dark border border-white/20 flex items-center justify-center text-tata-dark mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    <div className="w-14 h-14 rounded-none bg-gradient-to-br from-black to-black bg-black border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-transform ">
                       <Award className="w-7 h-7" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-tata-dark group-hover:text-tata-dark transition-colors">Airmail Sample Request</h3>
-                    <p className="text-tata-grey text-sm mt-3 leading-relaxed">
+                    <h3 className="font-sans text-xl font-medium text-black group-hover:text-black transition-colors">Airmail Sample Request</h3>
+                    <p className="text-gray-500 text-sm mt-3 leading-relaxed">
                       Receive 100g sealed cupping tins of our latest orthodox harvest directly at your office within 5 business days.
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-tata-grey-light flex items-center justify-between text-tata-dark font-semibold text-sm">
+                  <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-black font-semibold text-sm">
                     <span>Order Cupping Tins</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>
@@ -1834,22 +2001,22 @@ export default function App() {
                 {/* CARD 5: COMPLIANCE & AUDITS */}
                 <div 
                   onClick={() => setVerifyCert(CERTIFICATIONS["iso-22000"])}
-                  className="bg-white border-2 border-white/20 hover:border-tata-blue-light/20 p-8 rounded-2xl transition-all cursor-pointer group flex flex-col justify-between shadow-md hover:shadow-2xl relative overflow-hidden"
+                  className="bg-white border-2 border-gray-200 hover:border-black p-8 rounded-none transition-all cursor-pointer group flex flex-col justify-between  hover: relative overflow-hidden"
                   data-testid="bento-card-certifications"
                 >
-                  <div className="absolute top-0 right-0 bg-tata-bg-light text-tata-dark text-[10px] uppercase font-bold px-3 py-1 rounded-bl-xl border-l border-b border-white/20">
+                  <div className="absolute top-0 right-0 bg-gray-50 text-black text-[10px] uppercase font-bold px-3 py-1 rounded-none-bl-xl border-l border-b border-gray-200">
                     ISO & NPOP
                   </div>
                   <div>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-tata-dark to-tata-dark border border-white/20 flex items-center justify-center text-tata-dark mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    <div className="w-14 h-14 rounded-none bg-gradient-to-br from-black to-black bg-black border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-transform ">
                       <ShieldCheck className="w-7 h-7" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-tata-dark group-hover:text-tata-dark transition-colors">Compliance & Audit Hub</h3>
-                    <p className="text-tata-grey text-sm mt-3 leading-relaxed">
+                    <h3 className="font-sans text-xl font-medium text-black group-hover:text-black transition-colors">Compliance & Audit Hub</h3>
+                    <p className="text-gray-500 text-sm mt-3 leading-relaxed">
                       Download ISO 22000 food safety certificates, USDA Organic credentials, and EU MRL pesticide residue clearance reports.
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-tata-grey-light flex items-center justify-between text-tata-dark font-semibold text-sm">
+                  <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-black font-semibold text-sm">
                     <span>Verify Credentials</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>
@@ -1858,22 +2025,22 @@ export default function App() {
                 {/* CARD 6: OEM & CUSTOM BLENDING */}
                 <div 
                   onClick={() => setActiveTab("rfq")}
-                  className="bg-white border-2 border-white/20 hover:border-tata-blue-light/20 p-8 rounded-2xl transition-all cursor-pointer group flex flex-col justify-between shadow-md hover:shadow-2xl relative overflow-hidden"
+                  className="bg-white border-2 border-gray-200 hover:border-black p-8 rounded-none transition-all cursor-pointer group flex flex-col justify-between  hover: relative overflow-hidden"
                   data-testid="bento-card-oem"
                 >
-                  <div className="absolute top-0 right-0 bg-tata-bg-light text-tata-dark text-[10px] uppercase font-bold px-3 py-1 rounded-bl-xl border-l border-b border-white/20">
+                  <div className="absolute top-0 right-0 bg-gray-50 text-black text-[10px] uppercase font-bold px-3 py-1 rounded-none-bl-xl border-l border-b border-gray-200">
                     Custom Packaging
                   </div>
                   <div>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-tata-dark to-tata-dark border border-white/20 flex items-center justify-center text-tata-dark mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    <div className="w-14 h-14 rounded-none bg-gradient-to-br from-black to-black bg-black border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-transform ">
                       <FileText className="w-7 h-7" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-tata-dark group-hover:text-tata-dark transition-colors">OEM & Custom Blending</h3>
-                    <p className="text-tata-grey text-sm mt-3 leading-relaxed">
+                    <h3 className="font-sans text-xl font-medium text-black group-hover:text-black transition-colors">OEM & Custom Blending</h3>
+                    <p className="text-gray-500 text-sm mt-3 leading-relaxed">
                       Custom leaf sizing, bespoke particle cut for tea bags, and private-label vacuum foil chest packaging for retail brands.
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-tata-grey-light flex items-center justify-between text-tata-dark font-semibold text-sm">
+                  <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-black font-semibold text-sm">
                     <span>Request OEM Quotation</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                   </div>
@@ -1882,51 +2049,51 @@ export default function App() {
               </div>
 
               {/* ESTATE INFRASTRUCTURE & PRODUCTION METRICS GRID */}
-              <div className="bg-gradient-to-r from-tata-dark via-tata-dark to-tata-dark border-2 border-white/20 rounded-3xl p-8 sm:p-12 mb-20 shadow-2xl relative overflow-hidden" data-testid="infrastructure-kpi-grid">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-tata-blue-dark/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="bg-gradient-to-r from-black to-black bg-black border-2 border-gray-200 rounded-none p-8 sm:p-12 mb-20  relative overflow-hidden" data-testid="infrastructure-kpi-grid">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-black/5 rounded-none blur-3xl pointer-events-none" />
                 
                 <div className="max-w-3xl mb-10">
-                  <span className="text-xs uppercase tracking-[0.25em] text-tata-dark font-bold flex items-center gap-2">
-                    <Factory className="w-4 h-4 text-tata-dark" />
+                  <span className="text-xs uppercase tracking-[0.25em] text-black font-bold flex items-center gap-2">
+                    <Factory className="w-4 h-4 text-black" />
                     Arunachal Pradesh Production Facilities
                   </span>
-                  <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">
+                  <h3 className="font-sans font-light tracking-tight text-3xl sm:text-4xl font-bold text-white mt-2">
                     Single-Origin Estate Infrastructure
                   </h3>
-                  <p className="text-tata-grey text-sm mt-2 leading-relaxed">
+                  <p className="text-gray-500 text-sm mt-2 leading-relaxed">
                     Integrated cultivation, processing, and containerization operating under strict ISO 22000 and HACCP food safety protocols.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="bg-tata-dark/80 border border-white/20 p-6 rounded-2xl backdrop-blur-md">
-                    <div className="text-tata-dark text-3xl font-serif font-bold">1,200 Bigha</div>
+                  <div className="bg-black/80 border border-gray-200 p-6 rounded-none backdrop-blur-md">
+                    <div className="text-black text-3xl font-sans font-light tracking-tight font-bold">1,200 Bigha</div>
                     <div className="text-white font-semibold text-sm mt-1">Organic Plantation</div>
-                    <p className="text-tata-grey text-xs mt-2 leading-relaxed">
+                    <p className="text-gray-500 text-xs mt-2 leading-relaxed">
                       Highland gardens in Kharsang at 300m-800m elevation in the Patkai hills.
                     </p>
                   </div>
 
-                  <div className="bg-tata-dark/80 border border-white/20 p-6 rounded-2xl backdrop-blur-md">
-                    <div className="text-tata-dark text-3xl font-serif font-bold">72,000 Sq Ft</div>
+                  <div className="bg-black/80 border border-gray-200 p-6 rounded-none backdrop-blur-md">
+                    <div className="text-black text-3xl font-sans font-light tracking-tight font-bold">72,000 Sq Ft</div>
                     <div className="text-white font-semibold text-sm mt-1">Processing Plant</div>
-                    <p className="text-tata-grey text-xs mt-2 leading-relaxed">
+                    <p className="text-gray-500 text-xs mt-2 leading-relaxed">
                       Modern factory equipped with climate-controlled brass rolling and withering troughs.
                     </p>
                   </div>
 
-                  <div className="bg-tata-dark/80 border border-white/20 p-6 rounded-2xl backdrop-blur-md">
-                    <div className="text-tata-dark text-3xl font-serif font-bold">100% Organic</div>
+                  <div className="bg-black/80 border border-gray-200 p-6 rounded-none backdrop-blur-md">
+                    <div className="text-black text-3xl font-sans font-light tracking-tight font-bold">100% Organic</div>
                     <div className="text-white font-semibold text-sm mt-1">Zero Pesticides</div>
-                    <p className="text-tata-grey text-xs mt-2 leading-relaxed">
+                    <p className="text-gray-500 text-xs mt-2 leading-relaxed">
                       NPOP & USDA Organic certified soil nourished by rainforest mountain streams.
                     </p>
                   </div>
 
-                  <div className="bg-tata-dark/80 border border-white/20 p-6 rounded-2xl backdrop-blur-md">
-                    <div className="text-tata-dark text-3xl font-serif font-bold">Kolkata Port</div>
+                  <div className="bg-black/80 border border-gray-200 p-6 rounded-none backdrop-blur-md">
+                    <div className="text-black text-3xl font-sans font-light tracking-tight font-bold">Kolkata Port</div>
                     <div className="text-white font-semibold text-sm mt-1">Ocean Dispatch</div>
-                    <p className="text-tata-grey text-xs mt-2 leading-relaxed">
+                    <p className="text-gray-500 text-xs mt-2 leading-relaxed">
                       Direct sealed container trucking to port for dispatch to Europe, US & Middle East.
                     </p>
                   </div>
@@ -1934,21 +2101,21 @@ export default function App() {
               </div>
 
               {/* SINGLE-ESTATE TEA CRAFTSMANSHIP & LEAF GALLERY GRID */}
-              <div className="pt-8 border-t border-white/20" data-testid="tea-craftsmanship-gallery">
+              <div className="pt-8 border-t border-gray-200" data-testid="tea-craftsmanship-gallery">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                   <div>
-                    <span className="text-xs uppercase tracking-[0.25em] text-tata-dark font-bold flex items-center gap-2">
-                      <Leaf className="w-3.5 h-3.5 text-tata-dark" />
+                    <span className="text-xs uppercase tracking-[0.25em] text-black font-bold flex items-center gap-2">
+                      <Leaf className="w-3.5 h-3.5 text-black" />
                       Single-Origin Visual Showcase
                     </span>
-                    <h2 className="font-serif text-3xl sm:text-4xl font-bold text-tata-dark mt-2">
+                    <h2 className="font-sans font-light tracking-tight text-3xl sm:text-4xl font-bold text-black mt-2">
                       Orthodox Tea Grades & Estate Craftsmanship
                     </h2>
-                    <p className="text-tata-grey text-sm mt-1 max-w-2xl">
+                    <p className="text-gray-500 text-sm mt-1 max-w-2xl">
                       Full plot-to-package transparency. Click any tea grade or estate process below to inspect high-resolution leaf texture, liquor color, and factory processing.
                     </p>
                   </div>
-                  <div className="text-xs text-tata-dark font-semibold bg-tata-bg-light border border-white/20 px-4 py-2 rounded-full w-max shadow-sm">
+                  <div className="text-xs text-black font-semibold bg-gray-50 border border-gray-200 px-4 py-2 rounded-none w-max shadow-none">
                     8 Export Grades & Estate Views
                   </div>
                 </div>
@@ -1960,7 +2127,7 @@ export default function App() {
                       key={item.id}
                       onClick={() => setSelectedImageModal(item)}
                       data-testid={`tea-gallery-card-${item.id}`}
-                      className="group relative rounded-2xl overflow-hidden bg-tata-dark border-2 border-white/20 hover:border-tata-blue-light/20 transition-all cursor-pointer shadow-lg hover:shadow-2xl flex flex-col justify-between"
+                      className="group relative rounded-none overflow-hidden bg-black border-2 border-gray-200 hover:border-black transition-all cursor-pointer  hover: flex flex-col justify-between"
                     >
                       {/* Image container */}
                       <div className="aspect-[4/3] w-full overflow-hidden relative">
@@ -1970,30 +2137,30 @@ export default function App() {
                           className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 filter brightness-[0.95]"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-tata-dark via-tata-dark/30 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                         
                         {/* Top Badge */}
-                        <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] uppercase font-bold tracking-wider text-tata-dark border border-white/20 shadow-sm">
+                        <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-none text-[10px] uppercase font-bold tracking-wider text-black border border-gray-200 shadow-none">
                           {item.badge}
                         </div>
 
                         {/* Expand Icon */}
-                        <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-tata-dark/80 text-tata-blue-light border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute top-3 right-3 w-7 h-7 rounded-none bg-black/80 text-gray-300 border border-gray-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                           <Sparkles className="w-3.5 h-3.5" />
                         </div>
                       </div>
 
                       {/* Content Overlay */}
-                      <div className="p-4 bg-gradient-to-b from-tata-dark to-tata-dark flex-1 flex flex-col justify-between border-t border-white/20">
+                      <div className="p-4 bg-gradient-to-b from-black to-black bg-black flex-1 flex flex-col justify-between border-t border-gray-200">
                         <div>
-                          <span className="text-[10px] uppercase tracking-widest text-tata-dark font-semibold">{item.category}</span>
-                          <h3 className="font-serif text-lg font-bold text-white mt-0.5 group-hover:text-tata-dark transition-colors line-clamp-1">{item.title}</h3>
-                          <p className="text-tata-grey text-xs mt-1.5 leading-relaxed line-clamp-2">{item.desc}</p>
+                          <span className="text-[10px] uppercase tracking-widest text-black font-semibold">{item.category}</span>
+                          <h3 className="font-sans font-light tracking-tight text-lg font-bold text-white mt-0.5 group-hover:text-black transition-colors line-clamp-1">{item.title}</h3>
+                          <p className="text-gray-500 text-xs mt-1.5 leading-relaxed line-clamp-2">{item.desc}</p>
                         </div>
                         
-                        <div className="mt-3 pt-2 border-t border-tata-dark/60 flex items-center justify-between text-[10px] text-tata-grey">
-                          <span className="truncate font-mono text-tata-dark/90">{item.spec}</span>
-                          <span className="text-tata-dark font-semibold group-hover:underline shrink-0 ml-2">Inspect &rarr;</span>
+                        <div className="mt-3 pt-2 border-t border-gray-200 flex items-center justify-between text-[10px] text-gray-500">
+                          <span className="truncate font-mono text-black/90">{item.spec}</span>
+                          <span className="text-black font-semibold group-hover:underline shrink-0 ml-2">Inspect &rarr;</span>
                         </div>
                       </div>
                     </div>
@@ -2037,22 +2204,22 @@ export default function App() {
           <div className="py-16 px-6 max-w-7xl mx-auto" data-testid="view-catalog">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
               <div>
-                <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Exquisite Collection</span>
-                <h1 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark mt-2">Global Tea Catalog & Grades</h1>
-                <p className="text-tata-grey mt-2">Single-origin, orthodox, and specialty loose leaf teas packaged for bulk commercial export.</p>
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Exquisite Collection</span>
+                <h1 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black mt-2">Global Tea Catalog & Grades</h1>
+                <p className="text-gray-500 mt-2">Single-origin, orthodox, and specialty loose leaf teas packaged for bulk commercial export.</p>
               </div>
 
               {/* SEARCH & FILTER */}
               <div className="flex flex-wrap gap-4">
                 <div className="relative">
-                  <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-tata-grey" />
+                  <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-gray-500" />
                   <input
                     type="text"
                     placeholder="Search grade or origin..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     data-testid="catalog-search-input"
-                    className="bg-white border border-white/20 rounded-full pl-10 pr-4 py-2.5 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20 w-64"
+                    className="bg-white border border-gray-200 rounded-none pl-10 pr-4 py-2.5 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black w-64"
                   />
                 </div>
 
@@ -2060,7 +2227,7 @@ export default function App() {
                   value={selectedCertFilter}
                   onChange={(e) => setSelectedCertFilter(e.target.value)}
                   data-testid="catalog-cert-filter"
-                  className="bg-white border border-white/20 rounded-full px-4 py-2.5 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                  className="bg-white border border-gray-200 rounded-none px-4 py-2.5 text-sm text-black focus:outline-none focus:border-black"
                 >
                   <option value="All">All Certifications</option>
                   <option value="ISO 22000">ISO 22000</option>
@@ -2072,7 +2239,7 @@ export default function App() {
                 <button
                   onClick={() => window.print()}
                   data-testid="print-catalog-btn"
-                  className="no-print flex items-center gap-2 bg-tata-dark hover:bg-tata-dark text-tata-blue-light px-4 py-2.5 rounded-full text-[11px] uppercase tracking-[0.18em] font-semibold transition-all"
+                  className="no-print flex items-center gap-2 bg-black hover:bg-black text-gray-300 px-4 py-2.5 rounded-none text-[11px] uppercase tracking-[0.15em] font-semibold transition-all"
                   title="Print the full tea catalog as a spec brochure"
                 >
                   <FileText className="w-3.5 h-3.5" />
@@ -2081,41 +2248,64 @@ export default function App() {
               </div>
             </div>
 
+            {/* TEA GRADE INFOGRAPHIC */}
+            <TeaGradeInfographic 
+              onRequestSample={(grade) => {
+                setRfqForm(prev => ({ ...prev, teaGrade: grade.name }));
+                setActiveTab("rfq");
+              }} 
+            />
+
             {/* CATALOG GRID */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredCatalog.map((tea) => (
                 <div 
                   key={tea.id}
                   data-testid={`catalog-item-${tea.id}`}
-                  className="bg-white border border-white/20 rounded-2xl overflow-hidden hover:border-tata-blue-light/20 transition-all flex flex-col justify-between group"
+                  className="bg-white border border-gray-200 rounded-none overflow-hidden hover:border-black transition-all flex flex-col justify-between group shadow-none hover:"
                 >
                   <div>
-                    <div className="h-56 overflow-hidden relative">
+                    <div className="h-56 overflow-hidden relative bg-gray-50">
                       <img 
                         src={tea.image} 
                         alt={tea.name} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                       />
-                      <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-xs font-semibold text-tata-dark shadow-md">
+                      <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-none border border-gray-200 text-xs font-semibold text-black  flex items-center gap-2">
+                        <div className="w-2.5 h-2.5 rounded-none bg-black shadow-none" />
                         MOQ: {tea.moq}
+                      </div>
+                      <div className="absolute top-4 left-4 bg-black/95 backdrop-blur-md px-3 py-1.5 rounded-none border border-gray-200 text-[10px] font-bold text-white  uppercase tracking-widest">
+                        {tea.origin}
                       </div>
                     </div>
 
                     <div className="p-6">
-                      <div className="text-xs uppercase tracking-wider text-tata-grey font-semibold">{tea.origin}</div>
-                      <h3 className="font-serif text-xl font-bold text-tata-dark mt-1">{tea.name}</h3>
-                      <div className="text-xs text-tata-grey font-mono mt-1">{tea.grade}</div>
+                      <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">{tea.grade}</div>
+                      <h3 className="font-sans text-xl font-medium text-black mt-1">{tea.name}</h3>
                       
-                      <p className="text-tata-grey text-sm mt-3 leading-relaxed">{tea.description}</p>
+                      <p className="text-gray-500 text-sm mt-3 leading-relaxed min-h-[60px]">{tea.description}</p>
                       
-                      <div className="mt-4 p-3 rounded-xl bg-tata-bg-light border border-tata-grey-light">
-                        <span className="text-[11px] uppercase text-tata-grey block font-semibold">Cup Profile</span>
-                        <span className="text-xs text-tata-dark">{tea.flavor}</span>
+                      <div className="mt-4 p-3 rounded-none bg-gray-50 border border-gray-100 flex flex-wrap gap-4 divide-x divide-gray-200">
+                        <div className="flex flex-col items-start">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <Coffee className="w-3.5 h-3.5 text-gray-300" />
+                            <span className="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Cup Profile</span>
+                          </div>
+                          <span className="text-xs text-black font-medium">{tea.flavor}</span>
+                        </div>
+                        <div className="flex flex-col items-start pl-4">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <Star className="w-3.5 h-3.5 text-gray-300" />
+                            <span className="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Quality</span>
+                          </div>
+                          <span className="text-xs text-black font-medium">Export Grade</span>
+                        </div>
                       </div>
 
                       <div className="flex flex-wrap gap-1.5 mt-4">
                         {tea.certifications.map((cert, idx) => (
-                          <span key={idx} className="text-[10px] bg-tata-blue-light text-tata-dark px-2.5 py-1 rounded-md border border-white/20 font-medium">
+                          <span key={idx} className="text-[10px] bg-gray-200 text-black px-2.5 py-1 rounded-none border border-gray-200 font-medium">
                             {cert}
                           </span>
                         ))}
@@ -2123,10 +2313,10 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="p-6 pt-0 flex items-center justify-between border-t border-tata-grey-light mt-4">
+                  <div className="p-6 pt-0 flex items-center justify-between border-t border-gray-100 mt-4">
                     <div>
-                      <span className="text-[10px] text-tata-grey uppercase block">Wholesale Rate</span>
-                      <span className="font-serif font-bold text-lg text-tata-dark">{tea.priceRange}</span>
+                      <span className="text-[10px] text-gray-500 uppercase block">Wholesale Rate</span>
+                      <span className="font-sans font-light tracking-tight font-bold text-lg text-black">{tea.priceRange}</span>
                     </div>
                     <button
                       onClick={() => {
@@ -2134,7 +2324,7 @@ export default function App() {
                         setActiveTab("rfq");
                       }}
                       data-testid={`request-sample-${tea.id}`}
-                      className="bg-tata-blue-dark text-white font-bold px-4 py-2 rounded-xl text-xs hover:bg-tata-blue-light/80 transition-all flex items-center gap-1.5 shadow-md shadow-tata-blue-light/10"
+                      className="bg-black text-white font-bold px-4 py-2 rounded-none text-xs hover:bg-gray-200/80 transition-all flex items-center gap-1.5  shadow-none"
                     >
                       <span>Request Sample</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -2145,22 +2335,22 @@ export default function App() {
             </div>
 
             {/* B2B EXPORT LOGISTICS & PROCUREMENT FAQ COMPONENT */}
-            <section className="mt-20 pt-16 border-t-2 border-white/20" data-testid="catalog-b2b-faq-section">
+            <section className="mt-20 pt-16 border-t-2 border-gray-200" data-testid="catalog-b2b-faq-section">
               <div className="text-center max-w-3xl mx-auto mb-12">
-                <span className="text-xs uppercase tracking-[0.25em] text-tata-dark font-bold flex items-center justify-center gap-2">
-                  <HelpCircle className="w-4 h-4 text-tata-dark" />
+                <span className="text-xs uppercase tracking-[0.25em] text-black font-bold flex items-center justify-center gap-2">
+                  <HelpCircle className="w-4 h-4 text-black" />
                   B2B Procurement &amp; Logistics Knowledge Base
                 </span>
-                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-tata-dark mt-2">
+                <h2 className="font-sans font-light tracking-tight text-3xl sm:text-4xl font-bold text-black mt-2">
                   Frequently Asked Questions for Bulk Importers
                 </h2>
-                <p className="text-tata-grey mt-3 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-500 mt-3 text-sm sm:text-base leading-relaxed">
                   Key operational answers regarding ocean shipping lead times, container loading specs, fumigation, phytosanitary certificates, and pre-shipment sample dispatch.
                 </p>
               </div>
 
               {/* SEARCH & CATEGORY FILTER BAR */}
-              <div className="bg-tata-bg-light border border-white/20 rounded-2xl p-4 sm:p-6 mb-10 shadow-sm space-y-4">
+              <div className="bg-gray-50 border border-gray-200 rounded-none p-4 sm:p-6 mb-10 shadow-none space-y-4">
                 <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
                   {/* Category Pill Filters */}
                   <div className="flex flex-wrap gap-2 w-full md:w-auto" data-testid="faq-category-pills">
@@ -2170,10 +2360,10 @@ export default function App() {
                         type="button"
                         onClick={() => setFaqCategoryFilter(cat)}
                         data-testid={`faq-cat-filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                        className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                        className={`px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all cursor-pointer ${
                           faqCategoryFilter === cat
-                            ? "bg-tata-dark text-tata-blue-light shadow-sm"
-                            : "bg-white text-tata-dark hover:bg-tata-blue-light border border-white/20"
+                            ? "bg-black text-gray-300 shadow-none"
+                            : "bg-white text-black hover:bg-gray-200 border border-gray-200"
                         }`}
                       >
                         {cat}
@@ -2183,19 +2373,19 @@ export default function App() {
 
                   {/* Search bar inside FAQ */}
                   <div className="relative w-full md:w-72 shrink-0">
-                    <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-tata-grey" />
+                    <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-gray-500" />
                     <input
                       type="text"
                       placeholder="Filter questions (e.g. lead time, pallet)..."
                       value={faqSearchQuery}
                       onChange={(e) => setFaqSearchQuery(e.target.value)}
                       data-testid="faq-search-input"
-                      className="w-full bg-white border border-white/20 rounded-full pl-9 pr-4 py-2 text-xs text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                      className="w-full bg-white border border-gray-200 rounded-none pl-9 pr-4 py-2 text-xs text-black placeholder-gray-400 focus:outline-none focus:border-black"
                     />
                     {faqSearchQuery && (
                       <button
                         onClick={() => setFaqSearchQuery("")}
-                        className="absolute right-3 top-2 text-tata-grey hover:text-tata-dark text-xs font-bold"
+                        className="absolute right-3 top-2 text-gray-500 hover:text-black text-xs font-bold"
                       >
                         ×
                       </button>
@@ -2203,12 +2393,12 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-tata-grey pt-2 border-t border-white/20 font-mono">
+                <div className="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-200 font-mono">
                   <span>Showing {filteredFaqs.length} of {B2B_EXPORT_FAQS.length} export guidelines</span>
                   {openFaqId ? (
-                    <button onClick={() => setOpenFaqId(null)} className="text-tata-dark hover:underline font-semibold cursor-pointer">Collapse All</button>
+                    <button onClick={() => setOpenFaqId(null)} className="text-black hover:underline font-semibold cursor-pointer">Collapse All</button>
                   ) : (
-                    <button onClick={() => setOpenFaqId("lead-times")} className="text-tata-dark hover:underline font-semibold cursor-pointer">Expand First Question</button>
+                    <button onClick={() => setOpenFaqId("lead-times")} className="text-black hover:underline font-semibold cursor-pointer">Expand First Question</button>
                   )}
                 </div>
               </div>
@@ -2216,13 +2406,13 @@ export default function App() {
               {/* FAQ ACCORDION LIST */}
               <div className="space-y-4 max-w-5xl mx-auto" data-testid="faq-accordion-container">
                 {filteredFaqs.length === 0 ? (
-                  <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-white/20 p-8">
-                    <HelpCircle className="w-10 h-10 text-tata-grey mx-auto mb-3" />
-                    <h3 className="font-serif font-bold text-lg text-tata-dark">No matching questions found</h3>
-                    <p className="text-tata-grey text-xs mt-1">Try clearing your search query or selecting "All" categories.</p>
+                  <div className="text-center py-12 bg-white rounded-none border border-dashed border-gray-200 p-8">
+                    <HelpCircle className="w-10 h-10 text-gray-500 mx-auto mb-3" />
+                    <h3 className="font-sans font-light tracking-tight font-bold text-lg text-black">No matching questions found</h3>
+                    <p className="text-gray-500 text-xs mt-1">Try clearing your search query or selecting "All" categories.</p>
                     <button
                       onClick={() => { setFaqSearchQuery(""); setFaqCategoryFilter("All"); }}
-                      className="mt-4 px-4 py-2 bg-tata-dark text-tata-blue-light text-xs font-bold rounded-xl"
+                      className="mt-4 px-4 py-2 bg-black text-gray-300 text-xs font-bold rounded-none"
                     >
                       Reset Filters
                     </button>
@@ -2235,8 +2425,8 @@ export default function App() {
                       <div
                         key={faq.id}
                         data-testid={`faq-item-${faq.id}`}
-                        className={`bg-white border transition-all rounded-2xl overflow-hidden shadow-sm hover:shadow-md ${
-                          isOpen ? "border-tata-blue-light/20 ring-1 ring-tata-blue-dark/30" : "border-tata-grey-light hover:border-white/20"
+                        className={`bg-white border transition-all rounded-none overflow-hidden shadow-none hover: ${
+                          isOpen ? "border-black ring-1 ring-gray-300" : "border-gray-100 hover:border-gray-200"
                         }`}
                       >
                         {/* Question Header */}
@@ -2247,24 +2437,24 @@ export default function App() {
                           className="w-full text-left p-5 sm:p-6 flex items-start sm:items-center justify-between gap-4 cursor-pointer focus:outline-none"
                         >
                           <div className="flex items-start sm:items-center gap-3.5">
-                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                              isOpen ? "bg-tata-dark text-tata-blue-light" : "bg-tata-bg-light text-tata-dark"
+                            <div className={`w-10 h-10 rounded-none flex items-center justify-center shrink-0 transition-colors ${
+                              isOpen ? "bg-black text-gray-300" : "bg-gray-50 text-black"
                             }`}>
                               <IconComp className="w-5 h-5" />
                             </div>
                             <div>
                               <div className="flex items-center gap-2">
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-tata-dark bg-tata-bg-light px-2 py-0.5 rounded border border-white/20">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-black bg-gray-50 px-2 py-0.5 rounded-none border border-gray-200">
                                   {faq.category}
                                 </span>
                               </div>
-                              <h3 className="font-serif font-bold text-base sm:text-lg text-tata-dark mt-1 pr-2">
+                              <h3 className="font-sans font-light tracking-tight font-bold text-base sm:text-lg text-black mt-1 pr-2">
                                 {faq.question}
                               </h3>
                             </div>
                           </div>
-                          <div className={`w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                            isOpen ? "bg-tata-dark text-tata-blue-light rotate-180" : "bg-tata-bg-light text-tata-dark"
+                          <div className={`w-8 h-8 rounded-none border border-gray-200 flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                            isOpen ? "bg-black text-gray-300 rotate-180" : "bg-gray-50 text-black"
                           }`}>
                             <ChevronDown className="w-4 h-4" />
                           </div>
@@ -2272,20 +2462,20 @@ export default function App() {
 
                         {/* Answer Body */}
                         {isOpen && (
-                          <div className="px-5 pb-6 sm:px-6 sm:pb-6 pt-0 border-t border-tata-grey-light bg-gradient-to-b from-tata-bg-light/40 to-white" data-testid={`faq-content-${faq.id}`}>
-                            <p className="text-tata-dark text-sm leading-relaxed mt-4">
+                          <div className="px-5 pb-6 sm:px-6 sm:pb-6 pt-0 border-t border-gray-100 bg-gradient-to-b from-gray-50/40 to-white" data-testid={`faq-content-${faq.id}`}>
+                            <p className="text-black text-sm leading-relaxed mt-4">
                               {faq.answer}
                             </p>
 
                             {/* Key Operational Highlights */}
-                            <div className="mt-5 p-4 rounded-xl bg-white border border-white/20 shadow-inner">
-                              <span className="text-[11px] font-bold uppercase tracking-wider text-tata-dark block mb-2">
+                            <div className="mt-5 p-4 rounded-none bg-white border border-gray-200 shadow-none">
+                              <span className="text-[11px] font-bold uppercase tracking-wider text-black block mb-2">
                                 Key Operational Specs &amp; Highlights:
                               </span>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                 {faq.highlights.map((h, hIdx) => (
-                                  <div key={hIdx} className="flex items-center gap-2 text-xs text-tata-dark">
-                                    <CheckCircle2 className="w-3.5 h-3.5 text-tata-grey shrink-0" />
+                                  <div key={hIdx} className="flex items-center gap-2 text-xs text-black">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-gray-500 shrink-0" />
                                     <span>{h}</span>
                                   </div>
                                 ))}
@@ -2293,13 +2483,13 @@ export default function App() {
                             </div>
 
                             {/* Direct Action CTA */}
-                            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-tata-grey-light/80">
-                              <span className="text-xs text-tata-grey italic">Need further operational details?</span>
+                            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-gray-100/80">
+                              <span className="text-xs text-gray-500 italic">Need further operational details?</span>
                               <button
                                 type="button"
                                 onClick={() => setActiveTab(faq.ctaTab)}
                                 data-testid={`faq-cta-${faq.id}`}
-                                className="inline-flex items-center gap-2 bg-tata-dark hover:bg-tata-dark text-tata-blue-light font-bold px-4 py-2 rounded-xl text-xs transition-all shadow-sm cursor-pointer"
+                                className="inline-flex items-center gap-2 bg-black hover:bg-black text-gray-300 font-bold px-4 py-2 rounded-none text-xs transition-all shadow-none cursor-pointer"
                               >
                                 <span>{faq.ctaText}</span>
                                 <ArrowRight className="w-3.5 h-3.5" />
@@ -2314,12 +2504,12 @@ export default function App() {
               </div>
 
               {/* BOTTOM CUSTOM LOGISTICS DIRECT CTA BANNER */}
-              <div className="mt-14 max-w-5xl mx-auto p-8 rounded-3xl bg-gradient-to-r from-tata-dark via-tata-dark to-tata-dark border-2 border-white/20 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden" data-testid="faq-bottom-cta-banner">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-tata-blue-light rounded-full blur-2xl pointer-events-none" />
+              <div className="mt-14 max-w-5xl mx-auto p-8 rounded-none bg-gradient-to-r from-black to-black bg-black border-2 border-gray-200 text-white flex flex-col md:flex-row items-center justify-between gap-6  relative overflow-hidden" data-testid="faq-bottom-cta-banner">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gray-200 rounded-none blur-2xl pointer-events-none" />
                 <div className="space-y-1 text-center md:text-left z-10">
-                  <span className="text-[11px] uppercase tracking-[0.25em] text-tata-dark font-bold">B2B Procurement Helpdesk</span>
-                  <h3 className="font-serif text-2xl font-bold text-white">Have a specific port requirement or custom blend inquiry?</h3>
-                  <p className="text-tata-grey text-xs max-w-xl">
+                  <span className="text-[11px] uppercase tracking-[0.25em] text-black font-bold">B2B Procurement Helpdesk</span>
+                  <h3 className="font-sans font-light tracking-tight text-2xl font-bold text-white">Have a specific port requirement or custom blend inquiry?</h3>
+                  <p className="text-gray-500 text-xs max-w-xl">
                     Our export desk provides custom CIF ocean freight quotes, private label sample kits, and port-specific customs compliance assistance.
                   </p>
                 </div>
@@ -2327,7 +2517,7 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab("rfq")}
                     data-testid="faq-banner-rfq-btn"
-                    className="w-full sm:w-auto bg-tata-blue-dark hover:bg-tata-blue-light/80 text-white font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full sm:w-auto bg-black hover:bg-gray-900/80 text-white font-bold px-5 py-3 rounded-none text-xs uppercase tracking-wider transition-all  flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Request Wholesale Quote</span>
                     <ArrowRight className="w-4 h-4" />
@@ -2335,9 +2525,9 @@ export default function App() {
                   <button
                     onClick={(e) => handleCopyEmail(e, "atweeltea@gmail.com")}
                     data-testid="faq-banner-email-btn"
-                    className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-semibold px-4 py-3 rounded-xl text-xs transition-all border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-semibold px-4 py-3 rounded-none text-xs transition-all border border-gray-200 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    {copiedEmail ? <Check className="w-3.5 h-3.5 text-tata-grey" /> : <Copy className="w-3.5 h-3.5 text-tata-dark" />}
+                    {copiedEmail ? <Check className="w-3.5 h-3.5 text-gray-500" /> : <Copy className="w-3.5 h-3.5 text-black" />}
                     <span>{copiedEmail ? "Email Copied!" : "Copy Export Desk Email"}</span>
                   </button>
                 </div>
@@ -2350,41 +2540,41 @@ export default function App() {
         {activeTab === "rfq" && (
           <div className="py-16 px-6 max-w-5xl mx-auto" data-testid="view-rfq">
             <div className="text-center max-w-2xl mx-auto mb-10">
-              <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Direct Procurement</span>
-              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark mt-2">Bulk Export Inquiry & Custom Blending RFQ</h1>
-              <p className="text-tata-grey mt-3">Submit your wholesale tea requirements, private label specifications, or master blend custom profiling.</p>
+              <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Direct Procurement</span>
+              <h1 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black mt-2">Bulk Export Inquiry & Custom Blending RFQ</h1>
+              <p className="text-gray-500 mt-3">Submit your wholesale tea requirements, private label specifications, or master blend custom profiling.</p>
             </div>
 
             {/* Direct Email Quick Copy Banner */}
-            <div className="mb-8 p-4 rounded-2xl bg-tata-bg-light border border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm" data-testid="rfq-quick-contact-banner">
+            <div className="mb-8 p-4 rounded-none bg-gray-50 border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-none" data-testid="rfq-quick-contact-banner">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-tata-dark text-tata-blue-light flex items-center justify-center shrink-0 shadow-md">
+                <div className="w-10 h-10 rounded-none bg-black text-gray-300 flex items-center justify-center shrink-0 ">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-tata-dark">Direct Export Desk &amp; Documentation</div>
-                  <div className="text-xs text-tata-grey mt-0.5">Reach our team directly at <span className="font-mono font-bold text-tata-dark">atweeltea@gmail.com</span> or copy for your records.</div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-black">Direct Export Desk &amp; Documentation</div>
+                  <div className="text-xs text-gray-500 mt-0.5">Reach our team directly at <span className="font-mono font-bold text-black">atweeltea@gmail.com</span> or copy for your records.</div>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={(e) => handleCopyEmail(e, "atweeltea@gmail.com")}
                 data-testid="rfq-copy-email-btn"
-                className="bg-tata-dark hover:bg-tata-dark text-tata-blue-light font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 whitespace-nowrap shadow-sm transition-all cursor-pointer"
+                className="bg-black hover:bg-black text-gray-300 font-bold px-4 py-2.5 rounded-none text-xs flex items-center gap-2 whitespace-nowrap shadow-none transition-all cursor-pointer"
               >
-                {copiedEmail ? <Check className="w-3.5 h-3.5 text-tata-grey" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedEmail ? <Check className="w-3.5 h-3.5 text-gray-500" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copiedEmail ? "Email Copied!" : "Copy Company Email"}</span>
               </button>
             </div>
 
-            <div className="bg-white border border-white/20 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-tata-blue-dark/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="bg-white border border-gray-200 rounded-none p-8 sm:p-12  relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-black/5 rounded-none blur-3xl pointer-events-none" />
 
               <form onSubmit={handleRfqSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Full Name *</label>
+                    <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Full Name *</label>
                     <input
                       type="text"
                       required
@@ -2392,12 +2582,12 @@ export default function App() {
                       value={rfqForm.fullName}
                       onChange={(e) => setRfqForm({ ...rfqForm, fullName: e.target.value })}
                       data-testid="rfq-fullname"
-                      className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Company / Importer Name *</label>
+                    <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Company / Importer Name *</label>
                     <input
                       type="text"
                       required
@@ -2405,12 +2595,12 @@ export default function App() {
                       value={rfqForm.companyName}
                       onChange={(e) => setRfqForm({ ...rfqForm, companyName: e.target.value })}
                       data-testid="rfq-company"
-                      className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Corporate Email *</label>
+                    <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Corporate Email *</label>
                     <input
                       type="email"
                       required
@@ -2418,17 +2608,17 @@ export default function App() {
                       value={rfqForm.email}
                       onChange={(e) => setRfqForm({ ...rfqForm, email: e.target.value })}
                       data-testid="rfq-email"
-                      className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Destination Country *</label>
+                    <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Destination Country *</label>
                     <select
                       value={rfqForm.country}
                       onChange={(e) => setRfqForm({ ...rfqForm, country: e.target.value })}
                       data-testid="rfq-country"
-                      className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                     >
                       <option value="United States">United States</option>
                       <option value="United Kingdom">United Kingdom</option>
@@ -2442,12 +2632,12 @@ export default function App() {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Select Tea Grade / Master Blend *</label>
+                    <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Select Tea Grade / Master Blend *</label>
                     <select
                       value={rfqForm.teaGrade}
                       onChange={(e) => setRfqForm({ ...rfqForm, teaGrade: e.target.value })}
                       data-testid="rfq-teagrade"
-                      className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                     >
                       {TEA_CATALOG.map(t => (
                         <option key={t.id} value={t.name}>{t.name} ({t.grade})</option>
@@ -2457,7 +2647,7 @@ export default function App() {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Quantity (KG) * (Min 100 KG)</label>
+                    <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Quantity (KG) * (Min 100 KG)</label>
                     <input
                       type="number"
                       min="100"
@@ -2466,14 +2656,14 @@ export default function App() {
                       value={rfqForm.quantityKg}
                       onChange={(e) => setRfqForm({ ...rfqForm, quantityKg: parseInt(e.target.value) || 100 })}
                       data-testid="rfq-quantity"
-                      className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                     />
                   </div>
 
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Target Port of Delivery *</label>
+                  <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Target Port of Delivery *</label>
                   <input
                     type="text"
                     required
@@ -2481,19 +2671,19 @@ export default function App() {
                     value={rfqForm.targetPort}
                     onChange={(e) => setRfqForm({ ...rfqForm, targetPort: e.target.value })}
                     data-testid="rfq-port"
-                    className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Custom Blending / Packaging Specifications Notes</label>
+                  <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Custom Blending / Packaging Specifications Notes</label>
                   <textarea
                     rows="4"
                     placeholder="Describe aroma profiles, liquor brightness, moisture requirements, or retail vacuum packaging instructions..."
                     value={rfqForm.customBlendingNotes}
                     onChange={(e) => setRfqForm({ ...rfqForm, customBlendingNotes: e.target.value })}
                     data-testid="rfq-notes"
-                    className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black"
                   />
                 </div>
 
@@ -2502,12 +2692,12 @@ export default function App() {
                     type="submit"
                     disabled={rfqSubmitting}
                     data-testid="rfq-submit-btn"
-                    className="w-full bg-gradient-to-r from-tata-blue-dark via-tata-blue-dark/80 to-tata-blue-dark text-white font-bold py-4 rounded-xl text-base shadow-xl shadow-tata-blue-light/20 hover:brightness-110 transition-all flex items-center justify-center gap-3 cursor-pointer"
+                    className="w-full bg-black text-white font-bold py-4 rounded-none text-base  shadow-none hover:brightness-110 transition-all flex items-center justify-center gap-3 cursor-pointer"
                   >
                     <span>{rfqSubmitting ? "Transmitting Secure RFQ..." : "Submit Official Export RFQ"}</span>
                     <ArrowRight className="w-5 h-5" />
                   </button>
-                  <p className="text-xs text-center text-tata-grey mt-3">Our Chief Tea Taster and Export Director will respond within 4 business hours with certified COA and FOB/CIF quotation.</p>
+                  <p className="text-xs text-center text-gray-500 mt-3">Our Chief Tea Taster and Export Director will respond within 4 business hours with certified COA and FOB/CIF quotation.</p>
                 </div>
               </form>
             </div>
@@ -2518,46 +2708,46 @@ export default function App() {
         {activeTab === "tracker" && (
           <div className="py-16 px-6 max-w-6xl mx-auto" data-testid="view-tracker">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Real-Time Telemetry</span>
-              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark mt-2">Global Shipping & Logistics Tracker</h1>
-              <p className="text-tata-grey mt-3">Track container temperature, humidity, customs clearance status, and maritime milestones worldwide.</p>
+              <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Real-Time Telemetry</span>
+              <h1 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black mt-2">Global Shipping & Logistics Tracker</h1>
+              <p className="text-gray-500 mt-3">Track container temperature, humidity, customs clearance status, and maritime milestones worldwide.</p>
             </div>
 
             {/* TRACKING SEARCH BAR */}
-            <div className="bg-white border border-white/20 p-6 rounded-2xl max-w-2xl mx-auto mb-12 shadow-xl">
+            <div className="bg-white border border-gray-200 p-6 rounded-none max-w-2xl mx-auto mb-12 ">
               <div className="flex gap-4">
                 <div className="relative flex-1">
-                  <Truck className="absolute left-4 top-3.5 w-5 h-5 text-tata-dark" />
+                  <Truck className="absolute left-4 top-3.5 w-5 h-5 text-black" />
                   <input
                     type="text"
                     value={trackingNumberInput}
                     onChange={(e) => setTrackingNumberInput(e.target.value)}
                     placeholder="Enter Tracking ID (e.g. EXP-8842-NL)"
                     data-testid="tracker-input"
-                    className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl pl-12 pr-4 py-3 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-none pl-12 pr-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black"
                   />
                 </div>
                 <button
                   onClick={() => handleTrackShipment(trackingNumberInput)}
                   disabled={trackingLoading}
                   data-testid="tracker-submit"
-                  className="bg-tata-blue-dark text-white font-bold px-8 py-3 rounded-xl hover:bg-tata-blue-light/80 transition-all flex items-center gap-2"
+                  className="bg-black text-white font-bold px-8 py-3 rounded-none hover:bg-gray-200/80 transition-all flex items-center gap-2"
                 >
                   <Search className="w-4 h-4" />
                   <span>{trackingLoading ? "Locating..." : "Track"}</span>
                 </button>
               </div>
-              <div className="flex items-center gap-4 mt-3 text-xs text-tata-grey">
+              <div className="flex items-center gap-4 mt-3 text-xs text-gray-500">
                 <span>Sample Tracking IDs:</span>
                 <button 
                   onClick={() => { setTrackingNumberInput("EXP-8842-NL"); handleTrackShipment("EXP-8842-NL"); }}
-                  className="text-tata-dark underline hover:text-tata-dark"
+                  className="text-black underline hover:text-black"
                 >
                   EXP-8842-NL (Rotterdam)
                 </button>
                 <button 
                   onClick={() => { setTrackingNumberInput("TEA-9921-US"); handleTrackShipment("TEA-9921-US"); }}
-                  className="text-tata-dark underline hover:text-tata-dark"
+                  className="text-black underline hover:text-black"
                 >
                   TEA-9921-US (Los Angeles)
                 </button>
@@ -2566,60 +2756,60 @@ export default function App() {
 
             {/* TRACKING RESULTS DISPLAY */}
             {trackingResult && (
-              <div className="bg-white border border-white/20 rounded-3xl p-8 sm:p-10 shadow-2xl space-y-8 animate-fade-in" data-testid="tracking-results">
+              <div className="bg-white border border-gray-200 rounded-none p-8 sm:p-10  space-y-8 animate-fade-in" data-testid="tracking-results">
                 
-                <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-tata-grey-light gap-4">
+                <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-gray-100 gap-4">
                   <div>
-                    <span className="text-xs uppercase tracking-wider text-tata-grey font-semibold">Active Bill of Lading</span>
-                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-tata-dark mt-1">{trackingResult.trackingNumber}</h2>
+                    <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Active Bill of Lading</span>
+                    <h2 className="font-sans font-light tracking-tight text-2xl sm:text-3xl font-bold text-black mt-1">{trackingResult.trackingNumber}</h2>
                   </div>
-                  <div className="flex items-center gap-3 bg-tata-blue-light border border-white/20 px-4 py-2 rounded-xl">
-                    <div className="w-3 h-3 rounded-full bg-tata-bg-light animate-ping" />
-                    <span className="text-xs font-semibold text-tata-dark">{trackingResult.status}</span>
+                  <div className="flex items-center gap-3 bg-gray-200 border border-gray-200 px-4 py-2 rounded-none">
+                    <div className="w-3 h-3 rounded-none bg-gray-50 animate-ping" />
+                    <span className="text-xs font-semibold text-black">{trackingResult.status}</span>
                   </div>
                 </div>
 
                 {/* METADATA CARDS */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="bg-tata-bg-light p-4 rounded-xl border border-tata-grey-light">
-                    <span className="text-[11px] text-tata-grey uppercase block font-medium">Vessel / Carrier</span>
-                    <span className="text-sm font-bold text-tata-dark mt-1 block">{trackingResult.vessel}</span>
+                  <div className="bg-gray-50 p-4 rounded-none border border-gray-100">
+                    <span className="text-[11px] text-gray-500 uppercase block font-medium">Vessel / Carrier</span>
+                    <span className="text-sm font-bold text-black mt-1 block">{trackingResult.vessel}</span>
                   </div>
-                  <div className="bg-tata-bg-light p-4 rounded-xl border border-tata-grey-light">
-                    <span className="text-[11px] text-tata-grey uppercase block font-medium">Route</span>
-                    <span className="text-sm font-bold text-tata-dark mt-1 block truncate">{trackingResult.destination}</span>
+                  <div className="bg-gray-50 p-4 rounded-none border border-gray-100">
+                    <span className="text-[11px] text-gray-500 uppercase block font-medium">Route</span>
+                    <span className="text-sm font-bold text-black mt-1 block truncate">{trackingResult.destination}</span>
                   </div>
-                  <div className="bg-tata-bg-light p-4 rounded-xl border border-tata-grey-light">
-                    <span className="text-[11px] text-tata-grey uppercase block font-medium">Container Climate</span>
+                  <div className="bg-gray-50 p-4 rounded-none border border-gray-100">
+                    <span className="text-[11px] text-gray-500 uppercase block font-medium">Container Climate</span>
                     <div className="flex items-center gap-2 mt-1">
-                      <Thermometer className="w-4 h-4 text-tata-dark" />
-                      <span className="text-sm font-bold text-tata-dark">{trackingResult.temperature}</span>
+                      <Thermometer className="w-4 h-4 text-black" />
+                      <span className="text-sm font-bold text-black">{trackingResult.temperature}</span>
                     </div>
                   </div>
-                  <div className="bg-tata-bg-light p-4 rounded-xl border border-tata-grey-light">
-                    <span className="text-[11px] text-tata-grey uppercase block font-medium">Estimated Arrival</span>
+                  <div className="bg-gray-50 p-4 rounded-none border border-gray-100">
+                    <span className="text-[11px] text-gray-500 uppercase block font-medium">Estimated Arrival</span>
                     <div className="flex items-center gap-2 mt-1">
-                      <Clock className="w-4 h-4 text-tata-dark" />
-                      <span className="text-sm font-bold text-tata-dark">{trackingResult.eta}</span>
+                      <Clock className="w-4 h-4 text-black" />
+                      <span className="text-sm font-bold text-black">{trackingResult.eta}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* MILESTONES TIMELINE */}
                 <div className="pt-4">
-                  <h3 className="font-serif text-xl font-bold text-tata-dark mb-6">Logistics & Quality Milestones</h3>
-                  <div className="space-y-6 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-tata-bg-light">
+                  <h3 className="font-sans font-light tracking-tight text-xl font-bold text-black mb-6">Logistics & Quality Milestones</h3>
+                  <div className="space-y-6 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-gray-50">
                     {trackingResult.milestones.map((m, idx) => (
                       <div key={idx} className="flex items-start gap-4 relative">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 z-10 ${
-                          m.completed ? "bg-tata-blue-dark text-white shadow-md shadow-tata-blue-light/30" : "bg-tata-bg-light text-tata-dark border border-tata-grey-light"
+                        <div className={`w-8 h-8 rounded-none flex items-center justify-center shrink-0 z-10 ${
+                          m.completed ? "bg-black text-white  shadow-none" : "bg-gray-50 text-black border border-gray-100"
                         }`}>
-                          {m.completed ? <CheckCircle2 className="w-4 h-4" /> : <div className="w-2.5 h-2.5 rounded-full bg-tata-bg-light" />}
+                          {m.completed ? <CheckCircle2 className="w-4 h-4" /> : <div className="w-2.5 h-2.5 rounded-none bg-gray-50" />}
                         </div>
-                        <div className="flex-1 bg-tata-bg-light p-4 rounded-xl border border-tata-grey-light">
+                        <div className="flex-1 bg-gray-50 p-4 rounded-none border border-gray-100">
                           <div className="flex items-center justify-between">
-                            <h4 className="font-semibold text-tata-dark text-sm">{m.step}</h4>
-                            <span className="text-xs text-tata-dark">{m.date}</span>
+                            <h4 className="font-semibold text-black text-sm">{m.step}</h4>
+                            <span className="text-xs text-black">{m.date}</span>
                           </div>
                         </div>
                       </div>
@@ -2636,27 +2826,27 @@ export default function App() {
         {activeTab === "standards" && (
           <div className="py-16 px-6 max-w-7xl mx-auto" data-testid="view-standards">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Kharsang Manufacturing Facility</span>
-              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark mt-2">Factory Standards & Quality Lab</h1>
-              <p className="text-tata-grey mt-4">Our 72,000 sq ft integrated tea factory in Nemphai 1, Kharsang, houses withering troughs, orthodox rollers, CTC units, an in-house tasting suite and a certified analytical laboratory — all under one HACCP-managed roof.</p>
+              <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Kharsang Manufacturing Facility</span>
+              <h1 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black mt-2">Factory Standards & Quality Lab</h1>
+              <p className="text-gray-500 mt-4">Our 72,000 sq ft integrated tea factory in Nemphai 1, Kharsang, houses withering troughs, orthodox rollers, CTC units, an in-house tasting suite and a certified analytical laboratory — all under one HACCP-managed roof.</p>
             </div>
 
             {/* INSIDE THE KHARSANG FACTORY — REAL FOOTAGE */}
             <div className="mb-20" data-testid="factory-gallery">
               <div className="text-center mb-10">
-                <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold flex items-center justify-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-tata-bg-light animate-pulse" />
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold flex items-center justify-center gap-2">
+                  <span className="w-2 h-2 rounded-none bg-gray-50 animate-pulse" />
                   Inside the Kharsang Factory
                 </span>
-                <h2 className="font-serif text-2xl sm:text-4xl font-bold text-tata-dark mt-2">Real Machinery · Real Craftsmanship</h2>
-                <p className="text-tata-grey mt-3 max-w-2xl mx-auto text-sm">
+                <h2 className="font-sans font-light tracking-tight text-2xl sm:text-4xl font-bold text-black mt-2">Real Machinery · Real Craftsmanship</h2>
+                <p className="text-gray-500 mt-3 max-w-2xl mx-auto text-sm">
                   Live footage from our 72,000 sq ft manufacturing hall — the orthodox rollers, CTC units and sifter drums that turn today's plucked leaf into tomorrow's export lot.
                 </p>
               </div>
 
               <div className="grid grid-cols-12 gap-4 md:gap-5">
                 {/* Full-width video */}
-                <div className="col-span-12 rounded-3xl overflow-hidden border-2 border-white/20 bg-tata-dark relative group aspect-video shadow-2xl">
+                <div className="col-span-12 rounded-none overflow-hidden border-2 border-gray-200 bg-black relative group aspect-video ">
                   <video
                     src="/factory/factory-video.mp4"
                     poster="/factory/factory-video-poster.jpg"
@@ -2668,19 +2858,19 @@ export default function App() {
                     className="w-full h-full object-cover"
                     data-testid="factory-video"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-tata-dark/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-0 left-0 right-0 p-8 pointer-events-none">
-                    <div className="flex items-center gap-2 text-tata-dark text-[10px] uppercase tracking-[0.25em] font-bold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-tata-dark text-tata-bg-light animate-pulse" />
+                    <div className="flex items-center gap-2 text-black text-[10px] uppercase tracking-[0.25em] font-bold">
+                      <span className="w-1.5 h-1.5 rounded-none bg-black text-black animate-pulse" />
                       Recorded on the Factory Floor
                     </div>
-                    <div className="text-white font-serif text-2xl sm:text-3xl font-bold mt-2">Orthodox Rolling & CTC Line · Live Shift</div>
-                    <div className="text-tata-grey text-sm mt-2 max-w-xl">Food-grade 304/316 stainless steel contact surfaces · Real-time moisture control locked at 3.0-3.5% · 500 m chemical-free buffer zone.</div>
+                    <div className="text-white font-sans font-light tracking-tight text-2xl sm:text-3xl font-bold mt-2">Orthodox Rolling & CTC Line · Live Shift</div>
+                    <div className="text-gray-500 text-sm mt-2 max-w-xl">Food-grade 304/316 stainless steel contact surfaces · Real-time moisture control locked at 3.0-3.5% · 500 m chemical-free buffer zone.</div>
                   </div>
                 </div>
 
                 {/* Portrait 1 — Orthodox rolling machine close-up */}
-                <div className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-3xl overflow-hidden border-2 border-white/20 relative group aspect-[4/5] shadow-xl">
+                <div className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-none overflow-hidden border-2 border-gray-200 relative group aspect-[4/5] ">
                   <img
                     src="/factory/factory-2-lg.jpg"
                     srcSet="/factory/factory-2-md.jpg 960w, /factory/factory-2-lg.jpg 1920w"
@@ -2689,16 +2879,16 @@ export default function App() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-tata-dark/85 via-tata-dark/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="text-tata-dark text-[10px] uppercase tracking-[0.2em] font-bold">Orthodox Roller</div>
-                    <div className="text-white font-serif text-lg font-bold mt-1">Traditional Leaf Bruising & Twist</div>
-                    <div className="text-tata-grey text-[11px] mt-1">Preserves cell walls to release aromatic essential oils</div>
+                    <div className="text-black text-[10px] uppercase tracking-[0.2em] font-bold">Orthodox Roller</div>
+                    <div className="text-white font-sans font-light tracking-tight text-lg font-bold mt-1">Traditional Leaf Bruising & Twist</div>
+                    <div className="text-gray-500 text-[11px] mt-1">Preserves cell walls to release aromatic essential oils</div>
                   </div>
                 </div>
 
                 {/* Portrait 2 — Row of rolling machines */}
-                <div className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-3xl overflow-hidden border-2 border-white/20 relative group aspect-[4/5] shadow-xl">
+                <div className="col-span-12 sm:col-span-6 lg:col-span-4 rounded-none overflow-hidden border-2 border-gray-200 relative group aspect-[4/5] ">
                   <img
                     src="/factory/factory-3-lg.jpg"
                     srcSet="/factory/factory-3-md.jpg 960w, /factory/factory-3-lg.jpg 1920w"
@@ -2707,41 +2897,41 @@ export default function App() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-tata-dark/85 via-tata-dark/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="text-tata-dark text-[10px] uppercase tracking-[0.2em] font-bold">Parallel Rolling Bay</div>
-                    <div className="text-white font-serif text-lg font-bold mt-1">Multi-Unit Production Line</div>
-                    <div className="text-tata-grey text-[11px] mt-1">Scaled to process 1,200-bigha peak-flush yield</div>
+                    <div className="text-black text-[10px] uppercase tracking-[0.2em] font-bold">Parallel Rolling Bay</div>
+                    <div className="text-white font-sans font-light tracking-tight text-lg font-bold mt-1">Multi-Unit Production Line</div>
+                    <div className="text-gray-500 text-[11px] mt-1">Scaled to process 1,200-bigha peak-flush yield</div>
                   </div>
                 </div>
 
                 {/* Info card — factory metrics */}
-                <div className="col-span-12 lg:col-span-4 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 sm:p-8 border-2 border-white/20 shadow-xl relative overflow-hidden">
-                  <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-tata-blue-light blur-3xl" />
+                <div className="col-span-12 lg:col-span-4 rounded-none bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 sm:p-8 border-2 border-gray-200  relative overflow-hidden">
+                  <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-none bg-gray-200 blur-3xl" />
                   <div className="relative">
-                    <div className="text-[10px] uppercase tracking-[0.25em] text-tata-dark font-semibold">Factory Snapshot</div>
-                    <div className="font-serif text-3xl font-bold text-white mt-2 leading-tight">72,000 sq ft under one HACCP-managed roof</div>
+                    <div className="text-[10px] uppercase tracking-[0.25em] text-black font-semibold">Factory Snapshot</div>
+                    <div className="font-sans font-light tracking-tight text-3xl font-bold text-white mt-2 leading-tight">72,000 sq ft under one HACCP-managed roof</div>
 
                     <div className="space-y-4 mt-6">
-                      <div className="flex items-start gap-3 pb-3 border-b border-white/10">
-                        <Package className="w-4 h-4 text-tata-grey mt-0.5 shrink-0" />
+                      <div className="flex items-start gap-3 pb-3 border-b border-gray-200">
+                        <Package className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                         <div className="flex-1">
                           <div className="text-white font-semibold text-sm">Withering · Rolling · Fermentation</div>
-                          <div className="text-tata-grey text-xs">Full orthodox &amp; CTC processing capability</div>
+                          <div className="text-gray-500 text-xs">Full orthodox &amp; CTC processing capability</div>
                         </div>
                       </div>
-                      <div className="flex items-start gap-3 pb-3 border-b border-white/10">
-                        <Thermometer className="w-4 h-4 text-tata-grey mt-0.5 shrink-0" />
+                      <div className="flex items-start gap-3 pb-3 border-b border-gray-200">
+                        <Thermometer className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                         <div className="flex-1">
                           <div className="text-white font-semibold text-sm">Real-time Moisture Analysers</div>
-                          <div className="text-tata-grey text-xs">Digital output locked 3.0 – 3.5%</div>
+                          <div className="text-gray-500 text-xs">Digital output locked 3.0 – 3.5%</div>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
-                        <ShieldCheck className="w-4 h-4 text-tata-grey mt-0.5 shrink-0" />
+                        <ShieldCheck className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                         <div className="flex-1">
                           <div className="text-white font-semibold text-sm">Food-Grade 304/316 Stainless</div>
-                          <div className="text-tata-grey text-xs">Zero ferrous ingress tolerance</div>
+                          <div className="text-gray-500 text-xs">Zero ferrous ingress tolerance</div>
                         </div>
                       </div>
                     </div>
@@ -2759,60 +2949,60 @@ export default function App() {
                   srcSet="/factory/factory-1-md.jpg 960w, /factory/factory-1-lg.jpg 1920w"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   alt="Atweel Tea sorting and sifting hall at the Kharsang factory" 
-                  className="rounded-3xl border border-white/20 shadow-2xl h-[400px] w-full object-cover"
+                  className="rounded-none border border-gray-200  h-[400px] w-full object-cover"
                   loading="lazy"
                 />
               </div>
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-tata-blue-light border border-white/20 text-xs font-semibold text-tata-dark">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-gray-200 border border-gray-200 text-xs font-semibold text-black">
                   ISO 22000 & HACCP Certified · India Organic
                 </div>
-                <h2 className="font-serif text-3xl font-bold text-tata-dark">Plot-to-Package Quality Control</h2>
-                <p className="text-tata-grey leading-relaxed text-sm">
+                <h2 className="font-sans font-light tracking-tight text-3xl font-bold text-black">Plot-to-Package Quality Control</h2>
+                <p className="text-gray-500 leading-relaxed text-sm">
                   Because we own every stage — from the 1,200-bigha organic garden to the 72,000 sq ft factory floor — our master tea maker and in-house analytical team can hold every batch to ISO 3103 cupping protocols, verify moisture and residue thresholds, and issue a Certificate of Analysis before the container seal is applied. No middlemen. No blending losses. No surprises for the buyer.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div className="bg-white p-4 rounded-xl border border-tata-grey-light">
-                    <span className="font-serif font-bold text-2xl text-tata-dark">≤ 3.5%</span>
-                    <span className="text-xs text-tata-grey block mt-1">Max Moisture Standard</span>
+                  <div className="bg-white p-4 rounded-none border border-gray-100">
+                    <span className="font-sans font-light tracking-tight font-bold text-2xl text-black">≤ 3.5%</span>
+                    <span className="text-xs text-gray-500 block mt-1">Max Moisture Standard</span>
                   </div>
-                  <div className="bg-white p-4 rounded-xl border border-tata-grey-light">
-                    <span className="font-serif font-bold text-2xl text-tata-dark">0.0 ppm</span>
-                    <span className="text-xs text-tata-grey block mt-1">Chemical Pesticide Residue</span>
+                  <div className="bg-white p-4 rounded-none border border-gray-100">
+                    <span className="font-sans font-light tracking-tight font-bold text-2xl text-black">0.0 ppm</span>
+                    <span className="text-xs text-gray-500 block mt-1">Chemical Pesticide Residue</span>
                   </div>
-                  <div className="bg-white p-4 rounded-xl border border-tata-grey-light">
-                    <span className="font-serif font-bold text-2xl text-tata-dark">72,000</span>
-                    <span className="text-xs text-tata-grey block mt-1">Sq Ft Factory Area</span>
+                  <div className="bg-white p-4 rounded-none border border-gray-100">
+                    <span className="font-sans font-light tracking-tight font-bold text-2xl text-black">72,000</span>
+                    <span className="text-xs text-gray-500 block mt-1">Sq Ft Factory Area</span>
                   </div>
-                  <div className="bg-white p-4 rounded-xl border border-tata-grey-light">
-                    <span className="font-serif font-bold text-2xl text-tata-dark">1,200</span>
-                    <span className="text-xs text-tata-grey block mt-1">Bigha Organic Garden</span>
+                  <div className="bg-white p-4 rounded-none border border-gray-100">
+                    <span className="font-sans font-light tracking-tight font-bold text-2xl text-black">1,200</span>
+                    <span className="text-xs text-gray-500 block mt-1">Bigha Organic Garden</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* OFFICIAL SOP DOWNLOAD BANNER */}
-            <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 sm:p-12 mb-20 overflow-hidden shadow-2xl" data-testid="sop-banner">
+            <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-none p-8 sm:p-12 mb-20 overflow-hidden " data-testid="sop-banner">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.18),transparent_60%)]" />
-              <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-tata-blue-light blur-3xl" />
+              <div className="absolute -top-24 -right-24 w-64 h-64 rounded-none bg-gray-200 blur-3xl" />
               <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-8 space-y-5">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-tata-blue-light border border-white/20 text-[10px] uppercase tracking-[0.2em] font-semibold text-tata-dark">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-gray-200 border border-gray-200 text-[10px] uppercase tracking-[0.2em] font-semibold text-black">
                     <FileText className="w-3.5 h-3.5" />
                     <span>Document ID · AT-SOP-QA-2026-V3</span>
                   </div>
-                  <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
-                    The Atweel Tea <span className="text-tata-dark">Global Compliance Manual</span>
+                  <h3 className="font-sans font-light tracking-tight text-3xl sm:text-4xl font-bold text-white leading-tight">
+                    The Atweel Tea <span className="text-black">Global Compliance Manual</span>
                   </h3>
-                  <p className="text-tata-grey text-sm leading-relaxed max-w-2xl">
+                  <p className="text-gray-500 text-sm leading-relaxed max-w-2xl">
                     A 12-section end-to-end Standard Operating Procedure covering plantation care, zero-residue pest control, GMP factory hygiene, super-barrier vacuum packaging, climate-controlled storage and unbreachable DDP ocean transit — the same document we share with our EU and US-FDA compliance buyers.
                   </p>
                   <div className="flex flex-wrap gap-3 pt-2">
-                    <span className="text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-tata-grey">Effective 12 Jul 2026</span>
-                    <span className="text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-tata-grey">Annual Review Cycle</span>
-                    <span className="text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-full bg-tata-blue-light border border-white/20 text-tata-dark font-semibold">0.0% Pesticide Residue</span>
+                    <span className="text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-none bg-white/5 border border-gray-200 text-gray-500">Effective 12 Jul 2026</span>
+                    <span className="text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-none bg-white/5 border border-gray-200 text-gray-500">Annual Review Cycle</span>
+                    <span className="text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-none bg-gray-200 border border-gray-200 text-black font-semibold">0.0% Pesticide Residue</span>
                   </div>
                 </div>
                 <div className="lg:col-span-4 flex flex-col gap-3">
@@ -2821,11 +3011,11 @@ export default function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="download-sop-btn"
-                    className="group flex items-center justify-between gap-4 bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark hover:brightness-110 text-white font-bold px-6 py-4 rounded-2xl transition-all shadow-lg shadow-tata-blue-light/30"
+                    className="group flex items-center justify-between gap-4 bg-black hover:brightness-110 text-white font-bold px-6 py-4 rounded-none transition-all  shadow-none"
                   >
                     <div>
                       <div className="text-[10px] uppercase tracking-wider opacity-80">Download Official SOP</div>
-                      <div className="font-serif text-lg">PDF · 44 KB · 7 pages</div>
+                      <div className="font-sans font-light tracking-tight text-lg">PDF · 44 KB · 7 pages</div>
                     </div>
                     <Download className="w-6 h-6 group-hover:translate-y-0.5 transition-transform" />
                   </a>
@@ -2834,7 +3024,7 @@ export default function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="view-sop-btn"
-                    className="text-center text-tata-dark text-xs font-semibold hover:text-white transition-colors py-2 border border-white/20 rounded-xl"
+                    className="text-center text-black text-xs font-semibold hover:text-white transition-colors py-2 border border-gray-200 rounded-none"
                   >
                     Open in browser →
                   </a>
@@ -2845,8 +3035,8 @@ export default function App() {
             {/* 12 SOP PILLARS */}
             <div className="mb-20">
               <div className="text-center mb-10">
-                <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Twelve-Pillar Compliance Framework</span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-tata-dark mt-2">Every Step of Farm-to-Container, Codified</h3>
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Twelve-Pillar Compliance Framework</span>
+                <h3 className="font-sans font-light tracking-tight text-2xl sm:text-3xl font-bold text-black mt-2">Every Step of Farm-to-Container, Codified</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
@@ -2865,17 +3055,17 @@ export default function App() {
                 ].map((s) => {
                   const Icon = s.icon;
                   return (
-                    <div key={s.n} className="group bg-white border border-white/20 rounded-2xl p-6 hover:border-tata-blue-light/20 hover:shadow-lg hover:shadow-tata-blue-light/10 transition-all">
+                    <div key={s.n} className="group bg-white border border-gray-200 rounded-none p-6 hover:border-black hover: hover:shadow-none transition-all">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-tata-blue-light border border-white/20 flex items-center justify-center text-tata-grey shrink-0 group-hover:scale-105 transition-transform">
+                        <div className="w-12 h-12 rounded-none bg-gray-200 border border-gray-200 flex items-center justify-center text-gray-500 shrink-0 group-hover:scale-105 transition-transform">
                           <Icon className="w-5 h-5" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-baseline gap-2">
-                            <span className="font-serif text-tata-grey-light font-bold text-sm">{s.n}</span>
-                            <h4 className="font-serif font-bold text-base text-tata-dark leading-tight">{s.title}</h4>
+                            <span className="font-sans font-light tracking-tight text-gray-400 font-bold text-sm">{s.n}</span>
+                            <h4 className="font-sans font-light tracking-tight font-bold text-base text-black leading-tight">{s.title}</h4>
                           </div>
-                          <p className="text-tata-grey text-xs mt-2 leading-relaxed">{s.body}</p>
+                          <p className="text-gray-500 text-xs mt-2 leading-relaxed">{s.body}</p>
                         </div>
                       </div>
                     </div>
@@ -2885,15 +3075,15 @@ export default function App() {
             </div>
 
             {/* QUALITY METRICS THRESHOLD MATRIX */}
-            <div className="mb-20 bg-white border border-white/20 rounded-3xl overflow-hidden shadow-xl">
-              <div className="bg-gradient-to-r from-tata-bg-light to-tata-bg-light px-8 py-6 border-b border-white/20">
-                <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Quality Metrics Summary Matrix</span>
-                <h3 className="font-serif text-2xl font-bold text-tata-dark mt-1">Critical Thresholds · Verifying Authorities</h3>
+            <div className="mb-20 bg-white border border-gray-200 rounded-none overflow-hidden ">
+              <div className="bg-gradient-to-r from-gray-50 to-gray-50 px-8 py-6 border-b border-gray-200">
+                <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Quality Metrics Summary Matrix</span>
+                <h3 className="font-sans text-xl font-medium text-black mt-1">Critical Thresholds · Verifying Authorities</h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="bg-tata-bg-light text-[11px] uppercase tracking-wider text-tata-grey">
+                    <tr className="bg-gray-50 text-[11px] uppercase tracking-wider text-gray-500">
                       <th className="text-left px-6 py-4 font-semibold">Operational Phase</th>
                       <th className="text-left px-4 py-4 font-semibold">Critical Parameter Target</th>
                       <th className="text-left px-4 py-4 font-semibold">Frequency</th>
@@ -2910,11 +3100,11 @@ export default function App() {
                       { phase: "Terminal Storage", target: "Temp 20-22 °C · Humidity 50-55% RH", freq: "Continuous Log", auth: "Automated Data Logger" },
                       { phase: "Pre-Shipment Cert", target: "0.0% Trace across 500+ Chemicals", freq: "Per Export Lot", auth: "SGS / Eurofins Certified" }
                     ].map((row, idx) => (
-                      <tr key={row.phase} className={idx % 2 === 0 ? "bg-white" : "bg-tata-bg-lighter"}>
-                        <td className="px-6 py-4 font-serif font-bold text-tata-dark">{row.phase}</td>
-                        <td className="px-4 py-4 text-tata-grey">{row.target}</td>
-                        <td className="px-4 py-4 text-tata-grey">{row.freq}</td>
-                        <td className="px-6 py-4 text-tata-dark font-medium">{row.auth}</td>
+                      <tr key={row.phase} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50er"}>
+                        <td className="px-6 py-4 font-sans font-light tracking-tight font-bold text-black">{row.phase}</td>
+                        <td className="px-4 py-4 text-gray-500">{row.target}</td>
+                        <td className="px-4 py-4 text-gray-500">{row.freq}</td>
+                        <td className="px-6 py-4 text-black font-medium">{row.auth}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -2923,21 +3113,21 @@ export default function App() {
             </div>
 
             {/* TRACEABILITY NARRATIVE */}
-            <div className="mb-20 grid grid-cols-1 md:grid-cols-5 gap-8 items-center bg-emerald-950 rounded-3xl p-8 sm:p-12 text-white overflow-hidden relative">
+            <div className="mb-20 grid grid-cols-1 md:grid-cols-5 gap-8 items-center bg-emerald-950 rounded-none p-8 sm:p-12 text-white overflow-hidden relative">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(212,175,55,0.15),transparent_50%)]" />
               <div className="md:col-span-2 relative">
-                <div className="w-20 h-20 rounded-2xl bg-tata-blue-light border border-white/20 flex items-center justify-center text-tata-dark mb-4">
+                <div className="w-20 h-20 rounded-none bg-gray-200 border border-gray-200 flex items-center justify-center text-black mb-4">
                   <Search className="w-10 h-10" />
                 </div>
-                <div className="font-mono text-tata-dark text-xs tracking-wider">BATCH · AT-KHR-{new Date().getFullYear()}-042</div>
-                <div className="text-3xl font-serif font-bold mt-2 text-white">24-Hour Recall Guarantee</div>
+                <div className="font-mono text-black text-xs tracking-wider">BATCH · AT-KHR-{new Date().getFullYear()}-042</div>
+                <div className="text-3xl font-sans font-light tracking-tight font-bold mt-2 text-white">24-Hour Recall Guarantee</div>
               </div>
               <div className="md:col-span-3 relative">
-                <p className="text-tata-grey text-sm leading-relaxed">
-                  Every export unit carries a laser-coded <span className="text-tata-dark font-semibold">multidimensional Batch Identifier</span> that maps the finished tea back to its exact blending shift, machinery log, field section within the estate, and full bio-input application history for that harvest window.
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  Every export unit carries a laser-coded <span className="text-black font-semibold">multidimensional Batch Identifier</span> that maps the finished tea back to its exact blending shift, machinery log, field section within the estate, and full bio-input application history for that harvest window.
                 </p>
-                <p className="text-tata-grey text-sm leading-relaxed mt-3">
-                  Bi-annual <span className="text-white font-semibold">mock recall simulations</span> validate that any specific batch can be isolated from international retail networks and quarantined within <span className="text-tata-dark font-bold">24 hours</span>, giving importers absolute confidence in food-safety incident response.
+                <p className="text-gray-500 text-sm leading-relaxed mt-3">
+                  Bi-annual <span className="text-white font-semibold">mock recall simulations</span> validate that any specific batch can be isolated from international retail networks and quarantined within <span className="text-black font-bold">24 hours</span>, giving importers absolute confidence in food-safety incident response.
                 </p>
               </div>
             </div>
@@ -2945,7 +3135,7 @@ export default function App() {
 
             {/* CERTIFICATES SHOWCASE */}
             <div>
-              <h3 className="font-serif text-2xl font-bold text-tata-dark text-center mb-10">Accreditations & Global Compliance</h3>
+              <h3 className="font-sans text-xl font-medium text-black text-center mb-10">Accreditations & Global Compliance</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
                   { title: "India Organic (NPOP)", desc: "Certified under APEDA's National Programme for Organic Production for cultivation, processing and handling.", code: "IN-ORG-021" },
@@ -2953,17 +3143,17 @@ export default function App() {
                   { title: "ISO 22000:2018", desc: "International Food Safety Management System certification covering the entire farm-to-container chain.", code: "ISO-98421" },
                   { title: "HACCP & FSSAI", desc: "Hazard analysis, critical control point protocols and India's food regulator licence for manufacture & export.", code: "FSSAI-10023" }
                 ].map((cert, idx) => (
-                  <div key={idx} className="bg-white border border-white/20 p-6 rounded-2xl hover:border-tata-blue-light/20 transition-all flex flex-col justify-between">
+                  <div key={idx} className="bg-white border border-gray-200 p-6 rounded-none hover:border-black transition-all flex flex-col justify-between">
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-tata-blue-light flex items-center justify-center text-tata-dark mb-4">
+                      <div className="w-12 h-12 rounded-none bg-gray-200 flex items-center justify-center text-black mb-4">
                         <Award className="w-6 h-6" />
                       </div>
-                      <h4 className="font-serif font-bold text-lg text-tata-dark">{cert.title}</h4>
-                      <p className="text-xs text-tata-grey mt-2 leading-relaxed">{cert.desc}</p>
+                      <h4 className="font-sans font-light tracking-tight font-bold text-lg text-black">{cert.title}</h4>
+                      <p className="text-xs text-gray-500 mt-2 leading-relaxed">{cert.desc}</p>
                     </div>
-                    <div className="mt-6 pt-4 border-t border-tata-grey-light flex items-center justify-between text-xs">
-                      <span className="text-tata-grey font-mono">{cert.code}</span>
-                      <span className="text-tata-dark font-semibold flex items-center gap-1">
+                    <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs">
+                      <span className="text-gray-500 font-mono">{cert.code}</span>
+                      <span className="text-black font-semibold flex items-center gap-1">
                         <span>Verified</span>
                         <CheckCircle2 className="w-3.5 h-3.5" />
                       </span>
@@ -2986,23 +3176,23 @@ export default function App() {
         {activeTab === "calculator" && (
           <div className="py-16 px-6 max-w-6xl mx-auto" data-testid="view-calculator">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Interactive Estimator</span>
-              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark mt-2">Wholesale Price & MOQ Calculator</h1>
-              <p className="text-tata-grey mt-3">Configure your order parameters to calculate tiered volume discounts, packaging rates, and CIF/FOB export estimates instantly.</p>
+              <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Interactive Estimator</span>
+              <h1 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black mt-2">Wholesale Price & MOQ Calculator</h1>
+              <p className="text-gray-500 mt-3">Configure your order parameters to calculate tiered volume discounts, packaging rates, and CIF/FOB export estimates instantly.</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
               {/* CALCULATOR CONTROLS */}
-              <div className="lg:col-span-7 bg-white border border-white/20 p-8 rounded-3xl shadow-xl space-y-6">
+              <div className="lg:col-span-7 bg-white border border-gray-200 p-8 rounded-none  space-y-6">
                 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Select Tea Grade</label>
+                  <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Select Tea Grade</label>
                   <select
                     value={calcForm.teaGrade}
                     onChange={(e) => setCalcForm({ ...calcForm, teaGrade: e.target.value })}
                     data-testid="calc-teagrade"
-                    className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                   >
                     {TEA_CATALOG.map(t => (
                       <option key={t.id} value={t.name}>{t.name} (Base: ${t.priceRange})</option>
@@ -3012,8 +3202,8 @@ export default function App() {
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <label className="text-xs uppercase tracking-wider text-tata-grey font-semibold">Order Quantity (KG)</label>
-                    <div className="flex items-center gap-1.5 bg-tata-bg-light border border-tata-grey-light rounded-lg px-2.5 py-1">
+                    <label className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Order Quantity (KG)</label>
+                    <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-100 rounded-none px-2.5 py-1">
                       <input
                         type="number"
                         min="1"
@@ -3025,9 +3215,9 @@ export default function App() {
                           setCalcForm({ ...calcForm, quantityKg: val });
                         }}
                         data-testid="calc-quantity-input"
-                        className="w-24 text-right text-sm font-mono font-bold text-tata-dark bg-transparent focus:outline-none"
+                        className="w-24 text-right text-sm font-mono font-bold text-black bg-transparent focus:outline-none"
                       />
-                      <span className="text-xs text-tata-grey font-semibold">KG</span>
+                      <span className="text-xs text-gray-500 font-semibold">KG</span>
                     </div>
                   </div>
                   <input
@@ -3038,9 +3228,9 @@ export default function App() {
                     value={Math.min(calcForm.quantityKg, 10000)}
                     onChange={(e) => setCalcForm({ ...calcForm, quantityKg: parseInt(e.target.value) })}
                     data-testid="calc-slider"
-                    className="w-full accent-tata-blue-dark cursor-pointer"
+                    className="w-full accent-black cursor-pointer"
                   />
-                  <div className="flex justify-between text-[11px] text-tata-grey mt-1">
+                  <div className="flex justify-between text-[11px] text-gray-500 mt-1">
                     <span>MOQ: 100 KG</span>
                     <span>2,000 KG (12% off)</span>
                     <span>5,000+ KG (18% off)</span>
@@ -3048,12 +3238,12 @@ export default function App() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Packaging Standard</label>
+                  <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Packaging Standard</label>
                   <select
                     value={calcForm.packagingType}
                     onChange={(e) => setCalcForm({ ...calcForm, packagingType: e.target.value })}
                     data-testid="calc-packaging"
-                    className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                   >
                     <option value="Bulk Vacuum Foil (10kg/25kg)">Bulk Vacuum Foil (10kg/25kg)</option>
                     <option value="Retail Tin Caddies (100g/250g)">Retail Tin Caddies (100g/250g)</option>
@@ -3063,12 +3253,12 @@ export default function App() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Shipping & Incoterms Method</label>
+                  <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Shipping & Incoterms Method</label>
                   <select
                     value={calcForm.shippingMethod}
                     onChange={(e) => setCalcForm({ ...calcForm, shippingMethod: e.target.value })}
                     data-testid="calc-shipping"
-                    className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                   >
                     <option value="FOB - Ocean Freight (Standard Container)">FOB - Ocean Freight (Standard Container)</option>
                     <option value="CIF - Cost, Insurance & Freight">CIF - Cost, Insurance & Freight</option>
@@ -3081,7 +3271,7 @@ export default function App() {
                   onClick={() => handleCalculateQuote(calcForm)}
                   disabled={calcLoading}
                   data-testid="calc-recalculate-btn"
-                  className="w-full bg-tata-blue-dark text-white font-bold py-3.5 rounded-xl hover:bg-tata-blue-light/80 transition-all shadow-lg shadow-tata-blue-light/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full bg-black text-white font-bold py-3.5 rounded-none hover:bg-gray-200/80 transition-all  shadow-none flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>{calcLoading ? "Updating Estimate..." : "Recalculate Estimate"}</span>
                 </button>
@@ -3089,13 +3279,13 @@ export default function App() {
               </div>
 
               {/* CALCULATOR RESULTS CARD */}
-              <div className="lg:col-span-5 bg-white border border-white/20 p-8 rounded-3xl shadow-2xl space-y-6 sticky top-28">
-                <div className="flex items-center justify-between pb-6 border-b border-tata-grey-light">
-                  <h3 className="font-serif text-2xl font-bold text-tata-dark">Estimate Summary</h3>
-                  <span className={`text-xs px-3 py-1 rounded-full border font-semibold ${
+              <div className="lg:col-span-5 bg-white border border-gray-200 p-8 rounded-none  space-y-6 sticky top-28">
+                <div className="flex items-center justify-between pb-6 border-b border-gray-100">
+                  <h3 className="font-sans text-xl font-medium text-black">Estimate Summary</h3>
+                  <span className={`text-xs px-3 py-1 rounded-none border font-semibold ${
                     calcResult?.moqMet
-                      ? "bg-tata-blue-light text-tata-dark border-white/20"
-                      : "bg-tata-bg-light text-tata-dark border-tata-grey-light"
+                      ? "bg-gray-100 text-black border-gray-200"
+                      : "bg-gray-50 text-black border-gray-100"
                   }`}>
                     {calcResult?.moqMet ? "MOQ Verified" : "Below MOQ (Min 100 KG)"}
                   </span>
@@ -3103,48 +3293,48 @@ export default function App() {
 
                 {calcResult && (
                   <div className="space-y-4 text-sm">
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Selected Grade:</span>
-                      <span className="font-semibold text-tata-dark text-right">{calcResult.teaGrade}</span>
+                      <span className="font-semibold text-black text-right">{calcResult.teaGrade}</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Quantity:</span>
-                      <span className="font-semibold text-tata-dark">{calcResult.quantityKg} KG</span>
+                      <span className="font-semibold text-black">{calcResult.quantityKg} KG</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Base Unit Price:</span>
-                      <span className="font-semibold text-tata-dark">${calcResult.baseUnitPrice?.toFixed(2)} / KG</span>
+                      <span className="font-semibold text-black">${calcResult.baseUnitPrice?.toFixed(2)} / KG</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Volume Discount:</span>
-                      <span className="font-semibold text-tata-dark">-{calcResult.discountAppliedPercent}%</span>
+                      <span className="font-semibold text-black">-{calcResult.discountAppliedPercent}%</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Adjusted Unit Price:</span>
-                      <span className="font-semibold text-tata-dark">${calcResult.adjustedUnitPrice?.toFixed(2)} / KG</span>
+                      <span className="font-semibold text-black">${calcResult.adjustedUnitPrice?.toFixed(2)} / KG</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Subtotal (Tea):</span>
-                      <span className="font-semibold text-tata-dark">${calcResult.subtotalUsd?.toLocaleString()}</span>
+                      <span className="font-semibold text-black">${calcResult.subtotalUsd?.toLocaleString()}</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Packaging Cost:</span>
-                      <span className="font-semibold text-tata-dark">${calcResult.packagingCostUsd?.toLocaleString()}</span>
+                      <span className="font-semibold text-black">${calcResult.packagingCostUsd?.toLocaleString()}</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey">
+                    <div className="flex justify-between text-gray-500">
                       <span>Freight & Logistics:</span>
-                      <span className="font-semibold text-tata-dark">${calcResult.freightCostUsd?.toLocaleString()}</span>
+                      <span className="font-semibold text-black">${calcResult.freightCostUsd?.toLocaleString()}</span>
                     </div>
-                    <div className="flex justify-between text-tata-grey pt-1 border-t border-dashed border-tata-grey-light">
+                    <div className="flex justify-between text-gray-500 pt-1 border-t border-dashed border-gray-100">
                       <span>Est. Shipping Lead Time:</span>
-                      <span className="font-semibold text-tata-dark">
+                      <span className="font-semibold text-black">
                         ~{calcResult.estimatedTransitDays || 14} Days Transit
                       </span>
                     </div>
 
-                    <div className="pt-5 border-t border-tata-grey-light flex justify-between items-center">
-                      <span className="font-serif text-lg font-bold text-tata-dark">Total Estimated (USD):</span>
-                      <span className="font-serif text-2xl font-bold text-tata-dark">${calcResult.totalEstimatedUsd?.toLocaleString()}</span>
+                    <div className="pt-5 border-t border-gray-100 flex justify-between items-center">
+                      <span className="font-sans font-light tracking-tight text-lg font-bold text-black">Total Estimated (USD):</span>
+                      <span className="font-sans font-light tracking-tight text-2xl font-bold text-black">${calcResult.totalEstimatedUsd?.toLocaleString()}</span>
                     </div>
 
                     <button
@@ -3159,7 +3349,7 @@ export default function App() {
                         toast.success("Quote specifications transferred to Export RFQ form.");
                       }}
                       data-testid="calc-convert-rfq"
-                      className="w-full mt-4 bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark text-white font-bold py-3.5 rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-tata-blue-light/20"
+                      className="w-full mt-4 bg-black text-white font-bold py-3.5 rounded-none hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer  shadow-none"
                     >
                       <span>Lock In Price & Send RFQ</span>
                       <ArrowRight className="w-4 h-4" />
@@ -3176,9 +3366,9 @@ export default function App() {
         {activeTab === "destinations" && (
           <div className="py-16 px-6 max-w-7xl mx-auto" data-testid="view-destinations">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Global Footprint</span>
-              <h1 className="font-serif text-3xl sm:text-5xl font-bold text-tata-dark mt-2">Export Destinations & Client Testimonials</h1>
-              <p className="text-tata-grey mt-4">Trusted by premier importers, tea houses, and beverage corporations across 45+ countries.</p>
+              <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Global Footprint</span>
+              <h1 className="font-sans font-light tracking-tight text-3xl sm:text-5xl font-bold text-black mt-2">Export Destinations & Client Testimonials</h1>
+              <p className="text-gray-500 mt-4">Trusted by premier importers, tea houses, and beverage corporations across 45+ countries.</p>
             </div>
 
             {/* DESTINATIONS GRID */}
@@ -3189,13 +3379,13 @@ export default function App() {
                 { country: "United Kingdom", port: "Port of Felixstowe", volume: "2,500 Tons/Yr", lead: "14-16 Days Transit" },
                 { country: "Japan & East Asia", port: "Ports of Tokyo & Yokohama", volume: "2,000 Tons/Yr", lead: "10-12 Days Transit" }
               ].map((dest, idx) => (
-                <div key={idx} className="bg-white border border-white/20 p-6 rounded-2xl hover:border-tata-blue-light/20 transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-tata-blue-light flex items-center justify-center text-tata-dark mb-4">
+                <div key={idx} className="bg-white border border-gray-200 p-6 rounded-none hover:border-black transition-all">
+                  <div className="w-10 h-10 rounded-none bg-gray-200 flex items-center justify-center text-black mb-4">
                     <Globe className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif font-bold text-lg text-tata-dark">{dest.country}</h3>
-                  <div className="text-xs text-tata-dark font-semibold mt-1">{dest.port}</div>
-                  <div className="mt-4 pt-4 border-t border-tata-grey-light flex justify-between text-xs text-tata-grey">
+                  <h3 className="font-sans font-light tracking-tight font-bold text-lg text-black">{dest.country}</h3>
+                  <div className="text-xs text-black font-semibold mt-1">{dest.port}</div>
+                  <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between text-xs text-gray-500">
                     <span>{dest.volume}</span>
                     <span>{dest.lead}</span>
                   </div>
@@ -3205,7 +3395,7 @@ export default function App() {
 
             {/* TESTIMONIALS */}
             <div>
-              <h3 className="font-serif text-2xl font-bold text-tata-dark text-center mb-10">What Executive Importers Say</h3>
+              <h3 className="font-sans text-xl font-medium text-black text-center mb-10">What Executive Importers Say</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   {
@@ -3227,19 +3417,19 @@ export default function App() {
                     country: "Japan"
                   }
                 ].map((test, idx) => (
-                  <div key={idx} className="bg-white border border-white/20 p-8 rounded-2xl flex flex-col justify-between">
+                  <div key={idx} className="bg-white border border-gray-200 p-8 rounded-none flex flex-col justify-between">
                     <div>
-                      <div className="flex gap-1 text-tata-dark mb-4">
+                      <div className="flex gap-1 text-black mb-4">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-current" />
                         ))}
                       </div>
-                      <p className="text-tata-grey text-sm italic leading-relaxed">"{test.quote}"</p>
+                      <p className="text-gray-500 text-sm italic leading-relaxed">"{test.quote}"</p>
                     </div>
-                    <div className="mt-6 pt-4 border-t border-tata-grey-light">
-                      <h4 className="font-semibold text-tata-dark text-sm">{test.author}</h4>
-                      <p className="text-xs text-tata-grey mt-0.5">{test.title}</p>
-                      <p className="text-[11px] text-tata-grey">{test.country}</p>
+                    <div className="mt-6 pt-4 border-t border-gray-100">
+                      <h4 className="font-semibold text-black text-sm">{test.author}</h4>
+                      <p className="text-xs text-gray-500 mt-0.5">{test.title}</p>
+                      <p className="text-[11px] text-gray-500">{test.country}</p>
                     </div>
                   </div>
                 ))}
@@ -3255,14 +3445,14 @@ export default function App() {
           <div className="py-12 px-6 max-w-7xl mx-auto" data-testid="view-admin">
             
             {/* CMS HEADER */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b border-white/20 pb-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b border-gray-200 pb-6">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs uppercase tracking-[0.25em] text-tata-grey font-semibold">Live Content Management</span>
-                  <span className="bg-tata-blue-light text-tata-dark text-[10px] font-mono px-2.5 py-0.5 rounded-full font-bold border border-white/20">CMS Active</span>
+                  <span className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">Live Content Management</span>
+                  <span className="bg-gray-200 text-black text-[10px] font-mono px-2.5 py-0.5 rounded-none font-bold border border-gray-200">CMS Active</span>
                 </div>
-                <h1 className="font-serif text-3xl sm:text-4xl font-bold text-tata-dark mt-1">Website Data & Content Manager</h1>
-                <p className="text-tata-grey text-sm mt-1">Make dynamic real-time changes to tea catalog grades, live pricing, cargo telemetry, estate stats, and buyer RFQs.</p>
+                <h1 className="font-sans font-light tracking-tight text-3xl sm:text-4xl font-bold text-black mt-1">Website Data & Content Manager</h1>
+                <p className="text-gray-500 text-sm mt-1">Make dynamic real-time changes to tea catalog grades, live pricing, cargo telemetry, estate stats, and buyer RFQs.</p>
               </div>
 
               {adminAuthed && (
@@ -3270,7 +3460,7 @@ export default function App() {
                   <button
                     onClick={handleResetSiteData}
                     data-testid="admin-reset-defaults"
-                    className="flex items-center gap-1.5 border border-tata-dark bg-tata-dark text-tata-bg-light hover:bg-tata-dark px-4 py-2 rounded-xl text-xs font-semibold transition-all"
+                    className="flex items-center gap-1.5 border border-black bg-white text-black hover:bg-gray-100 border-gray-200 px-4 py-2 rounded-none text-xs font-semibold transition-all"
                     title="Reset products, shipments and estate metrics back to factory defaults"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
@@ -3281,16 +3471,16 @@ export default function App() {
                     onClick={() => { fetchSiteData(); fetchEnquiries(); }}
                     disabled={adminLoading}
                     data-testid="admin-refresh"
-                    className="flex items-center gap-1.5 border border-white/20 bg-white text-tata-dark px-4 py-2 rounded-xl text-xs font-semibold hover:bg-tata-blue-light transition-all"
+                    className="flex items-center gap-1.5 border border-gray-200 bg-white text-black px-4 py-2 rounded-none text-xs font-semibold hover:bg-gray-200 transition-all"
                   >
-                    <RefreshCw className={`w-3.5 h-3.5 ${adminLoading ? "animate-spin text-tata-dark" : ""}`} />
+                    <RefreshCw className={`w-3.5 h-3.5 ${adminLoading ? "animate-spin text-black" : ""}`} />
                     <span>{adminLoading ? "Refreshing…" : "Refresh All Data"}</span>
                   </button>
 
                   <button
                     onClick={handleAdminLogout}
                     data-testid="admin-logout"
-                    className="text-tata-grey hover:text-tata-dark text-xs font-medium underline px-2 py-1"
+                    className="text-gray-500 hover:text-black text-xs font-medium underline px-2 py-1"
                   >
                     Sign Out
                   </button>
@@ -3299,17 +3489,17 @@ export default function App() {
             </div>
 
             {!adminAuthed ? (
-              <div className="max-w-md mx-auto bg-white border border-white/20 rounded-3xl p-10 shadow-xl my-12">
-                <div className="w-14 h-14 rounded-2xl bg-tata-blue-light border border-white/20 flex items-center justify-center text-tata-dark mb-6 mx-auto">
+              <div className="max-w-md mx-auto bg-white border border-gray-200 rounded-none p-10  my-12">
+                <div className="w-14 h-14 rounded-none bg-gray-200 border border-gray-200 flex items-center justify-center text-black mb-6 mx-auto">
                   <Lock className="w-7 h-7" />
                 </div>
-                <h2 className="font-serif text-2xl font-bold text-tata-dark text-center">Admin CMS Sign-In</h2>
-                <p className="text-tata-grey text-xs text-center mt-2 leading-relaxed">
+                <h2 className="font-sans font-light tracking-tight text-2xl font-bold text-black text-center">Admin CMS Sign-In</h2>
+                <p className="text-gray-500 text-xs text-center mt-2 leading-relaxed">
                   Enter your admin token to unlock dynamic editing for tea products, pricing, shipment telemetry, and estate metrics.
                 </p>
-                <div className="mt-4 p-3 bg-tata-bg-light border border-white/20 rounded-xl text-center">
-                  <span className="text-[11px] text-tata-grey block">Default Development Admin Token:</span>
-                  <code className="text-xs font-mono font-bold text-tata-dark">atweel-admin-change-me</code>
+                <div className="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-none text-center">
+                  <span className="text-[11px] text-gray-500 block">Default Development Admin Token:</span>
+                  <code className="text-xs font-mono font-bold text-black">atweel-admin-change-me</code>
                 </div>
                 <form onSubmit={handleAdminLogin} className="mt-6 space-y-4">
                   <input
@@ -3318,13 +3508,13 @@ export default function App() {
                     value={adminTokenInput}
                     onChange={(e) => setAdminTokenInput(e.target.value)}
                     data-testid="admin-token-input"
-                    className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black placeholder-gray-400 focus:outline-none focus:border-black"
                     autoFocus
                   />
                   <button
                     type="submit"
                     data-testid="admin-login-btn"
-                    className="w-full bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark text-white font-bold py-3 rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-tata-blue-light/20"
+                    className="w-full bg-black text-white font-bold py-3 rounded-none hover:brightness-110 transition-all flex items-center justify-center gap-2  shadow-none"
                   >
                     <ShieldCheck className="w-4 h-4" />
                     <span>Unlock CMS Dashboard</span>
@@ -3334,14 +3524,14 @@ export default function App() {
             ) : (
               <>
                 {/* CMS SUB-TAB NAVIGATION BAR */}
-                <div className="flex flex-wrap gap-2 border-b border-tata-grey-light mb-8 pb-3">
+                <div className="flex flex-wrap gap-2 border-b border-gray-100 mb-8 pb-3">
                   <button
                     onClick={() => setCmsTab("products")}
                     data-testid="cms-tab-products"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "products"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <Package className="w-4 h-4" />
@@ -3351,10 +3541,10 @@ export default function App() {
                   <button
                     onClick={() => setCmsTab("shipments")}
                     data-testid="cms-tab-shipments"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "shipments"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <Truck className="w-4 h-4" />
@@ -3364,10 +3554,10 @@ export default function App() {
                   <button
                     onClick={() => setCmsTab("estate")}
                     data-testid="cms-tab-estate"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "estate"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <Factory className="w-4 h-4" />
@@ -3377,10 +3567,10 @@ export default function App() {
                   <button
                     onClick={() => setCmsTab("announcement")}
                     data-testid="cms-tab-announcement"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "announcement"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <Bell className="w-4 h-4" />
@@ -3390,10 +3580,10 @@ export default function App() {
                   <button
                     onClick={() => setCmsTab("certificates")}
                     data-testid="cms-tab-certificates"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "certificates"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <Award className="w-4 h-4" />
@@ -3403,10 +3593,10 @@ export default function App() {
                   <button
                     onClick={() => { setCmsTab("audit"); fetchAuditLog(); }}
                     data-testid="cms-tab-audit"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "audit"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <History className="w-4 h-4" />
@@ -3416,10 +3606,10 @@ export default function App() {
                   <button
                     onClick={() => setCmsTab("backup")}
                     data-testid="cms-tab-backup"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "backup"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <Download className="w-4 h-4" />
@@ -3429,10 +3619,10 @@ export default function App() {
                   <button
                     onClick={() => setCmsTab("enquiries")}
                     data-testid="cms-tab-enquiries"
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
                       cmsTab === "enquiries"
-                        ? "bg-tata-dark text-tata-blue-light shadow-md"
-                        : "bg-white text-tata-grey hover:bg-tata-bg-light border border-tata-grey-light"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
                     }`}
                   >
                     <Mail className="w-4 h-4" />
@@ -3443,15 +3633,15 @@ export default function App() {
                 {/* SUB-PANEL 1: PRODUCTS & PRICING CMS */}
                 {cmsTab === "products" && (
                   <div className="space-y-6" data-testid="cms-products-panel">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl border border-white/20">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-none border border-gray-200">
                       <div>
-                        <h2 className="font-serif text-xl font-bold text-tata-dark">Dynamic Tea Catalog & Wholesale Rates</h2>
-                        <p className="text-tata-grey text-xs mt-1">Changes made here automatically update the public catalog, quote estimator, and sample request selectors in real time.</p>
+                        <h2 className="font-sans font-light tracking-tight text-xl font-bold text-black">Dynamic Tea Catalog & Wholesale Rates</h2>
+                        <p className="text-gray-500 text-xs mt-1">Changes made here automatically update the public catalog, quote estimator, and sample request selectors in real time.</p>
                       </div>
                       <button
                         onClick={() => handleOpenProductModal(null)}
                         data-testid="cms-add-product-btn"
-                        className="bg-tata-blue-dark text-white font-bold px-5 py-2.5 rounded-xl text-xs hover:brightness-110 transition-all flex items-center gap-2 shadow-md shadow-tata-blue-light/20"
+                        className="bg-black text-white font-bold px-5 py-2.5 rounded-none text-xs hover:brightness-110 transition-all flex items-center gap-2  shadow-none"
                       >
                         <Plus className="w-4 h-4" />
                         <span>Add New Tea Grade</span>
@@ -3463,51 +3653,60 @@ export default function App() {
                         <div
                           key={prod.id}
                           data-testid={`cms-product-card-${prod.id}`}
-                          className="bg-white border border-tata-grey-light rounded-2xl overflow-hidden hover:border-tata-blue-light/20 transition-all flex flex-col justify-between shadow-sm"
+                          className="bg-white border border-gray-100 rounded-none overflow-hidden hover:border-black transition-all flex flex-col justify-between shadow-none hover: group"
                         >
                           <div>
-                            <div className="h-44 overflow-hidden relative bg-tata-bg-light">
-                              <img src={prod.image} alt={prod.name} className="w-full h-full object-cover" />
-                              <div className="absolute top-3 right-3 flex gap-1">
-                                <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border backdrop-blur-md ${
+                            <div className="h-56 overflow-hidden relative bg-gray-50">
+                              <img src={prod.image} alt={prod.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" />
+                              <div className="absolute top-4 right-4 flex gap-1">
+                                <span className={`px-3 py-1.5 rounded-none text-[10px] font-bold border backdrop-blur-md  uppercase tracking-widest ${
                                   prod.inStock !== false ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-red-50 text-red-700 border-red-200"
                                 }`}>
-                                  {prod.inStock !== false ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-red-50 text-red-700 border-red-200"}
+                                  {prod.inStock !== false ? "In Stock" : "Out of Stock"}
                                 </span>
                               </div>
+                              <div className="absolute top-4 left-4 bg-black/95 backdrop-blur-md px-3 py-1.5 rounded-none border border-gray-200 text-[10px] font-bold text-white  uppercase tracking-widest">
+                                {prod.origin}
+                              </div>
                             </div>
-                            <div className="p-5">
-                              <span className="text-[10px] uppercase font-semibold text-tata-dark tracking-wider block">{prod.origin}</span>
-                              <h3 className="font-serif font-bold text-lg text-tata-dark mt-1">{prod.name}</h3>
-                              <div className="text-xs text-tata-grey font-mono mt-0.5">{prod.grade}</div>
-                              <p className="text-xs text-tata-grey mt-2 line-clamp-2">{prod.description}</p>
+
+                            <div className="p-6">
+                              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">{prod.grade}</div>
+                              <h3 className="font-sans font-light tracking-tight font-bold text-2xl text-black mt-1">{prod.name}</h3>
+                              <p className="text-gray-500 text-sm mt-3 leading-relaxed min-h-[60px] line-clamp-2">{prod.description}</p>
                               
-                              <div className="mt-3 pt-3 border-t border-tata-grey-light flex items-center justify-between text-xs">
-                                <div>
-                                  <span className="text-[10px] uppercase text-tata-grey block font-semibold">Wholesale Rate</span>
-                                  <span className="font-serif font-bold text-tata-dark">{prod.priceRange || `$${prod.basePrice}/KG`}</span>
+                              <div className="mt-4 p-3 rounded-none bg-gray-50 border border-gray-100 flex flex-wrap gap-4 divide-x divide-gray-200">
+                                <div className="flex flex-col items-start">
+                                  <div className="flex items-center gap-1.5 mb-1">
+                                    <Coffee className="w-3.5 h-3.5 text-gray-300" />
+                                    <span className="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Cup Profile</span>
+                                  </div>
+                                  <span className="text-xs text-black font-medium line-clamp-1">{prod.flavor || 'Robust & Malty'}</span>
                                 </div>
-                                <div className="text-right">
-                                  <span className="text-[10px] uppercase text-tata-grey block font-semibold">MOQ</span>
-                                  <span className="font-semibold text-tata-dark">{prod.moq}</span>
+                                <div className="flex flex-col items-start pl-4">
+                                  <div className="flex items-center gap-1.5 mb-1">
+                                    <Star className="w-3.5 h-3.5 text-gray-300" />
+                                    <span className="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">MOQ</span>
+                                  </div>
+                                  <span className="text-xs text-black font-medium">{prod.moq}</span>
                                 </div>
                               </div>
                             </div>
                           </div>
 
-                          <div className="p-4 bg-tata-bg-light/50 border-t border-tata-grey-light flex items-center justify-between gap-2">
+                          <div className="p-4 bg-gray-50/50 border-t border-gray-100 flex items-center justify-between gap-2">
                             <button
                               onClick={() => handleOpenProductModal(prod)}
                               data-testid={`cms-edit-product-${prod.id}`}
-                              className="flex items-center gap-1.5 text-xs font-semibold text-tata-dark bg-white border border-white/20 px-3 py-1.5 rounded-lg hover:bg-tata-blue-light transition-all flex-1 justify-center"
+                              className="flex items-center gap-1.5 text-xs font-semibold text-black bg-white border border-gray-200 px-3 py-1.5 rounded-none hover:bg-gray-200 transition-all flex-1 justify-center"
                             >
-                              <Edit3 className="w-3.5 h-3.5 text-tata-dark" />
+                              <Edit3 className="w-3.5 h-3.5 text-black" />
                               <span>Edit Details</span>
                             </button>
                             <button
                               onClick={() => handleDeleteProduct(prod.id)}
                               data-testid={`cms-delete-product-${prod.id}`}
-                              className="flex items-center gap-1 text-xs font-semibold text-tata-dark bg-tata-dark text-tata-bg-light border border-tata-dark px-3 py-1.5 rounded-lg hover:bg-tata-dark text-tata-bg-light transition-all"
+                              className="flex items-center gap-1 text-xs font-semibold text-black bg-black text-black border border-black px-3 py-1.5 rounded-none hover:bg-black text-black transition-all"
                               title="Delete from catalog"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
@@ -3522,26 +3721,26 @@ export default function App() {
                 {/* SUB-PANEL 2: CARGO TELEMETRY & TRACKING CMS */}
                 {cmsTab === "shipments" && (
                   <div className="space-y-6" data-testid="cms-shipments-panel">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl border border-white/20">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-none border border-gray-200">
                       <div>
-                        <h2 className="font-serif text-xl font-bold text-tata-dark">Live Cargo Shipment Telemetry</h2>
-                        <p className="text-tata-grey text-xs mt-1">Manage active tracking numbers, container sensor readings, vessel ETA, and port milestones.</p>
+                        <h2 className="font-sans font-light tracking-tight text-xl font-bold text-black">Live Cargo Shipment Telemetry</h2>
+                        <p className="text-gray-500 text-xs mt-1">Manage active tracking numbers, container sensor readings, vessel ETA, and port milestones.</p>
                       </div>
                       <button
                         onClick={() => handleOpenShipmentModal(null)}
                         data-testid="cms-add-shipment-btn"
-                        className="bg-tata-blue-dark text-white font-bold px-5 py-2.5 rounded-xl text-xs hover:brightness-110 transition-all flex items-center gap-2 shadow-md shadow-tata-blue-light/20"
+                        className="bg-black text-white font-bold px-5 py-2.5 rounded-none text-xs hover:brightness-110 transition-all flex items-center gap-2  shadow-none"
                       >
                         <Plus className="w-4 h-4" />
                         <span>Create Shipment Record</span>
                       </button>
                     </div>
 
-                    <div className="bg-white border border-tata-grey-light rounded-2xl overflow-hidden shadow-sm">
+                    <div className="bg-white border border-gray-100 rounded-none overflow-hidden shadow-none">
                       <div className="overflow-x-auto">
                         <table className="w-full text-sm">
                           <thead>
-                            <tr className="bg-tata-bg-light text-[11px] uppercase tracking-wider text-tata-grey">
+                            <tr className="bg-gray-50 text-[11px] uppercase tracking-wider text-gray-500">
                               <th className="text-left px-6 py-4 font-semibold">Tracking #</th>
                               <th className="text-left px-4 py-4 font-semibold">Status & Milestone</th>
                               <th className="text-left px-4 py-4 font-semibold">Vessel</th>
@@ -3553,22 +3752,22 @@ export default function App() {
                           </thead>
                           <tbody>
                             {Object.entries(siteShipments).map(([code, s]) => (
-                              <tr key={code} className="border-t border-tata-grey-light hover:bg-tata-bg-light/50 transition-colors" data-testid={`cms-shipment-row-${code}`}>
-                                <td className="px-6 py-4 font-mono font-bold text-tata-dark text-xs">
+                              <tr key={code} className="border-t border-gray-100 hover:bg-gray-50/50 transition-colors" data-testid={`cms-shipment-row-${code}`}>
+                                <td className="px-6 py-4 font-mono font-bold text-black text-xs">
                                   {code}
                                 </td>
                                 <td className="px-4 py-4">
-                                  <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-tata-blue-light text-tata-dark border border-white/20">
+                                  <span className="inline-block px-2.5 py-1 rounded-none text-[10px] font-bold bg-gray-200 text-black border border-gray-200">
                                     {s.status}
                                   </span>
                                 </td>
-                                <td className="px-4 py-4 text-xs font-semibold text-tata-dark">{s.vessel}</td>
-                                <td className="px-4 py-4 text-xs text-tata-grey">
-                                  <div className="font-semibold text-tata-dark">{s.origin}</div>
-                                  <div className="text-[11px] text-tata-grey">→ {s.destination}</div>
+                                <td className="px-4 py-4 text-xs font-semibold text-black">{s.vessel}</td>
+                                <td className="px-4 py-4 text-xs text-gray-500">
+                                  <div className="font-semibold text-black">{s.origin}</div>
+                                  <div className="text-[11px] text-gray-500">→ {s.destination}</div>
                                 </td>
-                                <td className="px-4 py-4 text-xs font-bold text-tata-dark">{s.eta}</td>
-                                <td className="px-4 py-4 text-xs font-mono text-tata-grey">
+                                <td className="px-4 py-4 text-xs font-bold text-black">{s.eta}</td>
+                                <td className="px-4 py-4 text-xs font-mono text-gray-500">
                                   <div>🌡️ {s.temperature}</div>
                                   <div>💧 {s.humidity}</div>
                                 </td>
@@ -3580,21 +3779,21 @@ export default function App() {
                                       setActiveTab("tracking");
                                     }}
                                     data-testid={`cms-test-track-${code}`}
-                                    className="text-xs font-semibold text-tata-dark bg-tata-bg-light border border-tata-grey-light px-3 py-1.5 rounded-lg hover:bg-tata-blue-light transition-all"
+                                    className="text-xs font-semibold text-black bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-none hover:bg-gray-200 transition-all"
                                   >
                                     Test Tracker
                                   </button>
                                   <button
                                     onClick={() => handleOpenShipmentModal({ trackingNumber: code, ...s })}
                                     data-testid={`cms-edit-shipment-${code}`}
-                                    className="text-xs font-semibold text-tata-dark bg-white border border-white/20 px-3 py-1.5 rounded-lg hover:bg-tata-blue-light transition-all"
+                                    className="text-xs font-semibold text-black bg-white border border-gray-200 px-3 py-1.5 rounded-none hover:bg-gray-200 transition-all"
                                   >
                                     Edit
                                   </button>
                                   <button
                                     onClick={() => handleDeleteShipment(code)}
                                     data-testid={`cms-delete-shipment-${code}`}
-                                    className="text-xs font-semibold text-tata-dark bg-tata-dark text-tata-bg-light border border-tata-dark px-2.5 py-1.5 rounded-lg hover:bg-tata-dark text-tata-bg-light transition-all"
+                                    className="text-xs font-semibold text-black bg-black text-black border border-black px-2.5 py-1.5 rounded-none hover:bg-black text-black transition-all"
                                   >
                                     Delete
                                   </button>
@@ -3610,86 +3809,86 @@ export default function App() {
 
                 {/* SUB-PANEL 3: ESTATE & OPERATIONAL KPIS CMS */}
                 {cmsTab === "estate" && (
-                  <div className="bg-white border border-white/20 rounded-3xl p-8 shadow-xl max-w-4xl mx-auto" data-testid="cms-estate-panel">
-                    <div className="mb-6 border-b border-tata-grey-light pb-4">
-                      <h2 className="font-serif text-2xl font-bold text-tata-dark">Estate Operational KPIs & Capacity</h2>
-                      <p className="text-tata-grey text-xs mt-1">Update garden acreage, factory footprint, certified organic purity %, and export capacity metrics displayed across the site.</p>
+                  <div className="bg-white border border-gray-200 rounded-none p-8  max-w-4xl mx-auto" data-testid="cms-estate-panel">
+                    <div className="mb-6 border-b border-gray-100 pb-4">
+                      <h2 className="font-sans font-light tracking-tight text-2xl font-bold text-black">Estate Operational KPIs & Capacity</h2>
+                      <p className="text-gray-500 text-xs mt-1">Update garden acreage, factory footprint, certified organic purity %, and export capacity metrics displayed across the site.</p>
                     </div>
 
                     <form onSubmit={handleSaveEstate} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Plantation Garden Area</label>
+                        <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Plantation Garden Area</label>
                         <input
                           type="text"
                           value={estateForm.bighaArea}
                           onChange={(e) => setEstateForm({ ...estateForm, bighaArea: e.target.value })}
                           data-testid="cms-estate-bigha"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                           placeholder="e.g. 1,200 Bigha"
                           required
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Processing Factory Area</label>
+                        <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Processing Factory Area</label>
                         <input
                           type="text"
                           value={estateForm.factorySqFt}
                           onChange={(e) => setEstateForm({ ...estateForm, factorySqFt: e.target.value })}
                           data-testid="cms-estate-factory"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                           placeholder="e.g. 72,000 Sq Ft"
                           required
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Organic Purity Certification</label>
+                        <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Organic Purity Certification</label>
                         <input
                           type="text"
                           value={estateForm.organicPurity}
                           onChange={(e) => setEstateForm({ ...estateForm, organicPurity: e.target.value })}
                           data-testid="cms-estate-purity"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                           placeholder="e.g. 100% Organic"
                           required
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Primary Dispatch Ocean Port</label>
+                        <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Primary Dispatch Ocean Port</label>
                         <input
                           type="text"
                           value={estateForm.dispatchPort}
                           onChange={(e) => setEstateForm({ ...estateForm, dispatchPort: e.target.value })}
                           data-testid="cms-estate-port"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                           placeholder="e.g. Kolkata Port"
                           required
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Active Export Destination Countries</label>
+                        <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Active Export Destination Countries</label>
                         <input
                           type="number"
                           value={estateForm.exportCountriesCount}
                           onChange={(e) => setEstateForm({ ...estateForm, exportCountriesCount: Number(e.target.value) })}
                           data-testid="cms-estate-countries"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                           placeholder="e.g. 45"
                           required
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Annual Orthodox Production (MT)</label>
+                        <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Annual Orthodox Production (MT)</label>
                         <input
                           type="number"
                           value={estateForm.annualProductionMt}
                           onChange={(e) => setEstateForm({ ...estateForm, annualProductionMt: Number(e.target.value) })}
                           data-testid="cms-estate-production"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                           placeholder="e.g. 850"
                           required
                         />
@@ -3699,7 +3898,7 @@ export default function App() {
                         <button
                           type="submit"
                           data-testid="cms-save-estate-btn"
-                          className="w-full bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark text-white font-bold py-3.5 rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-tata-blue-light/20"
+                          className="w-full bg-black text-white font-bold py-3.5 rounded-none hover:brightness-110 transition-all flex items-center justify-center gap-2  shadow-none"
                         >
                           <Save className="w-4 h-4" />
                           <span>Save Estate KPIs Live</span>
@@ -3711,84 +3910,84 @@ export default function App() {
 
                 {/* SUB-PANEL 4: LIVE BANNER TICKER ALERT CMS */}
                 {cmsTab === "announcement" && (
-                  <div className="bg-white border border-white/20 rounded-3xl p-8 shadow-xl max-w-3xl mx-auto" data-testid="cms-announcement-panel">
-                    <div className="mb-6 border-b border-tata-grey-light pb-4 flex items-center justify-between">
+                  <div className="bg-white border border-gray-200 rounded-none p-8  max-w-3xl mx-auto" data-testid="cms-announcement-panel">
+                    <div className="mb-6 border-b border-gray-100 pb-4 flex items-center justify-between">
                       <div>
-                        <h2 className="font-serif text-2xl font-bold text-tata-dark">Website Header Announcement Ticker</h2>
-                        <p className="text-tata-grey text-xs mt-1">Publish live notices, auction alerts, or harvest season updates at the top of every page on the website.</p>
+                        <h2 className="font-sans font-light tracking-tight text-2xl font-bold text-black">Website Header Announcement Ticker</h2>
+                        <p className="text-gray-500 text-xs mt-1">Publish live notices, auction alerts, or harvest season updates at the top of every page on the website.</p>
                       </div>
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${announcementForm.enabled ? "bg-tata-bg-light text-tata-dark" : "bg-tata-bg-light text-tata-dark"}`}>
+                      <span className={`px-3 py-1 rounded-none text-xs font-bold ${announcementForm.enabled ? "bg-gray-50 text-black" : "bg-gray-50 text-black"}`}>
                         {announcementForm.enabled ? "Live Banner Active" : "Banner Hidden"}
                       </span>
                     </div>
 
                     <form onSubmit={handleSaveAnnouncement} className="space-y-6">
-                      <div className="flex items-center justify-between p-4 bg-tata-bg-light border border-white/20 rounded-2xl">
+                      <div className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-none">
                         <div>
-                          <div className="font-bold text-sm text-tata-dark">Display Announcement Ticker</div>
-                          <div className="text-xs text-tata-grey">Toggle whether this notice is visible on the live site.</div>
+                          <div className="font-bold text-sm text-black">Display Announcement Ticker</div>
+                          <div className="text-xs text-gray-500">Toggle whether this notice is visible on the live site.</div>
                         </div>
                         <input
                           type="checkbox"
                           checked={announcementForm.enabled}
                           onChange={(e) => setAnnouncementForm({ ...announcementForm, enabled: e.target.checked })}
                           data-testid="cms-announcement-toggle"
-                          className="w-5 h-5 accent-tata-blue-dark cursor-pointer"
+                          className="w-5 h-5 accent-black cursor-pointer"
                         />
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Badge Category</label>
+                          <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Badge Category</label>
                           <input
                             type="text"
                             value={announcementForm.badge}
                             onChange={(e) => setAnnouncementForm({ ...announcementForm, badge: e.target.value })}
                             data-testid="cms-announcement-badge"
-                            className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                            className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                             placeholder="e.g. 2026 Spring Harvest"
                             required
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Action Button Label</label>
+                          <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Action Button Label</label>
                           <input
                             type="text"
                             value={announcementForm.linkText}
                             onChange={(e) => setAnnouncementForm({ ...announcementForm, linkText: e.target.value })}
                             data-testid="cms-announcement-linktext"
-                            className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-3 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                            className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-3 text-sm text-black focus:outline-none focus:border-black"
                             placeholder="e.g. Request Allocation"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-tata-grey font-semibold mb-2">Notice Message Text</label>
+                        <label className="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Notice Message Text</label>
                         <textarea
                           rows={3}
                           value={announcementForm.message}
                           onChange={(e) => setAnnouncementForm({ ...announcementForm, message: e.target.value })}
                           data-testid="cms-announcement-message"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl p-4 text-sm text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none p-4 text-sm text-black focus:outline-none focus:border-black"
                           placeholder="e.g. First-Flush Golden Tips plucking commenced at Kharsang Estate — Reserve direct allocations."
                           required
                         />
                       </div>
 
                       {/* LIVE PREVIEW BOX */}
-                      <div className="p-4 bg-tata-dark border border-white/20 rounded-2xl">
-                        <div className="text-[10px] uppercase font-bold text-tata-dark tracking-wider mb-2">Live Ticker Preview</div>
-                        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-tata-grey">
+                      <div className="p-4 bg-black border border-gray-200 rounded-none">
+                        <div className="text-[10px] uppercase font-bold text-black tracking-wider mb-2">Live Ticker Preview</div>
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
                           <div className="flex items-center gap-2">
-                            <span className="bg-tata-blue-dark text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">
+                            <span className="bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-none uppercase">
                               {announcementForm.badge || "ESTATE UPDATE"}
                             </span>
-                            <span className="font-medium text-tata-grey">{announcementForm.message || "Your announcement message here..."}</span>
+                            <span className="font-medium text-gray-500">{announcementForm.message || "Your announcement message here..."}</span>
                           </div>
                           {announcementForm.linkText && (
-                            <span className="text-tata-dark font-bold underline text-xs whitespace-nowrap">{announcementForm.linkText} &rarr;</span>
+                            <span className="text-black font-bold underline text-xs whitespace-nowrap">{announcementForm.linkText} &rarr;</span>
                           )}
                         </div>
                       </div>
@@ -3796,7 +3995,7 @@ export default function App() {
                       <button
                         type="submit"
                         data-testid="cms-save-announcement-btn"
-                        className="w-full bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark text-white font-bold py-3.5 rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-tata-blue-light/20"
+                        className="w-full bg-black text-white font-bold py-3.5 rounded-none hover:brightness-110 transition-all flex items-center justify-center gap-2  shadow-none"
                       >
                         <Save className="w-4 h-4" />
                         <span>Publish Ticker Banner Live</span>
@@ -3808,15 +4007,15 @@ export default function App() {
                 {/* SUB-PANEL 5: COMPLIANCE & QUALITY LICENSES CMS */}
                 {cmsTab === "certificates" && (
                   <div className="space-y-6" data-testid="cms-certificates-panel">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl border border-white/20">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-none border border-gray-200">
                       <div>
-                        <h2 className="font-serif text-xl font-bold text-tata-dark">Quality Certifications & Export Licenses Manager</h2>
-                        <p className="text-tata-grey text-xs mt-1">Manage food safety standards, organic accreditations, and regulatory export certificates shown in the trust ribbon.</p>
+                        <h2 className="font-sans font-light tracking-tight text-xl font-bold text-black">Quality Certifications & Export Licenses Manager</h2>
+                        <p className="text-gray-500 text-xs mt-1">Manage food safety standards, organic accreditations, and regulatory export certificates shown in the trust ribbon.</p>
                       </div>
                       <button
                         onClick={() => handleOpenCertModal(null)}
                         data-testid="cms-add-cert-btn"
-                        className="bg-tata-blue-dark text-white font-bold px-5 py-2.5 rounded-xl text-xs hover:brightness-110 transition-all flex items-center gap-2 shadow-md shadow-tata-blue-light/20"
+                        className="bg-black text-white font-bold px-5 py-2.5 rounded-none text-xs hover:brightness-110 transition-all flex items-center gap-2  shadow-none"
                       >
                         <Plus className="w-4 h-4" />
                         <span>Add New Certificate</span>
@@ -3825,34 +4024,34 @@ export default function App() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {siteCertificates.map((c) => (
-                        <div key={c.id} className="bg-white border border-white/20 p-6 rounded-2xl relative group hover:border-tata-blue-light/20 transition-all flex flex-col justify-between">
+                        <div key={c.id} className="bg-white border border-gray-200 p-6 rounded-none relative group hover:border-black transition-all flex flex-col justify-between">
                           <div>
                             <div className="flex items-center justify-between mb-3">
-                              <span className="bg-tata-bg-light text-tata-dark text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/20">
+                              <span className="bg-gray-50 text-black text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-none border border-gray-200">
                                 {c.category}
                               </span>
-                              <span className="bg-tata-bg-light text-tata-dark border border-tata-grey-light text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                              <span className="bg-gray-50 text-black border border-gray-100 text-[10px] font-bold px-2 py-0.5 rounded-none flex items-center gap-1">
                                 <CheckCircle2 className="w-3 h-3" /> {c.status}
                               </span>
                             </div>
 
-                            <h3 className="font-serif font-bold text-lg text-tata-dark">{c.title}</h3>
-                            <p className="text-xs text-tata-grey mt-1">Issuing Body: <strong className="text-tata-dark">{c.body}</strong></p>
-                            <p className="text-xs text-tata-grey mt-0.5">Validity Period: <strong className="text-tata-dark">{c.validity}</strong></p>
+                            <h3 className="font-sans font-light tracking-tight font-bold text-lg text-black">{c.title}</h3>
+                            <p className="text-xs text-gray-500 mt-1">Issuing Body: <strong className="text-black">{c.body}</strong></p>
+                            <p className="text-xs text-gray-500 mt-0.5">Validity Period: <strong className="text-black">{c.validity}</strong></p>
                           </div>
 
-                          <div className="mt-6 pt-4 border-t border-tata-grey-light flex justify-end gap-2">
+                          <div className="mt-6 pt-4 border-t border-gray-100 flex justify-end gap-2">
                             <button
                               onClick={() => handleOpenCertModal(c)}
                               data-testid={`cms-edit-cert-${c.id}`}
-                              className="text-xs font-semibold text-tata-dark bg-tata-bg-light border border-tata-grey-light px-3 py-1.5 rounded-lg hover:bg-tata-blue-light transition-all"
+                              className="text-xs font-semibold text-black bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-none hover:bg-gray-200 transition-all"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDeleteCert(c.id)}
                               data-testid={`cms-delete-cert-${c.id}`}
-                              className="text-xs font-semibold text-tata-dark bg-tata-dark text-tata-bg-light border border-tata-dark px-3 py-1.5 rounded-lg hover:bg-tata-dark text-tata-bg-light transition-all"
+                              className="text-xs font-semibold text-black bg-black text-black border border-black px-3 py-1.5 rounded-none hover:bg-black text-black transition-all"
                             >
                               Delete
                             </button>
@@ -3865,11 +4064,11 @@ export default function App() {
 
                 {/* SUB-PANEL 6: CMS ACTIVITY AUDIT LOG */}
                 {cmsTab === "audit" && (
-                  <div className="bg-white border border-white/20 rounded-3xl p-8 shadow-xl" data-testid="cms-audit-panel">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-tata-grey-light pb-4">
+                  <div className="bg-white border border-gray-200 rounded-none p-8 " data-testid="cms-audit-panel">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-gray-100 pb-4">
                       <div>
-                        <h2 className="font-serif text-2xl font-bold text-tata-dark">CMS Change & Audit History</h2>
-                        <p className="text-tata-grey text-xs mt-1">Immutable audit trail of catalog price changes, cargo updates, certificate edits, and backup restorations.</p>
+                        <h2 className="font-sans font-light tracking-tight text-2xl font-bold text-black">CMS Change & Audit History</h2>
+                        <p className="text-gray-500 text-xs mt-1">Immutable audit trail of catalog price changes, cargo updates, certificate edits, and backup restorations.</p>
                       </div>
                       <div className="w-full sm:w-auto flex items-center gap-2">
                         <input
@@ -3878,21 +4077,21 @@ export default function App() {
                           value={auditSearch}
                           onChange={(e) => setAuditSearch(e.target.value)}
                           data-testid="cms-audit-search"
-                          className="bg-tata-bg-light border border-tata-grey-light text-xs rounded-xl px-3 py-2 w-full sm:w-64 focus:outline-none focus:border-tata-blue-light/20"
+                          className="bg-gray-50 border border-gray-100 text-xs rounded-none px-3 py-2 w-full sm:w-64 focus:outline-none focus:border-black"
                         />
                         <button
                           onClick={fetchAuditLog}
                           data-testid="cms-audit-refresh"
-                          className="bg-white border border-white/20 text-xs font-bold text-tata-dark px-3 py-2 rounded-xl hover:bg-tata-bg-light transition-all"
+                          className="bg-white border border-gray-200 text-xs font-bold text-black px-3 py-2 rounded-none hover:bg-gray-50 transition-all"
                         >
                           Refresh
                         </button>
                       </div>
                     </div>
 
-                    <div className="overflow-x-auto border border-tata-grey-light rounded-2xl">
+                    <div className="overflow-x-auto border border-gray-100 rounded-none">
                       <table className="w-full text-left text-xs">
-                        <thead className="bg-tata-bg-light border-b border-tata-grey-light text-tata-dark uppercase tracking-wider font-bold text-[10px]">
+                        <thead className="bg-gray-50 border-b border-gray-100 text-black uppercase tracking-wider font-bold text-[10px]">
                           <tr>
                             <th className="p-3.5">Log ID</th>
                             <th className="p-3.5">Timestamp</th>
@@ -3901,20 +4100,20 @@ export default function App() {
                             <th className="p-3.5">User</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-100 text-tata-dark">
+                        <tbody className="divide-y divide-slate-100 text-black">
                           {siteAuditLog
                             .filter(l => !auditSearch || (l.action + l.details + l.id).toLowerCase().includes(auditSearch.toLowerCase()))
                             .map((log) => (
-                              <tr key={log.id} className="hover:bg-tata-bg-light transition-colors">
-                                <td className="p-3.5 font-mono font-bold text-tata-dark">{log.id}</td>
-                                <td className="p-3.5 text-tata-grey whitespace-nowrap">{new Date(log.timestamp).toLocaleString()}</td>
+                              <tr key={log.id} className="hover:bg-gray-50 transition-colors">
+                                <td className="p-3.5 font-mono font-bold text-black">{log.id}</td>
+                                <td className="p-3.5 text-gray-500 whitespace-nowrap">{new Date(log.timestamp).toLocaleString()}</td>
                                 <td className="p-3.5">
-                                  <span className="bg-tata-dark text-tata-blue-light px-2.5 py-1 rounded-full text-[10px] font-bold uppercase">
+                                  <span className="bg-black text-gray-300 px-2.5 py-1 rounded-none text-[10px] font-bold uppercase">
                                     {log.action}
                                   </span>
                                 </td>
-                                <td className="p-3.5 font-medium text-tata-dark">{log.details}</td>
-                                <td className="p-3.5 font-bold text-tata-grey">{log.user || "Admin"}</td>
+                                <td className="p-3.5 font-medium text-black">{log.details}</td>
+                                <td className="p-3.5 font-bold text-gray-500">{log.user || "Admin"}</td>
                               </tr>
                             ))}
                         </tbody>
@@ -3925,28 +4124,28 @@ export default function App() {
 
                 {/* SUB-PANEL 7: JSON BACKUP & RESTORE CMS */}
                 {cmsTab === "backup" && (
-                  <div className="bg-white border border-white/20 rounded-3xl p-8 shadow-xl max-w-4xl mx-auto" data-testid="cms-backup-panel">
-                    <div className="mb-6 border-b border-tata-grey-light pb-4">
-                      <h2 className="font-serif text-2xl font-bold text-tata-dark">Site Data Backup & Instant Restore</h2>
-                      <p className="text-tata-grey text-xs mt-1">Export full snapshot of website catalog, cargo tracking, estate metrics, and certificates as a portable JSON report.</p>
+                  <div className="bg-white border border-gray-200 rounded-none p-8  max-w-4xl mx-auto" data-testid="cms-backup-panel">
+                    <div className="mb-6 border-b border-gray-100 pb-4">
+                      <h2 className="font-sans font-light tracking-tight text-2xl font-bold text-black">Site Data Backup & Instant Restore</h2>
+                      <p className="text-gray-500 text-xs mt-1">Export full snapshot of website catalog, cargo tracking, estate metrics, and certificates as a portable JSON report.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       {/* EXPORT SECTION */}
-                      <div className="bg-tata-bg-light border border-white/20 p-6 rounded-2xl flex flex-col justify-between">
+                      <div className="bg-gray-50 border border-gray-200 p-6 rounded-none flex flex-col justify-between">
                         <div>
-                          <div className="w-10 h-10 rounded-xl bg-tata-blue-light flex items-center justify-center text-tata-dark mb-4">
+                          <div className="w-10 h-10 rounded-none bg-gray-200 flex items-center justify-center text-black mb-4">
                             <Download className="w-5 h-5" />
                           </div>
-                          <h3 className="font-serif font-bold text-lg text-tata-dark">Export Complete CMS Backup</h3>
-                          <p className="text-tata-grey text-xs mt-2 leading-relaxed">
+                          <h3 className="font-sans font-light tracking-tight font-bold text-lg text-black">Export Complete CMS Backup</h3>
+                          <p className="text-gray-500 text-xs mt-2 leading-relaxed">
                             Generates a complete JSON backup file containing all active tea products, wholesale prices, cargo telemetry records, estate metrics, and certificates.
                           </p>
                         </div>
                         <button
                           onClick={handleExportBackup}
                           data-testid="cms-export-backup-btn"
-                          className="mt-6 w-full bg-tata-dark text-tata-blue-light font-bold py-3 rounded-xl hover:bg-tata-dark transition-all flex items-center justify-center gap-2 shadow-md"
+                          className="mt-6 w-full bg-black text-gray-300 font-bold py-3 rounded-none hover:bg-black transition-all flex items-center justify-center gap-2 "
                         >
                           <Download className="w-4 h-4" />
                           <span>Download Backup JSON</span>
@@ -3954,13 +4153,13 @@ export default function App() {
                       </div>
 
                       {/* IMPORT / RESTORE SECTION */}
-                      <div className="bg-tata-bg-light border border-white/20 p-6 rounded-2xl flex flex-col justify-between">
+                      <div className="bg-gray-50 border border-gray-200 p-6 rounded-none flex flex-col justify-between">
                         <div>
-                          <div className="w-10 h-10 rounded-xl bg-tata-blue-light flex items-center justify-center text-tata-dark mb-4">
+                          <div className="w-10 h-10 rounded-none bg-gray-200 flex items-center justify-center text-black mb-4">
                             <Upload className="w-5 h-5" />
                           </div>
-                          <h3 className="font-serif font-bold text-lg text-tata-dark">Restore Data from JSON</h3>
-                          <p className="text-tata-grey text-xs mt-2 leading-relaxed">
+                          <h3 className="font-sans font-light tracking-tight font-bold text-lg text-black">Restore Data from JSON</h3>
+                          <p className="text-gray-500 text-xs mt-2 leading-relaxed">
                             Paste a previously exported JSON backup bundle below to restore all website content instantly.
                           </p>
                         </div>
@@ -3972,12 +4171,12 @@ export default function App() {
                             onChange={(e) => setJsonBackupInput(e.target.value)}
                             data-testid="cms-backup-json-textarea"
                             placeholder="Paste backup JSON data here..."
-                            className="w-full bg-white border border-tata-grey-light rounded-xl p-3 text-xs font-mono text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                            className="w-full bg-white border border-gray-100 rounded-none p-3 text-xs font-mono text-black focus:outline-none focus:border-black"
                           />
                           <button
                             onClick={handleImportBackup}
                             data-testid="cms-import-backup-btn"
-                            className="mt-3 w-full bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark text-white font-bold py-3 rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-md"
+                            className="mt-3 w-full bg-black text-white font-bold py-3 rounded-none hover:brightness-110 transition-all flex items-center justify-center gap-2 "
                           >
                             <Upload className="w-4 h-4" />
                             <span>Restore Backup Live</span>
@@ -3993,61 +4192,61 @@ export default function App() {
                   <div className="space-y-6" data-testid="cms-enquiries-panel">
                     {/* SUMMARY STATS */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="bg-white border border-white/20 p-5 rounded-2xl">
-                        <div className="text-[11px] text-tata-grey uppercase tracking-wider font-semibold">Total RFQs Received</div>
-                        <div className="font-serif text-3xl font-bold text-tata-dark mt-1">{enquiryCounts.total}</div>
+                      <div className="bg-white border border-gray-200 p-5 rounded-none">
+                        <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Total RFQs Received</div>
+                        <div className="font-sans font-light tracking-tight text-3xl font-bold text-black mt-1">{enquiryCounts.total}</div>
                       </div>
-                      <div className="bg-white border border-white/20 p-5 rounded-2xl">
-                        <div className="text-[11px] text-tata-grey uppercase tracking-wider font-semibold">High-Value (≥1,000 kg)</div>
-                        <div className="font-serif text-3xl font-bold text-tata-dark mt-1">{enquiryCounts.highValue}</div>
+                      <div className="bg-white border border-gray-200 p-5 rounded-none">
+                        <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">High-Value (≥1,000 kg)</div>
+                        <div className="font-sans font-light tracking-tight text-3xl font-bold text-black mt-1">{enquiryCounts.highValue}</div>
                       </div>
-                      <div className="bg-white border border-white/20 p-5 rounded-2xl">
-                        <div className="text-[11px] text-tata-grey uppercase tracking-wider font-semibold">Pipeline Volume (KG)</div>
-                        <div className="font-serif text-3xl font-bold text-tata-dark mt-1">{(enquiryCounts.totalKgPipeline || 0).toLocaleString()}</div>
+                      <div className="bg-white border border-gray-200 p-5 rounded-none">
+                        <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Pipeline Volume (KG)</div>
+                        <div className="font-sans font-light tracking-tight text-3xl font-bold text-black mt-1">{(enquiryCounts.totalKgPipeline || 0).toLocaleString()}</div>
                       </div>
-                      <div className="bg-white border border-white/20 p-5 rounded-2xl">
-                        <div className="text-[11px] text-tata-grey uppercase tracking-wider font-semibold">Filtered Count</div>
-                        <div className="font-serif text-3xl font-bold text-tata-dark mt-1">{enquiryCounts.matching}</div>
+                      <div className="bg-white border border-gray-200 p-5 rounded-none">
+                        <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Filtered Count</div>
+                        <div className="font-sans font-light tracking-tight text-3xl font-bold text-black mt-1">{enquiryCounts.matching}</div>
                       </div>
                     </div>
 
                     {/* FILTERS */}
-                    <div className="bg-white border border-tata-grey-light rounded-2xl p-5 flex flex-wrap gap-4 items-end shadow-sm">
+                    <div className="bg-white border border-gray-100 rounded-none p-5 flex flex-wrap gap-4 items-end shadow-none">
                       <div className="flex-1 min-w-[200px]">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1.5">Search Keywords</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1.5">Search Keywords</label>
                         <input
                           type="text"
                           placeholder="Company, buyer, email, ref ID"
                           value={enqFilter.search}
                           onChange={(e) => setEnqFilter({ ...enqFilter, search: e.target.value })}
                           data-testid="admin-filter-search"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-4 py-2 text-xs text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-4 py-2 text-xs text-black placeholder-gray-400 focus:outline-none focus:border-black"
                         />
                       </div>
                       <div className="min-w-[160px]">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1.5">Country</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1.5">Country</label>
                         <select
                           value={enqFilter.country}
                           onChange={(e) => setEnqFilter({ ...enqFilter, country: e.target.value })}
                           data-testid="admin-filter-country"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         >
                           {uniqueCountries.map(c => <option key={c} value={c}>{c}</option>)}
                         </select>
                       </div>
                       <div className="min-w-[180px]">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1.5">Tea Grade</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1.5">Tea Grade</label>
                         <select
                           value={enqFilter.teaGrade}
                           onChange={(e) => setEnqFilter({ ...enqFilter, teaGrade: e.target.value })}
                           data-testid="admin-filter-grade"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         >
                           {uniqueGrades.map(g => <option key={g} value={g}>{g}</option>)}
                         </select>
                       </div>
                       <div className="min-w-[120px]">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1.5">Min KG</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1.5">Min KG</label>
                         <input
                           type="number"
                           min="0"
@@ -4056,24 +4255,24 @@ export default function App() {
                           value={enqFilter.minKg}
                           onChange={(e) => setEnqFilter({ ...enqFilter, minKg: e.target.value })}
                           data-testid="admin-filter-minkg"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark placeholder-tata-grey-light focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black placeholder-gray-400 focus:outline-none focus:border-black"
                         />
                       </div>
                       <button
                         onClick={() => fetchEnquiries()}
                         data-testid="admin-apply-filters"
-                        className="bg-tata-blue-dark text-white font-bold px-5 py-2 rounded-xl text-xs hover:brightness-110 transition-all"
+                        className="bg-black text-white font-bold px-5 py-2 rounded-none text-xs hover:brightness-110 transition-all"
                       >
                         Apply Filters
                       </button>
                     </div>
 
                     {/* ENQUIRIES TABLE */}
-                    <div className="bg-white border border-tata-grey-light rounded-2xl overflow-hidden shadow-sm">
+                    <div className="bg-white border border-gray-100 rounded-none overflow-hidden shadow-none">
                       <div className="overflow-x-auto">
                         <table className="w-full text-sm">
                           <thead>
-                            <tr className="bg-tata-bg-light text-[11px] uppercase tracking-wider text-tata-grey">
+                            <tr className="bg-gray-50 text-[11px] uppercase tracking-wider text-gray-500">
                               <th className="text-left px-6 py-4 font-semibold">Reference</th>
                               <th className="text-left px-4 py-4 font-semibold">Received</th>
                               <th className="text-left px-4 py-4 font-semibold">Buyer & Company</th>
@@ -4085,35 +4284,35 @@ export default function App() {
                           </thead>
                           <tbody>
                             {enquiries.length === 0 ? (
-                              <tr><td colSpan="7" className="text-center py-16 text-tata-grey">No enquiries match your current filters.</td></tr>
+                              <tr><td colSpan="7" className="text-center py-16 text-gray-500">No enquiries match your current filters.</td></tr>
                             ) : enquiries.map((enq) => (
-                              <tr key={enq.id} className="border-t border-tata-grey-light hover:bg-tata-bg-light/50 transition-colors" data-testid={`enq-row-${enq.referenceId}`}>
+                              <tr key={enq.id} className="border-t border-gray-100 hover:bg-gray-50/50 transition-colors" data-testid={`enq-row-${enq.referenceId}`}>
                                 <td className="px-6 py-4">
-                                  <div className="font-mono text-xs text-tata-dark font-semibold">{enq.referenceId}</div>
-                                  {enq.isHighValue && <span className="inline-block mt-1 text-[9px] uppercase tracking-wider bg-tata-blue-dark text-white font-bold px-2 py-0.5 rounded">High Value</span>}
+                                  <div className="font-mono text-xs text-black font-semibold">{enq.referenceId}</div>
+                                  {enq.isHighValue && <span className="inline-block mt-1 text-[9px] uppercase tracking-wider bg-black text-white font-bold px-2 py-0.5 rounded-none">High Value</span>}
                                 </td>
-                                <td className="px-4 py-4 text-xs text-tata-grey">
+                                <td className="px-4 py-4 text-xs text-gray-500">
                                   {new Date(enq.createdAt).toLocaleString(undefined, { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
                                 </td>
                                 <td className="px-4 py-4">
-                                  <div className="font-semibold text-tata-dark text-xs">{enq.fullName}</div>
-                                  <div className="text-xs text-tata-grey">{enq.companyName}</div>
-                                  <a href={`mailto:${enq.email}`} className="text-xs text-tata-dark hover:underline font-mono">{enq.email}</a>
+                                  <div className="font-semibold text-black text-xs">{enq.fullName}</div>
+                                  <div className="text-xs text-gray-500">{enq.companyName}</div>
+                                  <a href={`mailto:${enq.email}`} className="text-xs text-black hover:underline font-mono">{enq.email}</a>
                                 </td>
-                                <td className="px-4 py-4 text-xs text-tata-dark">
+                                <td className="px-4 py-4 text-xs text-black">
                                   <div className="font-semibold">{enq.country}</div>
-                                  <div className="text-[11px] text-tata-grey">{enq.targetPort}</div>
+                                  <div className="text-[11px] text-gray-500">{enq.targetPort}</div>
                                 </td>
-                                <td className="px-4 py-4 text-xs text-tata-dark">
+                                <td className="px-4 py-4 text-xs text-black">
                                   <div className="font-semibold">{enq.teaGrade}</div>
-                                  <div className="font-serif font-bold text-tata-dark text-sm">{enq.quantityKg.toLocaleString()} KG</div>
+                                  <div className="font-sans font-light tracking-tight font-bold text-black text-sm">{enq.quantityKg.toLocaleString()} KG</div>
                                 </td>
                                 <td className="px-4 py-4">
                                   <select
                                     value={enq.status || "New"}
                                     onChange={(e) => handleUpdateEnquiryStatus(enq.id, e.target.value)}
                                     data-testid={`enq-status-${enq.referenceId}`}
-                                    className="bg-tata-bg-light border border-tata-grey-light rounded-lg px-2.5 py-1 text-xs text-tata-dark font-semibold focus:outline-none focus:border-tata-blue-light/20"
+                                    className="bg-gray-50 border border-gray-100 rounded-none px-2.5 py-1 text-xs text-black font-semibold focus:outline-none focus:border-black"
                                   >
                                     <option value="New">New RFQ</option>
                                     <option value="Under Review">Under Review</option>
@@ -4126,7 +4325,7 @@ export default function App() {
                                   <a
                                     href={`mailto:${enq.email}?subject=Re:%20Atweel%20Tea%20Quotation%20Ref%20${enq.referenceId}`}
                                     data-testid={`reply-${enq.referenceId}`}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-white bg-tata-blue-dark px-3 py-1.5 rounded-lg hover:brightness-110 transition-all"
+                                    className="inline-flex items-center gap-1 text-xs font-semibold text-white bg-black px-3 py-1.5 rounded-none hover:brightness-110 transition-all"
                                   >
                                     <Mail className="w-3.5 h-3.5" />
                                     Reply
@@ -4134,7 +4333,7 @@ export default function App() {
                                   <button
                                     onClick={() => handleDeleteEnquiry(enq.id)}
                                     data-testid={`delete-enq-${enq.referenceId}`}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-tata-dark bg-tata-dark text-tata-bg-light border border-tata-dark px-2 py-1.5 rounded-lg hover:bg-tata-dark text-tata-bg-light transition-all"
+                                    className="inline-flex items-center gap-1 text-xs font-semibold text-black bg-black text-black border border-black px-2 py-1.5 rounded-none hover:bg-black text-black transition-all"
                                     title="Delete enquiry"
                                   >
                                     <Trash2 className="w-3.5 h-3.5" />
@@ -4154,51 +4353,51 @@ export default function App() {
             {/* PRODUCT ADD/EDIT MODAL OVERLAY */}
             {productModalOpen && (
               <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" data-testid="product-modal">
-                <div className="bg-white border border-white/20 rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl relative my-8">
+                <div className="bg-white border border-gray-200 rounded-none p-6 sm:p-8 max-w-2xl w-full  relative my-8">
                   <button
                     onClick={() => setProductModalOpen(false)}
-                    className="absolute top-5 right-5 text-tata-grey hover:text-tata-grey"
+                    className="absolute top-5 right-5 text-gray-500 hover:text-gray-500"
                   >
                     <X className="w-5 h-5" />
                   </button>
 
-                  <h3 className="font-serif text-2xl font-bold text-tata-dark">
+                  <h3 className="font-sans text-xl font-medium text-black">
                     {editingProduct ? `Edit Tea Grade #${editingProduct.id}` : "Add New Tea Grade to Catalog"}
                   </h3>
-                  <p className="text-xs text-tata-grey mt-1">
+                  <p className="text-xs text-gray-500 mt-1">
                     Updates will immediately reflect across the Tea Catalog, Wholesale Price Calculator, and Sample Inquiry forms.
                   </p>
 
                   <form onSubmit={handleSaveProduct} className="mt-6 space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Tea Name *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Tea Name *</label>
                         <input
                           type="text"
                           required
                           value={productForm.name}
                           onChange={(e) => setProductForm({ ...productForm, name: e.target.value })}
                           data-testid="modal-prod-name"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="e.g. Kharsang White Peony"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Tea Grade Code *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Tea Grade Code *</label>
                         <input
                           type="text"
                           required
                           value={productForm.grade}
                           onChange={(e) => setProductForm({ ...productForm, grade: e.target.value })}
                           data-testid="modal-prod-grade"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="e.g. SFTGFOP1 Orthodox"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Base Price ($/KG) *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Base Price ($/KG) *</label>
                         <input
                           type="number"
                           step="0.5"
@@ -4213,77 +4412,77 @@ export default function App() {
                             });
                           }}
                           data-testid="modal-prod-price"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Minimum Order Quantity (MOQ) *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Minimum Order Quantity (MOQ) *</label>
                         <input
                           type="text"
                           required
                           value={productForm.moq}
                           onChange={(e) => setProductForm({ ...productForm, moq: e.target.value })}
                           data-testid="modal-prod-moq"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="e.g. 100 KG"
                         />
                       </div>
 
                       <div className="sm:col-span-2">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Origin / Estate</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Origin / Estate</label>
                         <input
                           type="text"
                           value={productForm.origin}
                           onChange={(e) => setProductForm({ ...productForm, origin: e.target.value })}
                           data-testid="modal-prod-origin"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div className="sm:col-span-2">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Certifications (comma separated)</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Certifications (comma separated)</label>
                         <input
                           type="text"
                           value={productForm.certificationsStr}
                           onChange={(e) => setProductForm({ ...productForm, certificationsStr: e.target.value })}
                           data-testid="modal-prod-certs"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="ISO 22000, HACCP, USDA Organic, India Organic (NPOP)"
                         />
                       </div>
 
                       <div className="sm:col-span-2">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Cup Profile / Flavor Notes</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Cup Profile / Flavor Notes</label>
                         <input
                           type="text"
                           value={productForm.flavor}
                           onChange={(e) => setProductForm({ ...productForm, flavor: e.target.value })}
                           data-testid="modal-prod-flavor"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="e.g. Muscatel honey notes, golden liquor with a smooth finish"
                         />
                       </div>
 
                       <div className="sm:col-span-2">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Product Photo URL</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Product Photo URL</label>
                         <input
                           type="url"
                           value={productForm.image}
                           onChange={(e) => setProductForm({ ...productForm, image: e.target.value })}
                           data-testid="modal-prod-image"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div className="sm:col-span-2">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Description</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Description</label>
                         <textarea
                           rows={3}
                           value={productForm.description}
                           onChange={(e) => setProductForm({ ...productForm, description: e.target.value })}
                           data-testid="modal-prod-desc"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
@@ -4294,24 +4493,24 @@ export default function App() {
                           checked={productForm.inStock}
                           onChange={(e) => setProductForm({ ...productForm, inStock: e.target.checked })}
                           data-testid="modal-prod-stock"
-                          className="w-4 h-4 text-tata-dark focus:ring-tata-blue-dark rounded"
+                          className="w-4 h-4 text-black focus:ring-black rounded-none"
                         />
-                        <label htmlFor="inStockCheck" className="text-xs font-semibold text-tata-dark">Available in Stock</label>
+                        <label htmlFor="inStockCheck" className="text-xs font-semibold text-black">Available in Stock</label>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-end gap-3 pt-4 border-t border-tata-grey-light">
+                    <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
                       <button
                         type="button"
                         onClick={() => setProductModalOpen(false)}
-                        className="px-4 py-2 text-xs font-semibold text-tata-grey hover:text-tata-dark"
+                        className="px-4 py-2 text-xs font-semibold text-gray-500 hover:text-black"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
                         data-testid="modal-prod-save-btn"
-                        className="bg-tata-blue-dark text-white font-bold px-6 py-2.5 rounded-xl text-xs hover:brightness-110 transition-all shadow-md shadow-tata-blue-light/20"
+                        className="bg-black text-white font-bold px-6 py-2.5 rounded-none text-xs hover:brightness-110 transition-all  shadow-none"
                       >
                         Save Product Live
                       </button>
@@ -4324,132 +4523,132 @@ export default function App() {
             {/* SHIPMENT ADD/EDIT MODAL OVERLAY */}
             {shipmentModalOpen && (
               <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" data-testid="shipment-modal">
-                <div className="bg-white border border-white/20 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl relative my-8">
+                <div className="bg-white border border-gray-200 rounded-none p-6 sm:p-8 max-w-xl w-full  relative my-8">
                   <button
                     onClick={() => setShipmentModalOpen(false)}
-                    className="absolute top-5 right-5 text-tata-grey hover:text-tata-grey"
+                    className="absolute top-5 right-5 text-gray-500 hover:text-gray-500"
                   >
                     <X className="w-5 h-5" />
                   </button>
 
-                  <h3 className="font-serif text-2xl font-bold text-tata-dark">
+                  <h3 className="font-sans text-xl font-medium text-black">
                     Edit / Create Cargo Tracking Record
                   </h3>
-                  <p className="text-xs text-tata-grey mt-1">
+                  <p className="text-xs text-gray-500 mt-1">
                     Updates live vessel telemetry, ETA, container temperature, and humidity sensor readings.
                   </p>
 
                   <form onSubmit={handleSaveShipment} className="mt-6 space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Tracking Number *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Tracking Number *</label>
                         <input
                           type="text"
                           required
                           value={shipmentForm.trackingNumber}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, trackingNumber: e.target.value })}
                           data-testid="modal-shipment-num"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark font-mono font-bold focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black font-mono font-bold focus:outline-none focus:border-black"
                           placeholder="EXP-8842-NL"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Vessel / Carrier *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Vessel / Carrier *</label>
                         <input
                           type="text"
                           required
                           value={shipmentForm.vessel}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, vessel: e.target.value })}
                           data-testid="modal-shipment-vessel"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="MV Kharsang Express"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Origin Port *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Origin Port *</label>
                         <input
                           type="text"
                           required
                           value={shipmentForm.origin}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, origin: e.target.value })}
                           data-testid="modal-shipment-origin"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Destination Port *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Destination Port *</label>
                         <input
                           type="text"
                           required
                           value={shipmentForm.destination}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, destination: e.target.value })}
                           data-testid="modal-shipment-dest"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div className="sm:col-span-2">
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Status Summary *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Status Summary *</label>
                         <input
                           type="text"
                           required
                           value={shipmentForm.status}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, status: e.target.value })}
                           data-testid="modal-shipment-status"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">ETA Date *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">ETA Date *</label>
                         <input
                           type="text"
                           required
                           value={shipmentForm.eta}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, eta: e.target.value })}
                           data-testid="modal-shipment-eta"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Sensor Temp (°C)</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Sensor Temp (°C)</label>
                         <input
                           type="text"
                           value={shipmentForm.temperature}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, temperature: e.target.value })}
                           data-testid="modal-shipment-temp"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Sensor Humidity (% RH)</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Sensor Humidity (% RH)</label>
                         <input
                           type="text"
                           value={shipmentForm.humidity}
                           onChange={(e) => setShipmentForm({ ...shipmentForm, humidity: e.target.value })}
                           data-testid="modal-shipment-humidity"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         />
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-end gap-3 pt-4 border-t border-tata-grey-light">
+                    <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
                       <button
                         type="button"
                         onClick={() => setShipmentModalOpen(false)}
-                        className="px-4 py-2 text-xs font-semibold text-tata-grey hover:text-tata-dark"
+                        className="px-4 py-2 text-xs font-semibold text-gray-500 hover:text-black"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
                         data-testid="modal-shipment-save-btn"
-                        className="bg-tata-blue-dark text-white font-bold px-6 py-2.5 rounded-xl text-xs hover:brightness-110 transition-all shadow-md shadow-tata-blue-light/20"
+                        className="bg-black text-white font-bold px-6 py-2.5 rounded-none text-xs hover:brightness-110 transition-all  shadow-none"
                       >
                         Save Shipment Telemetry
                       </button>
@@ -4462,40 +4661,40 @@ export default function App() {
             {/* COMPLIANCE CERTIFICATE ADD/EDIT MODAL OVERLAY */}
             {certModalOpen && (
               <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" data-testid="cert-modal">
-                <div className="bg-white border border-white/20 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative my-8">
+                <div className="bg-white border border-gray-200 rounded-none p-6 sm:p-8 max-w-lg w-full  relative my-8">
                   <button
                     onClick={() => setCertModalOpen(false)}
-                    className="absolute top-5 right-5 text-tata-grey hover:text-tata-dark text-lg font-bold"
+                    className="absolute top-5 right-5 text-gray-500 hover:text-black text-lg font-bold"
                   >
                     ✕
                   </button>
-                  <h3 className="font-serif text-2xl font-bold text-tata-dark mb-1">
+                  <h3 className="font-sans text-xl font-medium text-black mb-1">
                     {editingCert ? "Edit Compliance Certificate" : "Add Factory Certificate / License"}
                   </h3>
-                  <p className="text-tata-grey text-xs mb-6">Manage verified accreditations shown across client trust badges.</p>
+                  <p className="text-gray-500 text-xs mb-6">Manage verified accreditations shown across client trust badges.</p>
 
                   <form onSubmit={handleSaveCert} className="space-y-4">
                     <div>
-                      <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Certificate Title *</label>
+                      <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Certificate Title *</label>
                       <input
                         type="text"
                         required
                         value={certForm.title}
                         onChange={(e) => setCertForm({ ...certForm, title: e.target.value })}
                         data-testid="modal-cert-title"
-                        className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                        className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         placeholder="e.g. ISO 22000:2018 Food Safety Management"
                       />
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Category</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Category</label>
                         <select
                           value={certForm.category}
                           onChange={(e) => setCertForm({ ...certForm, category: e.target.value })}
                           data-testid="modal-cert-category"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         >
                           <option value="Quality Management">Quality Management</option>
                           <option value="Food Safety">Food Safety</option>
@@ -4505,14 +4704,14 @@ export default function App() {
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Issuing Auditor Body *</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Issuing Auditor Body *</label>
                         <input
                           type="text"
                           required
                           value={certForm.body}
                           onChange={(e) => setCertForm({ ...certForm, body: e.target.value })}
                           data-testid="modal-cert-body"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="e.g. Bureau Veritas / SGS"
                         />
                       </div>
@@ -4520,24 +4719,24 @@ export default function App() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Validity Period</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Validity Period</label>
                         <input
                           type="text"
                           value={certForm.validity}
                           onChange={(e) => setCertForm({ ...certForm, validity: e.target.value })}
                           data-testid="modal-cert-validity"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                           placeholder="e.g. Valid through Oct 2028"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-[11px] uppercase tracking-wider text-tata-grey font-semibold mb-1">Status</label>
+                        <label className="block text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-1">Status</label>
                         <select
                           value={certForm.status}
                           onChange={(e) => setCertForm({ ...certForm, status: e.target.value })}
                           data-testid="modal-cert-status"
-                          className="w-full bg-tata-bg-light border border-tata-grey-light rounded-xl px-3 py-2 text-xs text-tata-dark focus:outline-none focus:border-tata-blue-light/20"
+                          className="w-full bg-gray-50 border border-gray-100 rounded-none px-3 py-2 text-xs text-black focus:outline-none focus:border-black"
                         >
                           <option value="Verified & Active">Verified & Active</option>
                           <option value="Pending Renewal">Pending Renewal</option>
@@ -4546,18 +4745,18 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-end gap-3 pt-4 border-t border-tata-grey-light">
+                    <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
                       <button
                         type="button"
                         onClick={() => setCertModalOpen(false)}
-                        className="px-4 py-2 text-xs font-semibold text-tata-grey hover:text-tata-dark"
+                        className="px-4 py-2 text-xs font-semibold text-gray-500 hover:text-black"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
                         data-testid="modal-cert-save-btn"
-                        className="bg-tata-blue-dark text-white font-bold px-6 py-2.5 rounded-xl text-xs hover:brightness-110 transition-all shadow-md shadow-tata-blue-light/20"
+                        className="bg-black text-white font-bold px-6 py-2.5 rounded-none text-xs hover:brightness-110 transition-all  shadow-none"
                       >
                         Save Certificate
                       </button>
@@ -4573,8 +4772,8 @@ export default function App() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-gradient-to-b from-tata-bg-light to-tata-bg-light border-t-2 border-white/20 py-8 mt-12">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 pb-6 border-b border-tata-grey-light/60">
+      <footer className="bg-gradient-to-b from-gray-50 to-gray-50 border-t-2 border-gray-200 py-8 mt-12">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 pb-6 border-b border-transparent">
           <div className="md:col-span-4 space-y-3">
             <div className="flex items-center gap-3">
               <img
@@ -4582,54 +4781,54 @@ export default function App() {
                 srcSet="/atweel-logo@4x.png 2x, /atweel-logo@3x.png 1.5x, /atweel-logo@2x.png 1x"
                 onError={(e) => { e.currentTarget.src = "/atweel-official-logo.jpg"; }}
                 alt="Atweel Tea — 100% Organic, Kharsang Arunachal"
-                className="h-14 w-auto object-contain drop-shadow-[0_2px_6px_rgba(212,175,55,0.2)]"
+                className="h-14 w-auto object-contain "
                 loading="lazy"
                 decoding="async"
                 data-testid="footer-logo-img"
               />
-              <div className="border-l border-white/20 pl-3 leading-tight">
-                <div className="font-serif font-bold text-sm text-tata-dark tracking-wider uppercase">ATWEEL TEA</div>
-                <div className="text-[10px] text-tata-grey tracking-wide mt-0.5">Product of Atweel Food &amp; Beverages Pvt Ltd</div>
+              <div className="border-l border-gray-200 pl-3 leading-tight">
+                <div className="font-sans font-light tracking-tight font-bold text-sm text-black tracking-wider uppercase">ATWEEL TEA</div>
+                <div className="text-[10px] text-gray-500 tracking-wide mt-0.5">Product of Atweel Food &amp; Beverages Pvt Ltd</div>
               </div>
             </div>
-            <p className="text-tata-grey text-xs leading-relaxed max-w-sm">
+            <p className="text-gray-500 text-xs leading-relaxed max-w-sm">
               Single-estate organic tea grown, processed and exported directly from our 1,200-bigha garden in Kharsang, Arunachal Pradesh — under ISO 22000, HACCP, FSSAI, India Organic & USDA certifications.
             </p>
           </div>
 
           <div className="md:col-span-2 space-y-2">
-            <h4 className="font-serif font-bold text-tata-dark text-xs uppercase tracking-wider">Navigation</h4>
-            <ul className="space-y-1.5 text-xs text-tata-grey font-medium">
-              <li><button onClick={() => setActiveTab("catalog")} className="hover:text-tata-dark transition-colors">Product Catalog</button></li>
-              <li><button onClick={() => setActiveTab("rfq")} className="hover:text-tata-dark transition-colors">Custom RFQ</button></li>
-              <li><button onClick={() => setActiveTab("tracker")} className="hover:text-tata-dark transition-colors">Cargo Tracker</button></li>
-              <li><button onClick={() => setActiveTab("standards")} className="hover:text-tata-dark transition-colors">Factory & Lab</button></li>
-              <li><button onClick={() => setActiveTab("destinations")} className="hover:text-tata-dark transition-colors">Export Reach</button></li>
+            <h4 className="font-sans font-light tracking-tight font-bold text-black text-xs uppercase tracking-wider">Navigation</h4>
+            <ul className="space-y-1.5 text-xs text-gray-500 font-medium">
+              <li><button onClick={() => setActiveTab("catalog")} className="hover:text-black transition-colors">Product Catalog</button></li>
+              <li><button onClick={() => setActiveTab("rfq")} className="hover:text-black transition-colors">Custom RFQ</button></li>
+              <li><button onClick={() => setActiveTab("tracker")} className="hover:text-black transition-colors">Cargo Tracker</button></li>
+              <li><button onClick={() => setActiveTab("standards")} className="hover:text-black transition-colors">Factory & Lab</button></li>
+              <li><button onClick={() => setActiveTab("destinations")} className="hover:text-black transition-colors">Export Reach</button></li>
             </ul>
           </div>
 
           <div className="md:col-span-3 space-y-2">
-            <h4 className="font-serif font-bold text-tata-dark text-xs uppercase tracking-wider">Estate & Factory</h4>
-            <ul className="space-y-1.5 text-xs text-tata-grey font-medium">
+            <h4 className="font-sans font-light tracking-tight font-bold text-black text-xs uppercase tracking-wider">Estate & Factory</h4>
+            <ul className="space-y-1.5 text-xs text-gray-500 font-medium">
               <li className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-tata-grey mt-0.5 shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-gray-500 mt-0.5 shrink-0" />
                 <span>Nemphai 1, Kharsang, Arunachal Pradesh 792056, India</span>
               </li>
               <li className="flex items-center gap-2">
-                <Building className="w-3.5 h-3.5 text-tata-grey shrink-0" />
+                <Building className="w-3.5 h-3.5 text-gray-500 shrink-0" />
                 <span>1,200 Bigha Organic Tea Estate</span>
               </li>
               <li className="flex items-center gap-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-tata-grey shrink-0" />
+                <ShieldCheck className="w-3.5 h-3.5 text-gray-500 shrink-0" />
                 <span>72,000 sq ft Integrated Factory</span>
               </li>
             </ul>
           </div>
 
           <div className="md:col-span-3 space-y-2">
-            <h4 className="font-serif font-bold text-tata-dark text-xs uppercase tracking-wider">Contact & Export Desk</h4>
+            <h4 className="font-sans font-light tracking-tight font-bold text-black text-xs uppercase tracking-wider">Contact & Export Desk</h4>
             <div className="flex items-center gap-2">
-              <a href="mailto:atweeltea@gmail.com" className="text-xs font-semibold text-tata-dark hover:text-tata-dark transition-colors flex items-center gap-2" data-testid="footer-email">
+              <a href="mailto:atweeltea@gmail.com" className="text-xs font-semibold text-black hover:text-black transition-colors flex items-center gap-2" data-testid="footer-email">
                 <Mail className="w-3.5 h-3.5" />
                 <span>atweeltea@gmail.com</span>
               </a>
@@ -4637,40 +4836,40 @@ export default function App() {
                 type="button"
                 onClick={(e) => handleCopyEmail(e, "atweeltea@gmail.com")}
                 data-testid="footer-copy-email-btn"
-                className="p-1 px-1.5 rounded bg-tata-blue-light hover:bg-tata-blue-light text-tata-dark transition-colors flex items-center gap-1 text-[10px] font-mono cursor-pointer"
+                className="p-1 px-1.5 rounded-none bg-gray-200 hover:bg-gray-200 text-black transition-colors flex items-center gap-1 text-[10px] font-mono cursor-pointer"
                 title="Copy company email"
               >
-                {copiedEmail ? <Check className="w-3 h-3 text-tata-grey" /> : <Copy className="w-3 h-3" />}
+                {copiedEmail ? <Check className="w-3 h-3 text-gray-500" /> : <Copy className="w-3 h-3" />}
                 <span>{copiedEmail ? "Copied" : "Copy"}</span>
               </button>
             </div>
-            <a href="https://www.atweeltea.com" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-tata-dark hover:text-tata-dark transition-colors flex items-center gap-2" data-testid="footer-website">
+            <a href="https://www.atweeltea.com" target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-black hover:text-black transition-colors flex items-center gap-2" data-testid="footer-website">
               <Globe className="w-3.5 h-3.5" />
               <span>www.atweeltea.com</span>
             </a>
-            <p className="text-[11px] text-tata-grey pt-1.5 border-t border-tata-grey-light/80 mt-2">
+            <p className="text-[11px] text-gray-500 pt-1.5 border-t border-gray-100/80 mt-2">
               Atweel Food & Beverages Pvt. Ltd. · FSSAI & CIN available on request
             </p>
             <div className="flex items-center gap-3 pt-2">
-              <a href="#" className="w-7 h-7 rounded-full bg-white border border-tata-grey-light flex items-center justify-center text-tata-grey hover:bg-tata-dark hover:text-white hover:border-tata-dark transition-all" aria-label="LinkedIn">
+              <a href="#" className="w-7 h-7 rounded-none bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:bg-black hover:text-white hover:border-black transition-all" aria-label="LinkedIn">
                 <Linkedin className="w-3.5 h-3.5" />
               </a>
-              <a href="#" className="w-7 h-7 rounded-full bg-white border border-tata-grey-light flex items-center justify-center text-tata-grey hover:bg-tata-dark hover:text-white hover:border-tata-dark transition-all" aria-label="Instagram">
+              <a href="#" className="w-7 h-7 rounded-none bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:bg-black hover:text-white hover:border-black transition-all" aria-label="Instagram">
                 <Instagram className="w-3.5 h-3.5" />
               </a>
-              <a href="#" className="w-7 h-7 rounded-full bg-white border border-tata-grey-light flex items-center justify-center text-tata-grey hover:bg-tata-dark hover:text-white hover:border-tata-dark transition-all" aria-label="Facebook">
+              <a href="#" className="w-7 h-7 rounded-none bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:bg-black hover:text-white hover:border-black transition-all" aria-label="Facebook">
                 <Facebook className="w-3.5 h-3.5" />
               </a>
-              <a href="#" className="w-7 h-7 rounded-full bg-white border border-tata-grey-light flex items-center justify-center text-tata-grey hover:bg-tata-dark hover:text-white hover:border-tata-dark transition-all" aria-label="Twitter">
+              <a href="#" className="w-7 h-7 rounded-none bg-white border border-gray-100 flex items-center justify-center text-gray-500 hover:bg-black hover:text-white hover:border-black transition-all" aria-label="Twitter">
                 <Twitter className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 pt-4 flex flex-col sm:flex-row items-center justify-between text-[11px] text-tata-grey">
+        <div className="max-w-7xl mx-auto px-6 pt-4 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500">
           <p>© 2026 Atweel Food & Beverages Pvt. Ltd. All rights reserved.</p>
-          <div className="flex gap-4 mt-2 sm:mt-0 font-medium text-[10px] uppercase tracking-wider text-tata-dark">
+          <div className="flex gap-4 mt-2 sm:mt-0 font-medium text-[10px] uppercase tracking-wider text-black">
             <span>ISO 22000</span>
             <span>·</span>
             <span>HACCP</span>
@@ -4691,9 +4890,9 @@ export default function App() {
           onClick={() => setVerifyCert(null)}
           data-testid="verify-modal-backdrop"
         >
-          <div className="absolute inset-0 bg-tata-dark/75 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" />
           <div
-            className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden border-2 border-white/20 animate-in zoom-in-95 duration-200"
+            className="relative bg-white rounded-none  w-full max-w-2xl overflow-hidden border-2 border-gray-200 animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
             data-testid="verify-modal"
             role="dialog"
@@ -4701,25 +4900,25 @@ export default function App() {
           >
             {/* HEADER */}
             <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 relative overflow-hidden">
-              <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-tata-blue-light blur-3xl" />
+              <div className="absolute -top-16 -right-16 w-48 h-48 rounded-none bg-gray-200 blur-3xl" />
               <button
                 onClick={() => setVerifyCert(null)}
                 data-testid="verify-modal-close"
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                className="absolute top-4 right-4 w-8 h-8 rounded-none bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />
               </button>
               <div className="flex items-start gap-4 relative">
-                <div className="w-16 h-16 rounded-2xl bg-tata-blue-light border border-white/20 flex items-center justify-center text-tata-grey shrink-0">
+                <div className="w-16 h-16 rounded-none bg-gray-200 border border-gray-200 flex items-center justify-center text-gray-500 shrink-0">
                   <Award className="w-8 h-8" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] uppercase tracking-[0.25em] text-tata-dark font-semibold">Audit Passport · Verified</div>
-                  <h3 id="verify-modal-title" className="font-serif text-2xl font-bold text-white mt-1 leading-tight">{verifyCert.fullName}</h3>
-                  <div className="inline-flex items-center gap-1.5 mt-3 px-2.5 py-0.5 rounded-full bg-tata-bg-light/15 border border-tata-grey-light/40">
-                    <span className="w-1.5 h-1.5 rounded-full bg-tata-bg-light animate-pulse" />
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-tata-grey">Active &amp; In Good Standing</span>
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-black font-semibold">Audit Passport · Verified</div>
+                  <h3 id="verify-modal-title" className="font-sans font-light tracking-tight text-2xl font-bold text-white mt-1 leading-tight">{verifyCert.fullName}</h3>
+                  <div className="inline-flex items-center gap-1.5 mt-3 px-2.5 py-0.5 rounded-none bg-gray-50/15 border border-gray-100/40">
+                    <span className="w-1.5 h-1.5 rounded-none bg-gray-50 animate-pulse" />
+                    <span className="text-[10px] uppercase tracking-wider font-bold text-gray-500">Active &amp; In Good Standing</span>
                   </div>
                 </div>
               </div>
@@ -4728,56 +4927,56 @@ export default function App() {
             {/* BODY */}
             <div className="p-8 space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-tata-bg-light rounded-xl p-4 border border-white/20">
-                  <div className="text-[10px] uppercase tracking-wider text-tata-grey font-semibold">Certificate ID</div>
-                  <div className="font-mono text-sm text-tata-dark font-bold mt-1 break-all">{verifyCert.certId}</div>
+                <div className="bg-gray-50 rounded-none p-4 border border-gray-200">
+                  <div className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Certificate ID</div>
+                  <div className="font-mono text-sm text-black font-bold mt-1 break-all">{verifyCert.certId}</div>
                 </div>
-                <div className="bg-tata-bg-light rounded-xl p-4 border border-white/20">
-                  <div className="text-[10px] uppercase tracking-wider text-tata-grey font-semibold">Valid Until</div>
-                  <div className="font-serif text-sm text-tata-dark font-bold mt-1">{verifyCert.validUntil}</div>
+                <div className="bg-gray-50 rounded-none p-4 border border-gray-200">
+                  <div className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Valid Until</div>
+                  <div className="font-sans font-light tracking-tight text-sm text-black font-bold mt-1">{verifyCert.validUntil}</div>
                 </div>
               </div>
 
               <div className="space-y-3 text-sm">
-                <div className="flex items-start gap-3 pb-3 border-b border-tata-grey-light">
-                  <Building className="w-4 h-4 text-tata-grey mt-0.5 shrink-0" />
+                <div className="flex items-start gap-3 pb-3 border-b border-gray-100">
+                  <Building className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                   <div className="flex-1">
-                    <div className="text-[10px] uppercase tracking-wider text-tata-grey font-semibold">Issuing Body</div>
-                    <div className="text-tata-dark font-medium mt-0.5">{verifyCert.issuer}</div>
-                    <div className="text-xs text-tata-grey mt-0.5">{verifyCert.issuerCountry}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Issuing Body</div>
+                    <div className="text-black font-medium mt-0.5">{verifyCert.issuer}</div>
+                    <div className="text-xs text-gray-500 mt-0.5">{verifyCert.issuerCountry}</div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 pb-3 border-b border-tata-grey-light">
-                  <Clock className="w-4 h-4 text-tata-grey mt-0.5 shrink-0" />
+                <div className="flex items-start gap-3 pb-3 border-b border-gray-100">
+                  <Clock className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                   <div className="flex-1">
-                    <div className="text-[10px] uppercase tracking-wider text-tata-grey font-semibold">Date Issued</div>
-                    <div className="text-tata-dark font-medium mt-0.5">{verifyCert.issued}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Date Issued</div>
+                    <div className="text-black font-medium mt-0.5">{verifyCert.issued}</div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 pb-3 border-b border-tata-grey-light">
-                  <Search className="w-4 h-4 text-tata-grey mt-0.5 shrink-0" />
+                <div className="flex items-start gap-3 pb-3 border-b border-gray-100">
+                  <Search className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                   <div className="flex-1">
-                    <div className="text-[10px] uppercase tracking-wider text-tata-grey font-semibold">Scope of Certification</div>
-                    <div className="text-tata-dark mt-1 leading-relaxed text-[13px]">{verifyCert.scope}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Scope of Certification</div>
+                    <div className="text-black mt-1 leading-relaxed text-[13px]">{verifyCert.scope}</div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="w-4 h-4 text-tata-grey mt-0.5 shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                   <div className="flex-1">
-                    <div className="text-[10px] uppercase tracking-wider text-tata-grey font-semibold">Accreditation Backing</div>
-                    <div className="text-tata-dark mt-1 leading-relaxed text-[13px]">{verifyCert.accreditation}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Accreditation Backing</div>
+                    <div className="text-black mt-1 leading-relaxed text-[13px]">{verifyCert.accreditation}</div>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-tata-grey-light flex flex-col sm:flex-row items-center gap-3">
+              <div className="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-3">
                 <a
                   href={`mailto:atweeltea@gmail.com?subject=Certificate%20Verification%20Request%20-%20${encodeURIComponent(verifyCert.label)}&body=Dear%20Atweel%20Export%20Team,%0A%0APlease%20share%20a%20digitally%20signed%20copy%20of%20the%20${encodeURIComponent(verifyCert.label)}%20certificate%20(ID:%20${encodeURIComponent(verifyCert.certId)})%20for%20our%20audit%20file.%0A%0AThank%20you.`}
                   data-testid="verify-modal-request-copy"
-                  className="flex-1 w-full sm:w-auto text-center bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark text-white font-bold px-6 py-3 rounded-full hover:brightness-110 transition-all text-sm"
+                  className="flex-1 w-full sm:w-auto text-center bg-black text-white font-bold px-6 py-3 rounded-none hover:brightness-110 transition-all text-sm"
                 >
                   Request Signed Copy
                 </a>
@@ -4786,13 +4985,13 @@ export default function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="verify-modal-view-sop"
-                  className="flex-1 w-full sm:w-auto text-center border-2 border-white/20 hover:border-tata-blue-light/20 text-tata-dark px-6 py-3 rounded-full font-semibold text-sm transition-all"
+                  className="flex-1 w-full sm:w-auto text-center border-2 border-gray-200 hover:border-black text-black px-6 py-3 rounded-none font-semibold text-sm transition-all"
                 >
                   Read Global SOP
                 </a>
               </div>
 
-              <div className="text-[10px] text-tata-grey text-center pt-2 italic">
+              <div className="text-[10px] text-gray-500 text-center pt-2 italic">
                 Displayed data is a public summary. Full digitally-signed certificate PDFs are dispatched on written request.
               </div>
             </div>
@@ -4803,19 +5002,19 @@ export default function App() {
       {/* LIGHTBOX MODAL FOR TEA GALLERY IMAGES */}
       {selectedImageModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tata-dark/90 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fadeIn"
           data-testid="tea-image-lightbox-modal"
           onClick={() => setSelectedImageModal(null)}
         >
           <div
-            className="bg-emerald-950 border-2 border-emerald-800/50 rounded-3xl overflow-hidden max-w-4xl w-full shadow-2xl relative text-white"
+            className="bg-emerald-950 border-2 border-emerald-800/50 rounded-none overflow-hidden max-w-4xl w-full  relative text-white"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={() => setSelectedImageModal(null)}
               data-testid="close-tea-image-modal"
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-tata-dark/80 hover:bg-tata-dark text-tata-blue-light border border-white/20 flex items-center justify-center transition-all shadow-lg"
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-none bg-black/80 hover:bg-black text-gray-300 border border-gray-200 flex items-center justify-center transition-all "
             >
               <X className="w-5 h-5" />
             </button>
@@ -4827,25 +5026,25 @@ export default function App() {
                   alt={selectedImageModal.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-3 left-3 bg-tata-dark/80 backdrop-blur-sm px-3 py-1 rounded-md text-[10px] uppercase font-bold text-tata-blue-light border border-white/20">
+                <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-none text-[10px] uppercase font-bold text-gray-300 border border-gray-200">
                   {selectedImageModal.badge}
                 </div>
               </div>
 
               <div className="md:col-span-5 p-6 md:p-8 flex flex-col justify-between space-y-6">
                 <div>
-                  <span className="text-xs uppercase tracking-[0.2em] text-tata-dark font-semibold">{selectedImageModal.category}</span>
-                  <h3 className="font-serif text-2xl font-bold text-white mt-1">{selectedImageModal.title}</h3>
-                  <div className="w-10 h-0.5 bg-tata-blue-dark rounded-full my-3" />
-                  <p className="text-tata-grey text-sm leading-relaxed">{selectedImageModal.desc}</p>
+                  <span className="text-xs uppercase tracking-[0.2em] text-black font-semibold">{selectedImageModal.category}</span>
+                  <h3 className="font-sans font-light tracking-tight text-2xl font-bold text-white mt-1">{selectedImageModal.title}</h3>
+                  <div className="w-10 h-0.5 bg-black rounded-none my-3" />
+                  <p className="text-gray-500 text-sm leading-relaxed">{selectedImageModal.desc}</p>
 
-                  <div className="mt-6 p-3.5 rounded-xl bg-tata-dark border border-white/20">
-                    <span className="text-[10px] uppercase text-tata-grey font-bold block mb-1">Technical Specification</span>
-                    <span className="text-xs text-tata-dark font-mono leading-relaxed block">{selectedImageModal.spec}</span>
+                  <div className="mt-6 p-3.5 rounded-none bg-black border border-gray-200">
+                    <span className="text-[10px] uppercase text-gray-500 font-bold block mb-1">Technical Specification</span>
+                    <span className="text-xs text-black font-mono leading-relaxed block">{selectedImageModal.spec}</span>
                   </div>
                 </div>
 
-                <div className="space-y-3 pt-4 border-t border-white/20">
+                <div className="space-y-3 pt-4 border-t border-gray-200">
                   <button
                     onClick={() => {
                       setRfqForm(prev => ({ ...prev, teaGrade: selectedImageModal.title }));
@@ -4853,14 +5052,14 @@ export default function App() {
                       setActiveTab("rfq");
                     }}
                     data-testid="modal-request-sample-btn"
-                    className="w-full bg-gradient-to-r from-tata-blue-dark to-tata-blue-dark hover:brightness-110 text-white font-bold py-3 px-6 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg"
+                    className="w-full bg-black hover:brightness-110 text-white font-bold py-3 px-6 rounded-none text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 "
                   >
                     <span>Request Export Sample</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setSelectedImageModal(null)}
-                    className="w-full border border-tata-dark hover:border-tata-grey-light text-tata-grey hover:text-white py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all"
+                    className="w-full border border-black hover:border-gray-100 text-gray-500 hover:text-white py-2.5 rounded-none text-xs uppercase tracking-wider transition-all"
                   >
                     Close Preview
                   </button>

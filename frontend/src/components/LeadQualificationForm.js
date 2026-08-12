@@ -96,19 +96,19 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md overflow-y-auto"
       data-testid="lead-qualification-modal"
     >
-      <div className="relative w-full max-w-3xl bg-tata-bg-light rounded-3xl border-2 border-tata-dark/20 shadow-2xl overflow-hidden my-8">
+      <div className="relative w-full max-w-3xl bg-gray-50 rounded-none border-2 border-black/20 shadow-none overflow-hidden my-8">
         
         {/* MODAL HEADER */}
-        <div className="bg-tata-dark text-tata-bg-light p-6 sm:p-8 border-b border-white/20 flex items-center justify-between">
+        <div className="bg-black text-gray-50 p-6 sm:p-8 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tata-dark border border-white/20 text-tata-blue-light text-[10px] font-bold uppercase tracking-widest mb-2">
-              <FileCheck className="w-3.5 h-3.5 text-tata-dark" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-black border border-gray-200 text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-2">
+              <FileCheck className="w-3.5 h-3.5 text-black" />
               <span>Direct Enterprise Import Desk</span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-tata-bg-light">
+            <h3 className="font-sans tracking-tight text-2xl sm:text-3xl font-bold text-gray-50">
               Wholesale Allocation &amp; Sample Qualification
             </h3>
-            <p className="text-xs text-tata-dark mt-1 font-sans">
+            <p className="text-xs text-black mt-1 font-sans">
               Atweel Food &amp; Beverages Pvt. Ltd.  ·  CIN: U15100MH2019PTC331942  ·  Thane Corporate Office
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-full bg-tata-dark text-tata-grey hover:text-white hover:bg-tata-dark transition-all border border-white/10 cursor-pointer"
+            className="p-2 rounded-none bg-black text-gray-400 hover:text-white hover:bg-black transition-all border border-gray-200 cursor-pointer"
             data-testid="close-lead-form-btn"
           >
             <X className="w-5 h-5" />
@@ -128,13 +128,13 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
           
           {submitted ? (
             <div className="py-12 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-tata-bg-light text-tata-dark flex items-center justify-center mx-auto border-2 border-tata-grey-light">
+              <div className="w-16 h-16 rounded-none bg-gray-50 text-black flex items-center justify-center mx-auto border-2 border-gray-200">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h4 className="font-serif text-2xl font-bold text-tata-dark">
+              <h4 className="font-sans tracking-tight text-2xl font-bold text-black">
                 Importer Intent Qualification Submitted
               </h4>
-              <p className="text-sm text-tata-grey max-w-md mx-auto">
+              <p className="text-sm text-gray-400 max-w-md mx-auto">
                 Thank you for submitting your wholesale parameters. Our trade desk directors (Kulshreshth Harishankar Dubey &amp; Rinku Govindanath Shukla) will review your target volume and issue formal FOB/CIF pricing.
               </p>
             </div>
@@ -143,14 +143,14 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
               
               {/* SECTION 1: CORPORATE IDENTITY */}
               <div className="space-y-4">
-                <h4 className="text-xs font-bold text-tata-dark uppercase tracking-widest border-b border-tata-grey-light pb-2 flex items-center gap-2">
-                  <Building className="w-4 h-4 text-tata-dark" />
+                <h4 className="text-xs font-bold text-black uppercase tracking-widest border-b border-gray-200 pb-2 flex items-center gap-2">
+                  <Building className="w-4 h-4 text-black" />
                   <span>1. Corporate Identity &amp; Purchasing Officer</span>
                 </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Company / Legal Entity Name *
                     </label>
                     <input
@@ -159,13 +159,13 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                       placeholder="e.g., Hamburg Specialty Tea GmbH"
                       value={formData.companyName}
                       onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                       data-testid="lead-input-company-name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Buyer Full Name *
                     </label>
                     <input
@@ -174,13 +174,13 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                       placeholder="e.g., Jonathan Mercer"
                       value={formData.buyerName}
                       onChange={(e) => setFormData({ ...formData, buyerName: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                       data-testid="lead-input-buyer-name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Corporate Title *
                     </label>
                     <input
@@ -189,13 +189,13 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                       placeholder="e.g., Chief Purchasing Officer / Import Manager"
                       value={formData.corporateTitle}
                       onChange={(e) => setFormData({ ...formData, corporateTitle: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                       data-testid="lead-input-corporate-title"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Business Email Address *
                     </label>
                     <input
@@ -204,7 +204,7 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                       placeholder="purchasing@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                       data-testid="lead-input-email"
                     />
                   </div>
@@ -213,14 +213,14 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
 
               {/* SECTION 2: IMPORT LOGISTICS */}
               <div className="space-y-4">
-                <h4 className="text-xs font-bold text-tata-dark uppercase tracking-widest border-b border-tata-grey-light pb-2 flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-tata-dark" />
+                <h4 className="text-xs font-bold text-black uppercase tracking-widest border-b border-gray-200 pb-2 flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-black" />
                   <span>2. Import Destination &amp; Target Volumes</span>
                 </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Country of Destination Port *
                     </label>
                     <input
@@ -229,19 +229,19 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                       placeholder="e.g., Germany (Hamburg Port) / USA (New York)"
                       value={formData.countryDestination}
                       onChange={(e) => setFormData({ ...formData, countryDestination: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                       data-testid="lead-input-country"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Target Order Volume *
                     </label>
                     <select
                       value={formData.targetVolume}
                       onChange={(e) => setFormData({ ...formData, targetVolume: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                       data-testid="lead-select-target-volume"
                     >
                       <option value="Multi-Container Contract (40ft FCL)">Multi-Container Annual Contract (40ft FCL)</option>
@@ -252,13 +252,13 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Incoterms Preference
                     </label>
                     <select
                       value={formData.incoterms}
                       onChange={(e) => setFormData({ ...formData, incoterms: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                     >
                       <option value="FOB Kolkata Port">FOB Kolkata Port, India</option>
                       <option value="CIF Destination Port">CIF Destination Port (Insurance & Freight)</option>
@@ -268,13 +268,13 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-tata-dark mb-1">
+                    <label className="block text-xs font-bold text-black mb-1">
                       Business Type
                     </label>
                     <select
                       value={formData.businessType}
                       onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                      className="w-full bg-white border border-tata-grey-light rounded-xl px-3.5 py-2.5 text-xs text-tata-dark font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
+                      className="w-full bg-white border border-gray-200 rounded-none px-3.5 py-2.5 text-xs text-black font-sans focus:outline-none focus:ring-2 focus:ring-charcoal"
                     >
                       <option value="Tea Importer & Wholesale Distributor">Tea Importer &amp; Wholesale Distributor</option>
                       <option value="Private Label Retail Brand">Private Label Retail Brand</option>
@@ -287,7 +287,7 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
 
               {/* SECTION 3: TEA CATEGORIES */}
               <div className="space-y-3">
-                <label className="block text-xs font-bold text-tata-dark">
+                <label className="block text-xs font-bold text-black">
                   Select Required Tea Categories (Check all that apply):
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -301,15 +301,15 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                   ].map((cat) => (
                     <label 
                       key={cat} 
-                      className="flex items-center gap-2 p-2 bg-white rounded-xl border border-tata-grey-light cursor-pointer hover:bg-tata-bg-light"
+                      className="flex items-center gap-2 p-2 bg-white rounded-none border border-gray-200 cursor-pointer hover:bg-gray-50"
                     >
                       <input
                         type="checkbox"
                         checked={formData.teaCategories.includes(cat)}
                         onChange={() => handleCheckbox(cat)}
-                        className="rounded border-tata-grey-light text-tata-dark focus:ring-charcoal"
+                        className="rounded-none border-gray-200 text-black focus:ring-charcoal"
                       />
-                      <span className="text-tata-dark font-medium">{cat}</span>
+                      <span className="text-black font-medium">{cat}</span>
                     </label>
                   ))}
                 </div>
@@ -317,7 +317,7 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
 
               {/* SECTION 4: CUSTOM REQUIREMENTS & SUBMIT */}
               <div>
-                <label className="block text-xs font-bold text-tata-dark mb-1">
+                <label className="block text-xs font-bold text-black mb-1">
                   Custom Blending, Packaging or Certification Notes
                 </label>
                 <textarea
@@ -325,14 +325,14 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                   placeholder="Specify any required mesh size, organic seal preferences, or private label vacuum pouch specifications..."
                   value={formData.customBlendingReq}
                   onChange={(e) => setFormData({ ...formData, customBlendingReq: e.target.value })}
-                  className="w-full bg-white border border-tata-grey-light rounded-xl p-3 text-xs text-tata-dark focus:outline-none focus:ring-2 focus:ring-charcoal"
+                  className="w-full bg-white border border-gray-200 rounded-none p-3 text-xs text-black focus:outline-none focus:ring-2 focus:ring-charcoal"
                 />
               </div>
 
               {/* SUBMIT BUTTON */}
-              <div className="pt-2 border-t border-tata-grey-light flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-[11px] text-tata-grey font-mono flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-tata-grey" />
+              <div className="pt-2 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-[11px] text-gray-400 font-mono flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-gray-400" />
                   <span>NDAs respected. CIN: U15100MH2019PTC331942 Compliance.</span>
                 </div>
 
@@ -340,16 +340,16 @@ export default function LeadQualificationForm({ isOpen, onClose }) {
                   type="submit"
                   disabled={loading}
                   data-testid="submit-lead-qualification-btn"
-                  className="w-full sm:w-auto bg-tata-dark hover:bg-tata-dark text-tata-blue-light font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-widest transition-all shadow-xl border border-white/20 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full sm:w-auto bg-black hover:bg-black text-gray-400 font-bold px-8 py-3.5 rounded-none text-xs uppercase tracking-widest transition-all shadow-none border border-gray-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-tata-dark" />
+                      <Loader2 className="w-4 h-4 animate-spin text-black" />
                       <span>Transmitting...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4 text-tata-dark" />
+                      <Send className="w-4 h-4 text-black" />
                       <span>Register Importer Intent</span>
                     </>
                   )}

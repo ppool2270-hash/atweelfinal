@@ -93,23 +93,23 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
   };
 
   return (
-    <div className="bg-tata-bg-light text-tata-dark py-16 sm:py-24" id="compliance-dossier" data-testid="compliance-dossier-page">
+    <div className="bg-gray-50 text-black py-16 sm:py-24" id="compliance-dossier" data-testid="compliance-dossier-page">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* HEADER */}
-        <div className="bg-gradient-to-br from-[#174195] via-[#1468b3] to-[#bcb3b3] text-white rounded-3xl p-8 sm:p-14 border border-white/10 shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#174195] via-[#1468b3] to-[#bcb3b3] text-white rounded-none p-8 sm:p-14 border border-gray-200 shadow-none relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10 mix-blend-multiply"></div>
           <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-10 pointer-events-none">
             <ShieldCheck className="w-96 h-96" />
           </div>
           
           <div className="relative z-10 max-w-3xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.25em]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/10 backdrop-blur-md border border-gray-200 text-white text-[10px] font-bold uppercase tracking-[0.25em]">
               <Lock className="w-3.5 h-3.5" />
               <span>International Compliance & Verification</span>
             </div>
             
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-md">
+            <h1 className="font-sans tracking-tight text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-none">
               Statutory Certification Dossier
             </h1>
             
@@ -117,7 +117,7 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
               Atweel Food & Beverages Pvt. Ltd. maintains rigorous, uncompromised compliance across international trade, food safety, and organic farming registries. Review verified statutory details below.
             </p>
             
-            <div className="pt-6 flex flex-wrap items-center gap-6 text-[11px] font-mono text-white/70 border-t border-white/20">
+            <div className="pt-6 flex flex-wrap items-center gap-6 text-[11px] font-mono text-white/70 border-t border-gray-200">
               <span>Corporate CIN: U15100MH2019PTC331942</span>
               <span>•</span>
               <span>Registered HQ: Thane, Maharashtra</span>
@@ -130,36 +130,36 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
           {CERTIFICATES.map((cert, idx) => (
             <div 
               key={idx}
-              className="bg-white p-8 rounded-3xl border border-tata-grey-light/60 shadow-sm hover:shadow-xl hover:border-[#174195]/20 transition-all duration-300 space-y-6 flex flex-col justify-between group relative overflow-hidden"
+              className="bg-white p-8 rounded-none border border-gray-200/60 shadow-none hover:shadow-none hover:border-black/20 transition-all duration-300 space-y-6 flex flex-col justify-between group relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#174195]/5 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-[#174195]/10"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-black/5 rounded-none blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-black/10"></div>
               <div className="space-y-4 relative z-10">
                 <div className="flex items-center justify-between">
-                  <span className="p-3 rounded-2xl bg-[#174195]/5 text-[#174195] group-hover:bg-[#174195] group-hover:text-white transition-colors duration-300">
+                  <span className="p-3 rounded-none bg-black/5 text-black group-hover:bg-black group-hover:text-white transition-colors duration-300">
                     <Award className="w-6 h-6" />
                   </span>
-                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold border border-emerald-200 flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-none bg-emerald-50 text-emerald-700 font-bold border border-emerald-200 flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse"></div>
                     VERIFIED ACTIVE
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-bold text-tata-dark leading-snug">
+                <h3 className="font-sans tracking-tight text-xl font-bold text-black leading-snug">
                   {cert.title}
                 </h3>
-                <p className="text-xs text-tata-grey font-mono">
+                <p className="text-xs text-gray-400 font-mono">
                   Issuing Body: {cert.authority}
                 </p>
               </div>
 
-              <div className="space-y-3 pt-4 border-t border-tata-grey-light font-mono text-xs relative z-10">
+              <div className="space-y-3 pt-4 border-t border-gray-200 font-mono text-xs relative z-10">
                 <div className="flex justify-between items-end">
-                  <span className="text-tata-grey text-[10px] uppercase">Registry Number</span>
-                  <strong className="text-tata-dark text-sm font-bold">{cert.number}</strong>
+                  <span className="text-gray-400 text-[10px] uppercase">Registry Number</span>
+                  <strong className="text-black text-sm font-bold">{cert.number}</strong>
                 </div>
                 <div className="flex justify-between items-end">
-                  <span className="text-tata-grey text-[10px] uppercase">Scope</span>
-                  <span className="text-tata-dark text-[11px] text-right max-w-[150px] leading-tight">{cert.scope}</span>
+                  <span className="text-gray-400 text-[10px] uppercase">Scope</span>
+                  <span className="text-black text-[11px] text-right max-w-[150px] leading-tight">{cert.scope}</span>
                 </div>
               </div>
             </div>
@@ -170,15 +170,15 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* MRL PESTICIDE LABORATORY SCREENING BLOCK */}
-          <div className="bg-[#bcb3b3] text-white rounded-3xl p-8 sm:p-12 border border-[#bcb3b3] shadow-xl space-y-8 flex flex-col justify-center relative overflow-hidden">
+          <div className="bg-[#bcb3b3] text-white rounded-none p-8 sm:p-12 border border-[#bcb3b3] shadow-none space-y-8 flex flex-col justify-center relative overflow-hidden">
             <div className="absolute -bottom-20 -right-20 opacity-5 pointer-events-none">
               <FileCheck className="w-80 h-80" />
             </div>
             <div className="space-y-4 relative z-10">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold text-white uppercase tracking-[0.2em] font-mono">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-white/10 border border-gray-200 text-[10px] font-bold text-white uppercase tracking-[0.2em] font-mono">
                 <ShieldCheck className="w-3.5 h-3.5" /> Eurofins / SGS Testing
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+              <h2 className="font-sans tracking-tight text-3xl sm:text-4xl font-bold text-white leading-tight">
                 500+ Multi-Residue Pesticide MRL Screening (0.00 ppm)
               </h2>
               <p className="text-sm text-white/70 max-w-lg leading-relaxed pt-2">
@@ -189,62 +189,62 @@ export default function ComplianceDossier({ onOpenLeadForm }) {
             <button
               type="button"
               onClick={onOpenLeadForm}
-              className="bg-[#174195] hover:bg-[#1468b3] text-white font-bold px-8 py-4 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(23,65,149,0.4)] hover:shadow-[0_0_30px_rgba(23,65,149,0.6)] self-start relative z-10"
+              className="bg-black hover:bg-gray-800 text-white font-bold px-8 py-4 rounded-none text-xs uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(23,65,149,0.4)] hover:shadow-[0_0_30px_rgba(23,65,149,0.6)] self-start relative z-10"
             >
               Request Full MRL Lab Report PDF
             </button>
           </div>
 
           {/* AI COMPLIANCE CONSULTANT WIDGET */}
-          <div className="bg-white rounded-3xl border border-tata-grey-light/80 shadow-xl flex flex-col h-[500px] overflow-hidden relative">
-            <div className="p-6 border-b border-tata-grey-light bg-[#f8f9fa] flex items-center justify-between">
+          <div className="bg-white rounded-none border border-gray-200/80 shadow-none flex flex-col h-[500px] overflow-hidden relative">
+            <div className="p-6 border-b border-gray-200 bg-[#f8f9fa] flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#174195] to-[#1468b3] flex items-center justify-center shadow-md">
+                <div className="w-10 h-10 rounded-none bg-gradient-to-br from-[#174195] to-[#1468b3] flex items-center justify-center shadow-none">
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-tata-dark text-lg">AI Compliance Analyst</h3>
-                  <p className="text-[10px] text-tata-grey uppercase tracking-widest font-bold">Ask about our Certifications</p>
+                  <h3 className="font-sans tracking-tight font-bold text-black text-lg">AI Compliance Analyst</h3>
+                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Ask about our Certifications</p>
                 </div>
               </div>
-              <div className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-widest border border-emerald-200 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Online
+              <div className="px-2.5 py-1 rounded-none bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-widest border border-emerald-200 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse"></span> Online
               </div>
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-white/50">
               {chatHistory.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm ${msg.role === "user" ? "bg-[#174195] text-white rounded-br-sm" : "bg-white border border-tata-grey-light text-tata-dark rounded-bl-sm"}`}>
+                  <div className={`max-w-[85%] p-4 rounded-none text-sm leading-relaxed shadow-none ${msg.role === "user" ? "bg-black text-white rounded-none-br-sm" : "bg-white border border-gray-200 text-black rounded-none-bl-sm"}`}>
                     {msg.text}
                   </div>
                 </div>
               ))}
               {isAiLoading && (
                 <div className="flex justify-start">
-                  <div className="max-w-[80%] p-4 rounded-2xl bg-white border border-tata-grey-light text-tata-dark rounded-bl-sm flex items-center gap-3 shadow-sm">
-                    <Loader2 className="w-4 h-4 text-[#174195] animate-spin" />
-                    <span className="text-xs text-tata-grey font-mono">Analyzing compliance data...</span>
+                  <div className="max-w-[80%] p-4 rounded-none bg-white border border-gray-200 text-black rounded-none-bl-sm flex items-center gap-3 shadow-none">
+                    <Loader2 className="w-4 h-4 text-black animate-spin" />
+                    <span className="text-xs text-gray-400 font-mono">Analyzing compliance data...</span>
                   </div>
                 </div>
               )}
             </div>
 
-            <form onSubmit={handleAiSubmit} className="p-4 bg-white border-t border-tata-grey-light">
+            <form onSubmit={handleAiSubmit} className="p-4 bg-white border-t border-gray-200">
               <div className="relative flex items-center">
-                <MessageSquare className="w-4 h-4 text-tata-grey absolute left-4" />
+                <MessageSquare className="w-4 h-4 text-gray-400 absolute left-4" />
                 <input 
                   type="text" 
                   value={aiQuery}
                   onChange={(e) => setAiQuery(e.target.value)}
                   placeholder="Ask about MRLs, USDA Organic..."
-                  className="w-full bg-[#f8f9fa] border border-tata-grey-light rounded-xl py-3.5 pl-11 pr-14 text-sm focus:outline-none focus:border-[#174195] focus:ring-1 focus:ring-[#174195] transition-all text-tata-dark placeholder-tata-grey"
+                  className="w-full bg-[#f8f9fa] border border-gray-200 rounded-none py-3.5 pl-11 pr-14 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all text-black placeholder-gray-400"
                   disabled={isAiLoading}
                 />
                 <button 
                   type="submit"
                   disabled={isAiLoading || !aiQuery.trim()}
-                  className="absolute right-2 bg-[#174195] hover:bg-[#1468b3] disabled:bg-tata-grey-light disabled:cursor-not-allowed text-white p-2 rounded-lg transition-colors"
+                  className="absolute right-2 bg-black hover:bg-gray-800 disabled:bg-gray-200 disabled:cursor-not-allowed text-white p-2 rounded-none transition-colors"
                 >
                   <Send className="w-4 h-4" />
                 </button>

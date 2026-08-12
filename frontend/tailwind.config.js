@@ -7,55 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        'tata-blue': {
-          dark: 'var(--tata-blue-dark)',
-          light: 'var(--tata-blue-light)',
-        },
-        'tata-cyan': 'var(--tata-cyan)',
-        'tata-green': 'var(--tata-green)',
-        'tata-dark': 'var(--tata-dark)',
-        'tata-grey': {
-          DEFAULT: 'var(--tata-grey)',
-          light: 'var(--tata-grey-light)'
-        },
-        'tata-bg': {
-          light: 'var(--tata-bg-light)',
-          lighter: 'var(--tata-bg-lighter)'
-        },
-        'white': '#ffffff',
-        'black': '#000000',
-        
-        background: 'var(--tata-bg-lighter)',
-        foreground: 'var(--tata-dark)',
-        card: {
-          DEFAULT: '#ffffff',
-          foreground: 'var(--tata-dark)'
-        },
-        popover: {
-          DEFAULT: '#ffffff',
-          foreground: 'var(--tata-dark)'
-        },
-        primary: {
-          DEFAULT: 'var(--tata-blue-dark)',
-          foreground: '#ffffff'
-        },
-        secondary: {
-          DEFAULT: 'var(--tata-bg-light)',
-          foreground: 'var(--tata-dark)'
-        },
-        muted: {
-          DEFAULT: 'var(--tata-bg-light)',
-          foreground: 'var(--tata-grey)'
-        },
-        accent: {
-          DEFAULT: 'var(--tata-blue-light)',
-          foreground: '#ffffff'
-        },
-        border: 'var(--tata-grey-light)',
-        input: 'var(--tata-grey-light)',
-        ring: 'var(--tata-blue-light)',
-      },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['"Playfair Display"', '"Cormorant Garamond"', 'ui-serif', 'Georgia', 'serif'],
