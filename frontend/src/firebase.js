@@ -13,7 +13,7 @@ export const initFirebase = () => {
     .then(res => res.json())
     .then(config => {
       app = initializeApp(config);
-      db = getFirestore(app);
+      db = getFirestore(app, config.firestoreDatabaseId || 'atweeltea');
       auth = getAuth(app);
       return { app, db, auth };
     });

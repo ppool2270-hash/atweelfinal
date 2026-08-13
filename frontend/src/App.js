@@ -3,7 +3,7 @@ import axios from "axios";
 import { Toaster, toast } from "sonner";
 
 import { initFirebase, getFirebaseDB, getFirebaseAuth } from './firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from './authMock';
 import { doc, getDoc, setDoc, collection, query, where, getDocs } from 'firebase/firestore';
 
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -736,7 +736,11 @@ export default function App() {
         await signInWithEmailAndPassword(auth, authForm.email, authForm.password);
         toast.success("Successfully logged in");
       } catch (err) {
-        toast.error("Login failed: " + err.message);
+        if (err.code === 'auth/operation-not-allowed') {
+          toast.error("Email/Password Auth is disabled. Please enable it in the Firebase Console under Build > Authentication > Sign-in method.");
+        } else {
+          toast.error("Login failed: " + err.message);
+        }
       }
     } else {
       try {
@@ -758,7 +762,11 @@ export default function App() {
         setCustomerProfile(newProfile);
         toast.success("Account created successfully");
       } catch (err) {
-        toast.error("Signup failed: " + err.message);
+        if (err.code === 'auth/operation-not-allowed') {
+          toast.error("Email/Password Auth is disabled. Please enable it in the Firebase Console under Build > Authentication > Sign-in method.");
+        } else {
+          toast.error("Signup failed: " + err.message);
+        }
       }
     }
   };
@@ -816,8 +824,13 @@ export default function App() {
     linkTab: "rfq"
   });
 
+
   const [siteCertificates, setSiteCertificates] = useState([]);
   const [siteAuditLog, setSiteAuditLog] = useState([]);
+  
+  const [adminCustomers, setAdminCustomers] = useState([]);
+  const [adminCustomersLoading, setAdminCustomersLoading] = useState(false);
+
 
   const [cmsTab, setCmsTab] = useState("products"); // "products" | "shipments" | "estate" | "announcement" | "certificates" | "audit" | "backup" | "enquiries"
 
@@ -1065,8 +1078,43 @@ export default function App() {
     return matchesSearch && matchesCert;
   });
 
+
   // ---------- ADMIN HELPERS & CMS HANDLERS ----------
+
+  const fetchAdminCustomers = async () => {
+    setAdminCustomersLoading(true);
+    try {
+      const { db } = await initFirebase();
+      const q = query(collection(db, "customers"));
+      const querySnapshot = await getDocs(q);
+      const list = [];
+      querySnapshot.forEach((docSnap) => {
+        list.push({ id: docSnap.id, ...docSnap.data() });
+      });
+      list.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+      setAdminCustomers(list);
+    } catch (err) {
+      toast.error("Failed to fetch customers: " + err.message);
+    } finally {
+      setAdminCustomersLoading(false);
+    }
+  };
+
+  const handleUpdateCustomerStatus = async (customerId, currentStatus) => {
+    const newStatus = currentStatus === "Pending Verification" ? "Approved" : "Pending Verification";
+    try {
+      const { db } = await initFirebase();
+      const custRef = doc(db, "customers", customerId);
+      await setDoc(custRef, { status: newStatus }, { merge: true });
+      toast.success(`Customer status updated to ${newStatus}`);
+      fetchAdminCustomers();
+    } catch (err) {
+      toast.error("Failed to update status: " + err.message);
+    }
+  };
+
   const fetchEnquiries = async (tokenToUse) => {
+
     const useToken = tokenToUse || adminToken;
     if (!useToken) return;
     setAdminLoading(true);
@@ -3413,9 +3461,30 @@ export default function App() {
                     </div>
                   )}
                   
-                  <button type="submit" className="w-full bg-black text-white font-bold py-3 rounded-none hover:brightness-110 transition-all shadow-none mt-4">
-                    {isLoginMode ? "Sign In" : "Submit Wholesale Application"}
-                  </button>
+                  <div className="space-y-3 mt-4">
+                    <button type="submit" className="w-full bg-black text-white font-bold py-3 rounded-none hover:brightness-110 transition-all shadow-none">
+                      {isLoginMode ? "Sign In" : "Submit Wholesale Application"}
+                    </button>
+                    <button 
+                      type="button" 
+                      onClick={() => {
+                        const demoUser = { uid: "demo-123", email: "buyer@demo.com" };
+                        setCurrentUser(demoUser);
+                        setCustomerProfile({
+                          name: "Demo Buyer",
+                          company: "Global Trade Co.",
+                          email: "buyer@demo.com",
+                          status: "Pending Verification",
+                          tier: "Standard",
+                          createdAt: new Date().toISOString()
+                        });
+                        toast.success("Logged in with Demo Account (Bypassing Firebase)");
+                      }}
+                      className="w-full bg-white text-black border border-gray-200 font-bold py-3 rounded-none hover:bg-gray-50 transition-all shadow-none"
+                    >
+                      Bypass & Enter Demo Mode
+                    </button>
+                  </div>
                 </form>
                 
                 <div className="mt-8 text-center pt-6 border-t border-gray-100">
@@ -4023,6 +4092,19 @@ export default function App() {
                   >
                     <Mail className="w-4 h-4" />
                     <span>Buyer RFQ Inbox ({enquiryCounts.total || enquiries.length})</span>
+                  </button>
+                  
+                  <button
+                    onClick={() => { setCmsTab("customers"); fetchAdminCustomers(); }}
+                    data-testid="cms-tab-customers"
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold transition-all ${
+                      cmsTab === "customers"
+                        ? "bg-black text-gray-300 "
+                        : "bg-white text-gray-500 hover:bg-gray-50 border border-gray-100"
+                    }`}
+                  >
+                    <Users className="w-4 h-4" />
+                    <span>Wholesale Apps</span>
                   </button>
                 </div>
 
@@ -4801,7 +4883,86 @@ export default function App() {
                   </div>
                 )}
 
+                
+                {/* SUB-PANEL 9: WHOLESALE CUSTOMERS */}
+                {cmsTab === "customers" && (
+                  <div className="space-y-6" data-testid="cms-customers-panel">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-xl font-bold font-sans">Wholesale Applications</h3>
+                      <button 
+                        onClick={fetchAdminCustomers} 
+                        className="bg-gray-100 hover:bg-gray-200 text-black px-4 py-2 text-xs font-bold"
+                        disabled={adminCustomersLoading}
+                      >
+                        {adminCustomersLoading ? "Refreshing..." : "Refresh List"}
+                      </button>
+                    </div>
+                    
+                    {adminCustomers.length === 0 && !adminCustomersLoading ? (
+                      <div className="text-center py-12 border border-gray-200 bg-gray-50">
+                        <Users className="w-8 h-8 mx-auto text-gray-400 mb-2" />
+                        <p className="text-sm font-semibold text-gray-600">No applications found</p>
+                      </div>
+                    ) : (
+                      <div className="overflow-x-auto border border-gray-200">
+                        <table className="w-full text-left text-sm bg-white">
+                          <thead className="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                              <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Company</th>
+                              <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Contact</th>
+                              <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Details</th>
+                              <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                              <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-gray-100">
+                            {adminCustomers.map(cust => (
+                              <tr key={cust.id} className="hover:bg-gray-50">
+                                <td className="p-4">
+                                  <div className="font-bold text-black">{cust.company}</div>
+                                  <div className="text-xs text-gray-500 mt-1">Applied: {cust.createdAt ? new Date(cust.createdAt).toLocaleDateString() : 'N/A'}</div>
+                                </td>
+                                <td className="p-4">
+                                  <div className="font-semibold text-gray-800">{cust.name}</div>
+                                  <div className="text-xs text-gray-500">{cust.email}</div>
+                                </td>
+                                <td className="p-4">
+                                  <div className="text-xs space-y-1">
+                                    <p><span className="font-semibold">Vol:</span> {cust.annualVolume}</p>
+                                    <p><span className="font-semibold">Country:</span> {cust.country}</p>
+                                    <p><span className="font-semibold">Tax ID:</span> {cust.taxId}</p>
+                                  </div>
+                                </td>
+                                <td className="p-4">
+                                  <span className={`inline-flex px-2 py-1 text-[10px] font-bold uppercase ${
+                                    cust.status === "Approved" ? "bg-green-100 text-green-800" : "bg-amber-100 text-amber-800"
+                                  }`}>
+                                    {cust.status || "Pending Verification"}
+                                  </span>
+                                </td>
+                                <td className="p-4">
+                                  <button
+                                    onClick={() => handleUpdateCustomerStatus(cust.id, cust.status || "Pending Verification")}
+                                    className={`px-3 py-1.5 text-xs font-bold border transition-colors ${
+                                      cust.status === "Approved" 
+                                      ? "border-amber-200 text-amber-700 hover:bg-amber-50" 
+                                      : "border-black bg-black text-white hover:brightness-110"
+                                    }`}
+                                  >
+                                    {cust.status === "Approved" ? "Revoke Access" : "Approve"}
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
                 {/* SUB-PANEL 8: ENQUIRIES & BUYER RFQS */}
+
                 {cmsTab === "enquiries" && (
                   <div className="space-y-6" data-testid="cms-enquiries-panel">
                     {/* SUMMARY STATS */}
